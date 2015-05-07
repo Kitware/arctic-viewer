@@ -1,7 +1,7 @@
 {
   "name": "in-situ-data-viewer",
   "description": "Standalone application useful to load and explore InSitu data products.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "BSD-3-Clause",
   "main": "./lib/in-situ-data-viewer.js",
   "repository": {
@@ -9,7 +9,9 @@
     "url": "https://github.com/Kitware/in-situ-data-viewer.git"
   },
   "dependencies": {
-    "node-static": "latest"
+    "node-static": "latest",
+    "open": "latest",
+    "commander": "latest"
   },
   "devDependencies": {
     "react": "latest",
@@ -41,5 +43,6 @@
   },
   "bin": {
     "InSituDataViewer": "./bin/in-situ-data-viewer-cli.js"
-  }
+  },
+  "preferGlobal": true
 }
