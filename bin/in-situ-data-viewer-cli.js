@@ -1,31 +1,17 @@
 #! /usr/bin/env node
 
-var connect = require('connect'),
-    createStatic = require('connect-static'),
-    path = require('path'),
-    app = connect(),
+var path = require('path'),
+    static = require('node-static'),
+    dataFiles = new static.Server(process.argv[process.argv.length - 1],  { cache: 10 }),
+    wwwFiles = new static.Server(path.normalize(__dirname + "/../dist")),
     port = 3000;
 
-// Serve HTML + JS
-createStatic({
-    dir: path.normalize(__dirname + "/../dist"),
-    aliases: [ ['/', '/index.html'] ],
-    ignoreFile: function(path) { return false; },
-    followSymlinks: false
-}, function(err, handler) {
-    if(err) throw err;
-    app.use('/', handler);
-});
-
-// Serve Data
-createStatic({
-    dir: process.argv[process.argv.length - 1],
-    aliases: [ ['/', '/info.json'] ],
-    ignoreFile: function(path) { return false; },
-    followSymlinks: true
-}, function(err, handler) {
-    if(err) throw err;
-    app.use('/data/', handler);
-});
-
-var server = app.listen(port);
+require('http').createServer(function (request, response) {
+    request.addListener('end', function () {
+        dataFiles.serve(request, response, function (err, result) {
+            if (err) { // There was an error serving the file
+                wwwFiles.serve(request, response);
+            }
+        });
+    }).resume();
+}).listen(port);
