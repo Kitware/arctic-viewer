@@ -1,0 +1,46 @@
+{
+  "name": "InSituDataViewer",
+  "description": "Standalone application useful to load and explore InSitu data products.",
+  "version": "0.0.1",
+  "license": "BSD-3-Clause",
+  "main": "./lib/in-situ-data-viewer.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kitware/in-situ-data-viewer.git"
+  },
+  "dependencies": {
+    "connect": "latest",
+    "connect-static": "latest"
+  },
+  "devDependencies": {
+    "react": "latest",
+
+    "tonic-widgets": "Kitware/tonic-widgets",
+    "tonic-query-data-model": "Kitware/tonic-query-data-model",
+    "tonic-data-manager": "Kitware/tonic-data-manager",
+
+    "normalize.css": "latest",
+    "font-awesome-webpack": "latest",
+
+    "tonic-site-generator": "Kitware/tonic-site-generator",
+
+    "jshint-loader": "latest",
+    "file-loader": "latest",
+    "url-loader": "latest",
+    "css-loader": "latest",
+    "autoprefixer-loader": "latest",
+    "style-loader": "latest",
+    "babel-loader": "latest",
+    "babel-runtime": "latest",
+    "expose-loader": "latest",
+    "webpack": "latest"
+  },
+  "scripts": {
+    "build": "webpack",
+    "build:debug": "webpack --display-modules",
+    "build:release": "webpack -p"
+  },
+  "bin": {
+    "InSituDataViewer": "./bin/in-situ-data-viewer-cli.js"
+  }
+}
