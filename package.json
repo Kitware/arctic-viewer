@@ -1,5 +1,5 @@
 {
-  "name": "InSituDataViewer",
+  "name": "in-situ-data-viewer",
   "description": "Standalone application useful to load and explore InSitu data products.",
   "version": "0.0.1",
   "license": "BSD-3-Clause",

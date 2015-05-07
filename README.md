@@ -8,7 +8,7 @@ to navigate and explore data generated InSitu or in batch mode.
 ## Installation
 
 ```
-$ npm install -g InSituDataViewer
+$ npm install -g in-situ-data-viewer
 ```
 
 Run the viewer on your data directory
