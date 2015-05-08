@@ -33,6 +33,8 @@ $ InSituDataViewer
     -s, --server-only       Do not open the web browser
 ```
 
+The data directory can be a remote http:// url.
+
 #### Licensing
 
 **InSituDataViewer** is licensed under [BSD Clause 3](LICENSE).
