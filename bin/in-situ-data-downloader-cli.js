@@ -8,7 +8,7 @@ var fs = require('fs'),
 
 program
   .version('0.0.6')
-  .option('-d, --download [http://remote-host/data/]', 'Url to the source of your in-situ data.')
+  .option('-d, --download [http://remote-host/data]', 'Url to the source of your in-situ data.')
   .option('-o, --output [directory]', 'Data directory where to download remote data locally')
   .parse(process.argv);
 

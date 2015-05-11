@@ -46,7 +46,7 @@ $ InSituDataDownloader
 
     -h, --help                                 output usage information
     -V, --version                              output the version number
-    -d, --download [http://remote-host/data/]  Url to the source of your in-situ data.
+    -d, --download [http://remote-host/data]  Url to the source of your in-situ data.
     -o, --output [directory]                   Data directory where to download remote data locally
 ```
 
