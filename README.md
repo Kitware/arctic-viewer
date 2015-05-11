@@ -35,6 +35,21 @@ $ InSituDataViewer
 
 The data directory can be a remote http:// url.
 
+Along with the data viewer we provide a data downloader which work as follow:
+
+```
+$ InSituDataDownloader
+
+  Usage: InSituDataDownloader [options]
+
+  Options:
+
+    -h, --help                                 output usage information
+    -V, --version                              output the version number
+    -d, --download [http://remote-host/data/]  Url to the source of your in-situ data.
+    -o, --output [directory]                   Data directory where to download remote data locally
+```
+
 #### Licensing
 
 **InSituDataViewer** is licensed under [BSD Clause 3](LICENSE).
