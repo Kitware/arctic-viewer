@@ -2,8 +2,7 @@
 
 var fs = require('fs'),
     program = require('commander'),
-    union = require('union'),
-    ecstatic = require('ecstatic'),
+    express = require('express'),
     httpProxy = require('http-proxy');
 
 function handlePort(value) {
@@ -24,8 +23,7 @@ if (!process.argv.slice(2).length) {
 // Handle data path
 var path = require('path'),
     dataPath = program.data ? program.data : process.env.PWD,
-    needProxy = (dataPath.indexOf('http') === 0),
-    before = [];
+    needProxy = (dataPath.indexOf('http') === 0);
 
 // Handle relative path
 if(dataPath[0] === '.') {
@@ -33,21 +31,15 @@ if(dataPath[0] === '.') {
 }
 
 // Build request handling
+var app = express();
 // - static HTML + JS
-before.push(ecstatic({
-    root: __dirname + "/../dist",
-    cache: 3600,
-    showDir: false,
-    autoIndex: true,
-    defaultExt: 'html',
-    handleError: false
-}));
+app.use(express.static(__dirname + "/../dist"));
 
 // - Handle data
 if(needProxy) {
     // Need to proxy the data directory
     var proxy = httpProxy.createProxyServer({});
-    before.push(function (req, res) {
+    app.use('/data', function (req, res) {
         proxy.web(req, res, {
             target: dataPath,
             changeOrigin: true
@@ -60,31 +52,14 @@ if(needProxy) {
     }
 
     // Serve data from static content
-    before.push(ecstatic({
-        root: dataPath,
-        cache: 10,
-        showDir: false,
-        autoIndex: false,
-        handleError: false,
-        gzip: true
-    }));
+    app.use('/data', express.static(dataPath));
 }
 
 // Print server information
 console.log("\nIn-Situ Data Viewer\n  => Serve " + dataPath + " on port " + program.port + "\n");
 
 // Start server and listening
-var serverOptions = {
-        before: before,
-        headers: {},
-        onError: function (err, req, res) {
-          console.log(req.url + ' => ' + err.message);
-          res.end();
-        }
-    },
-    server = union.createServer(serverOptions);
-
-server.listen(program.port);
+app.listen(program.port);
 
 // Open browser if asked
 if (!program.serverOnly) {

@@ -1,7 +1,7 @@
 {
   "name": "in-situ-data-viewer",
   "description": "Standalone application useful to load and explore InSitu data products.",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "license": "BSD-3-Clause",
   "main": "./lib/in-situ-data-viewer.js",
   "repository": {
@@ -10,8 +10,7 @@
   },
   "dependencies": {
     "progress": "latest",
-    "union": "latest",
-    "ecstatic": "latest",
+    "express": "latest",
     "http-proxy": "latest",
     "open": "latest",
     "commander": "latest"
@@ -22,6 +21,7 @@
     "tonic-widgets": "Kitware/tonic-widgets",
     "tonic-query-data-model": "Kitware/tonic-query-data-model",
     "tonic-data-manager": "Kitware/tonic-data-manager",
+    "tonic-image-builder": "Kitware/tonic-image-builder",
 
     "normalize.css": "latest",
     "font-awesome-webpack": "latest",
