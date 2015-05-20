@@ -14,7 +14,7 @@
     "http-proxy": "latest",
     "open": "latest",
     "commander": "latest",
-    "tar.gz": "latest"
+    "tarball-extract": "latest"
   },
   "devDependencies": {
     "react": "latest",

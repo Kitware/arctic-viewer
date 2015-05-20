@@ -5,7 +5,7 @@ var fs = require('fs'),
     program = require('commander'),
     http = require('http'),
     ProgressBar = require('progress'),
-    targz = require('tar.gz');
+    tarball = require('tarball-extract');
 
 program
   .version('0.0.6')
@@ -56,46 +56,53 @@ if(program.download) {
 }
 
 if(program.downloadSampleData) {
-    console.log("Download sample data:");
+    console.log("\n | Downloading sample data (~100MB) into directory " + outputDirectory);
     var baseURL = 'http://www.kitware.com/in-situ-data/tonic-sample-data/',
-        files = ['mpas-probe-flat-earth.tgz', 'hydra-image-fluid-velocity.tgz'];
+        files = ['mpas-probe-flat-earth.tgz', 'hydra-image-fluid-velocity.tgz'],
+        doneCount = 0;
+
+    function done() {
+        doneCount++;
+
+        if(doneCount === files.length) {
+            console.log(" |\n | Thank you for trying this out... Seb\n");
+        }
+    }
 
     mkdirp(outputDirectory, function(){
+        console.log(" |\n | => Once the data will be downloaded, you will be able to try the InSituDataViewer with the following commands:\n |");
         for(var i = 0; i < files.length; i++) {
-            var destFile = path.join(outputDirectory, files[i]);
+            var url = baseURL + files[i],
+                destFile = path.join(outputDirectory, files[i]),
+                extractedDir = destFile.substring(0, destFile.length - 4);
 
-            simpleFileDownloadAndUnTar(baseURL + files[i], destFile);
-    }
+            processFile(url, destFile, extractedDir, done);
+        }
     });
 }
 
-function simpleFileDownloadAndUnTar(url, destFile) {
-    http.get(url, function(res) {
-        res.on('data', function (chunk) {
-            fs.appendFile(destFile,
-                        chunk,
-                        function (err) { if (err) console.log(err); }
-            );
-        });
-        res.on('error', function () {
-            console.log('... error ...');
-        });
-        res.on('end', function () {
-            console.log(" => " + destFile)
-            new targz().extract(destFile, path.dirname(destFile), function(err){
-                if(err) {
-                    console.log(err);
+function processFile(url, destFile, extractedDir, doneCallback) {
+    fs.exists(extractedDir, function(exists) {
+        if(exists) {
+            console.log(" |  $ InSituDataViewer -d " + extractedDir);
+            doneCallback();
+        } else {
+            tarball.extractTarballDownload(
+                url,
+                destFile, path.dirname(destFile),
+                {},
+                function(err, result) {
+                    if(!err) {
+                        console.log(" |  $ InSituDataViewer -d " + extractedDir);
+                    } else {
+                        console.log(' | oups something wrong happened while downloading ' + url);
+                    }
+                    doneCallback();
                 }
-                console.log(' => ' + destFile + ' done');
-            });
-        });
-
-    }).on('error', function(e) {
-        console.log("Got error: " + e.message);
+            );
+        }
     });
 }
-
-
 
 // Process data descriptor and start download
 function buildDownloadStructure() {
