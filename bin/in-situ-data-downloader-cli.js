@@ -4,10 +4,12 @@ var fs = require('fs'),
     path = require('path'),
     program = require('commander'),
     http = require('http'),
-    ProgressBar = require('progress');
+    ProgressBar = require('progress'),
+    targz = require('tar.gz');
 
 program
   .version('0.0.6')
+  .option('-s, --download-sample-data', 'Download some try-out data [~100MB]')
   .option('-d, --download [http://remote-host/data]', 'Url to the source of your in-situ data.')
   .option('-o, --output [directory]', 'Data directory where to download remote data locally')
   .parse(process.argv);
@@ -31,25 +33,68 @@ var downloadQueries = [],
     progress = null;
 
 // Download and save the info.json
-http.get(program.download + '/info.json', function(res) {
-    var buffer = [];
-    res.on('data', function (chunk) {
-        buffer.push(chunk);
-    });
-    res.on('end', function () {
-        fs.writeFile(path.join(outputDirectory, 'info.json'),
-                    buffer.join(''),
-                    function (err) {
-                        if (err) throw err;
-                    }
-        );
-        dataDescriptor = JSON.parse(buffer.join(''));
-        buildDownloadStructure();
-    });
+if(program.download) {
+    http.get(program.download + '/info.json', function(res) {
+        var buffer = [];
+        res.on('data', function (chunk) {
+            buffer.push(chunk);
+        });
+        res.on('end', function () {
+            fs.writeFile(path.join(outputDirectory, 'info.json'),
+                        buffer.join(''),
+                        function (err) {
+                            if (err) throw err;
+                        }
+            );
+            dataDescriptor = JSON.parse(buffer.join(''));
+            buildDownloadStructure();
+        });
 
-}).on('error', function(e) {
-    console.log("Got error: " + e.message);
-});
+    }).on('error', function(e) {
+        console.log("Got error: " + e.message);
+    });
+}
+
+if(program.downloadSampleData) {
+    console.log("Download sample data:");
+    var baseURL = 'http://www.kitware.com/in-situ-data/tonic-sample-data/',
+        files = ['mpas-probe-flat-earth.tgz', 'hydra-image-fluid-velocity.tgz'];
+
+    mkdirp(outputDirectory, function(){
+        for(var i = 0; i < files.length; i++) {
+            var destFile = path.join(outputDirectory, files[i]);
+
+            simpleFileDownloadAndUnTar(baseURL + files[i], destFile);
+    }
+    });
+}
+
+function simpleFileDownloadAndUnTar(url, destFile) {
+    http.get(url, function(res) {
+        res.on('data', function (chunk) {
+            fs.appendFile(destFile,
+                        chunk,
+                        function (err) { if (err) console.log(err); }
+            );
+        });
+        res.on('error', function () {
+            console.log('... error ...');
+        });
+        res.on('end', function () {
+            console.log(" => " + destFile)
+            new targz().extract(destFile, path.dirname(destFile), function(err){
+                if(err) {
+                    console.log(err);
+                }
+                console.log(' => ' + destFile + ' done');
+            });
+        });
+
+    }).on('error', function(e) {
+        console.log("Got error: " + e.message);
+    });
+}
+
 
 
 // Process data descriptor and start download

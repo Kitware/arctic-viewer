@@ -1,7 +1,7 @@
 {
   "name": "in-situ-data-viewer",
   "description": "Standalone application useful to load and explore InSitu data products.",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "license": "BSD-3-Clause",
   "main": "./lib/in-situ-data-viewer.js",
   "repository": {
@@ -13,7 +13,8 @@
     "express": "latest",
     "http-proxy": "latest",
     "open": "latest",
-    "commander": "latest"
+    "commander": "latest",
+    "tar.gz": "latest"
   },
   "devDependencies": {
     "react": "latest",

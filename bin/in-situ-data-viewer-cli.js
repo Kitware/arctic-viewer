@@ -12,7 +12,7 @@ function handlePort(value) {
 program
   .version('0.0.6')
   .option('-p, --port [3000]', 'Start web server with given port', handlePort, 3000)
-  .option('-d, --data [directory]', 'Data directory to serve. Should contain a info.json file.')
+  .option('-d, --data [directory/http]', 'Data directory to serve. Should contain a info.json file.')
   .option('-s, --server-only', 'Do not open the web browser')
   .parse(process.argv);
 
