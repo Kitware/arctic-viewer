@@ -12,11 +12,11 @@ module.exports = {
       {
           test: /\.js$/,
           exclude: /node_modules/,
-          loader: "jshint-loader!babel-loader?optional=runtime"
+          loader: "jshint-loader!babel-loader"
       },{
           test: /\.js$/,
           include: /tonic-/,
-          loader: "babel-loader?optional=runtime"
+          loader: "babel-loader"
       }
     ],
     loaders: [
