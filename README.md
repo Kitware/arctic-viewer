@@ -11,7 +11,8 @@ to navigate and explore data generated InSitu or in batch mode.
 $ npm install -g in-situ-data-viewer
 ```
 
-After installing the package you will get 2 executable with the following set of
+After installing the package you will get 2 executable
+[**InSituDataViewer**, **InSituDataDownloader**] with the following set of
 options.
 
 ```
@@ -43,7 +44,7 @@ $ InSituDataDownloader
     -o, --output [directory]                  Data directory where to download remote data locally
 ```
 
-In order to try it out, you should download some sample dataset
+In order to try it out, you should download some sample datasets
 (unless you already have some ;-) and run the data viewer on them.
 
 Here is an example on how to download some sample data
@@ -55,8 +56,8 @@ $ InSituDataDownloader -s -o ./tonic-data
  |
  | => Once the data will be downloaded, you will be able to try the InSituDataViewer with the following commands:
  |
- |  $ InSituDataViewer -d /.../tonic-data/mpas-probe-flat-earth
- |  $ InSituDataViewer -d /.../tonic-data/hydra-image-fluid-velocity
+ |  $ InSituDataViewer -d /Users/seb/tonic-data/mpas-probe-flat-earth
+ |  $ InSituDataViewer -d /Users/seb/tonic-data/hydra-image-fluid-velocity
  |
  | Thank you for trying this out... Seb
 ```
@@ -69,7 +70,7 @@ $ InSituDataViewer -d ./tonic-data/mpas-probe-flat-earth
 ```
 
 This will load a MPAS oceanic simulation data that represent a 3D volume of a
-flatten version of the earth with Temperature and Salinity information of the water.
+flatten version of the earth with Temperature and Salinity information on the water.
 
 From that data you can look at a slice of the data along any axis and move the
 slice back and forth using the scroll of your input device.
@@ -86,10 +87,10 @@ using some volume rendering technique.
 
 #### Licensing
 
-**InSituDataViewer** is licensed under [BSD Clause 3](LICENSE).
+**in-situ-data-viewer** is licensed under [BSD Clause 3](LICENSE).
 
 #### Getting Involved
 
 Fork our repository and do great things. At [Kitware](http://www.kitware.com),
 we've been contributing to open-source software for 15 years and counting, and
-want to make **InSituDataViewer** useful to as many people as possible.
+want to make **in-situ-data-viewer** useful to as many people as possible.
