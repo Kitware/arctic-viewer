@@ -1,12 +1,32 @@
 [
   {
   	"title": "MPAS proble flat earth",
+  	"filesize":"43.3MB",
     "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/mpas-probe-flat-earth.png",
     "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/mpas-probe-flat-earth.tgz"
   },
   {
   	"title": "Hydra image fluid velocity",
-    "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/hydra-image-fluid-velocity.png",
+  	"filesize":"55MB",
+    "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/hydra-image-fluid-velocity.jpg",
     "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/hydra-image-fluid-velocity.tgz"
+  },
+  {
+  	"title": "Hydra hi-res velocity",
+  	"filesize":"467MB",
+  	"thumbnail": "http://www.kitware.com/in-situ-data/hydra/hi-res-vel.jpg",
+  	"url": "http://www.kitware.com/in-situ-data/hydra/hi-res-vel.tgz"
+  },
+  {
+  	"title": "Hydra hi-res vorticity",
+  	"filesize":"2.73GB",
+  	"thumbnail": "http://www.kitware.com/in-situ-data/hydra/hi-res-vorticity.jpg",
+  	"url": "http://www.kitware.com/in-situ-data/hydra/hi-res-vorticity.tgz"
+  },
+  {
+  	"title": "Hydra probe full shortest",
+  	"filesize":"141.9MB",
+  	"thumbnail": "http://www.kitware.com/in-situ-data/hydra/probe-full-shortest.png",
+  	"url": "http://www.kitware.com/in-situ-data/hydra/probe-full-shortest.tgz"
   }
 ]
