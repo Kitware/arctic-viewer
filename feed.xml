@@ -3,10 +3,10 @@
   <channel>
     <title>ArcticViewer</title>
     <description>Command line tool that let you explore interactively your cold data using your web browser.</description>
-    <link>/</link>
-    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 24 Jul 2015 17:01:13 -0600</pubDate>
-    <lastBuildDate>Fri, 24 Jul 2015 17:01:13 -0600</lastBuildDate>
+    <link>/in-situ-data-viewer/</link>
+    <atom:link href="/in-situ-data-viewer/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 24 Jul 2015 17:03:46 -0600</pubDate>
+    <lastBuildDate>Fri, 24 Jul 2015 17:03:46 -0600</lastBuildDate>
     <generator>Jekyll v2.5.3</generator>
     
   </channel>
