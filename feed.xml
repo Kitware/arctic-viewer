@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ArcticViewer</title>
+    <description>Command line tool that let you explore interactively your cold data using your web browser.</description>
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 24 Jul 2015 17:01:13 -0600</pubDate>
+    <lastBuildDate>Fri, 24 Jul 2015 17:01:13 -0600</lastBuildDate>
+    <generator>Jekyll v2.5.3</generator>
+    
+  </channel>
+</rss>

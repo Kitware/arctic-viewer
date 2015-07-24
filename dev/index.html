@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ArcticViewer</title>
+  <meta name="description" content="Command line tool that let you explore interactively your cold data using your web browser.">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="/dev/">
+  <link rel="alternate" type="application/rss+xml" title="ArcticViewer" href="/feed.xml" />
+</head>
+
+
+<body>
+
+<header class="site-header">
+
+    <nav class="mobile-nav show-on-mobiles">
+        <a class="page-link" href="/"><i class="fa fa-home fa-fw fa-lg"></i></a>
+<a class="page-link" href="/docs/home"><i class="fa fa-book fa-fw fa-lg"></i></a>
+<a class="page-link" href="/news"><i class="fa fa-newspaper-o fa-fw fa-lg"></i></a>
+    </nav>
+    <div class="wrapper">
+
+        <a class="site-title center-on-mobiles" href="/">
+            <img src="/img/logo.png" height="40" alt="Logo">
+            ArcticViewer
+        </a>
+        <nav class="site-nav hide-on-mobiles">
+            <a href="#" class="menu-icon">
+                <svg viewBox="0 0 18 15">
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                </svg>
+            </a>
+            <div class="trigger">
+                <a class="page-link" href="/">Home</a>
+<a class="page-link" href="/docs/home">Docs</a>
+<a class="page-link" href="/news">News</a>
+
+            </div>
+        </nav>
+    </div>
+
+</header>
+
+<div class="wrapper">
+    <nav class="docs-nav hide-on-mobiles">
+        <a href="#" class="menu-icon">
+            <svg viewBox="0 0 18 15">
+                <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+        </a>
+    </nav>
+</div>
+
+<div class="page-content">
+    <div class="wrapper">
+          <section class="docs">
+    <div class="grid">
+
+      <div class="docs-nav-mobile unit whole show-on-mobiles">
+  <select onchange="if (this.value) window.location.href=this.value">
+    <option value="">Navigate the docs…</option>
+    
+    <optgroup label="Quick Start">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/docs/home/">Quick Start</option>
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="Supported Dataset">
+      
+
+
+  
+
+  
+    
+  
+    
+      <option value="/docs/ImageBased/">Image base</option>
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+      <option value="/docs/Composite/">Composite</option>
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+      <option value="/docs/Probe/">Probe</option>
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="Developer guide">
+      <option value="/dev/">Development</option>
+      
+      
+      <option value="/source/in-situ-data-viewer.html">Source</option>
+      
+    </optgroup>
+  </select>
+</div>
+
+
+      <div class="unit five-sixths">
+        <article>
+            
+          <h1></h1>
+          <h2>Licensing</h2>
+
+<p>ArcticViewer is licensed under BSD 3 Clause Open Source
+<a href="https://github.com/Kitware/in-situ-data-viewer/blob/master/LICENSE">License</a>.</p>
+
+<h2><a href="https://github.com/Kitware/in-situ-data-viewer">Repository</a></h2>
+
+<div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>git clone git@github.com:Kitware/in-situ-data-viewer.git
+<span class="nv">$ </span><span class="nb">cd </span>in-situ-data-viewer
+<span class="nv">$ </span>npm install</code></pre></div>
+
+<h2>
+    <a href="https://github.com/Kitware/in-situ-data-viewer/issues">Issues</a>
+    <i style='font-size: 75%;'>(Open: <span id='opened-count'></span> | Closed: <span id='closed-count'></span>)</i>
+</h2>
+
+<div id='issue-content'></div>
+
+<script type="text/javascript">
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function()
+    {
+    if (xmlhttp.readyState==4 && xmlhttp.status==200)
+      {
+        var issues = JSON.parse(xmlhttp.responseText),
+            count = issues.length;
+
+        document.getElementById("opened-count").innerHTML = count;
+
+        if(count === 0) {
+            document.getElementById("issue-content").innerHTML= "<ul><li>No issue available for that project.</li></ul>";
+        } else {
+            var buffer = ['<ul>'];
+            for(var i=0; i < count && i < 20; i++) {
+                buffer.push('<li><a href="' + issues[i].html_url + '">' + issues[i].title + '</a></li>');
+            }
+            buffer.push('</ul>');
+            document.getElementById("issue-content").innerHTML = buffer.join('');
+        }
+      }
+    }
+    xmlhttp.open("GET",'https://api.github.com/repos/Kitware/in-situ-data-viewer/issues',true);
+    xmlhttp.send();
+
+    // ---------------------------------
+    var xmlhttp2 = new XMLHttpRequest();
+    xmlhttp2.onreadystatechange = function()
+    {
+    if (xmlhttp2.readyState==4 && xmlhttp2.status==200)
+      {
+        var issues = JSON.parse(xmlhttp2.responseText),
+            count = issues.length;
+
+        document.getElementById("closed-count").innerHTML = count;
+      }
+    }
+    xmlhttp2.open("GET",'https://api.github.com/repos/Kitware/in-situ-data-viewer/issues?state=closed',true);
+    xmlhttp2.send();
+</script>
+
+          <div class="section-nav">
+    <div class=""grid">
+  <div class="unit half">
+    
+      <span class="prev disabled">Back</span>
+    
+  </div>
+    <div class="unit half">
+    
+      <span class="next disabled">Next ></span>
+    
+  </div>
+  </div>
+  <div class="clear"></div>
+</div>
+
+
+        </article>
+      </div>
+
+      <div class="unit one-sixth hide-on-mobiles">
+  <aside>
+    
+    <h4>Quick Start</h4>
+    
+
+<ul>
+
+  
+
+  
+    
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <li class=""><a href="/docs/home/">Quick Start</a></li>
+    
+  
+
+
+</ul>
+
+    
+    <h4>Supported Dataset</h4>
+    
+
+<ul>
+
+  
+
+  
+    
+  
+
+  
+    
+  
+    
+      <li class=""><a href="/docs/ImageBased/">Image base</a></li>
+    
+  
+    
+  
+    
+  
+
+
+  
+
+  
+    
+  
+
+  
+    
+      <li class=""><a href="/docs/Composite/">Composite</a></li>
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+  
+
+  
+    
+  
+
+  
+    
+  
+    
+  
+    
+      <li class=""><a href="/docs/Probe/">Probe</a></li>
+    
+  
+    
+  
+
+
+</ul>
+
+    
+    <h4>Developer guide</h4>
+    <ul>
+      <li><a class="page-link" href="/dev/">Development</a></li>
+      
+      
+      <li><a class="page-link" href="/source/in-situ-data-viewer.html">Source</a></li>
+      
+    </ul>
+  </aside>
+</div>
+
+
+      <div class="clear"></div>
+
+    </div>
+  </section>
+
+    </div>
+</div>
+
+<div class="site-footer">
+    <div class="grid">
+        <div class="unit whole">
+            <div class="wrapper">
+                <p>&copy;&nbsp;2015 <a href="http://www.kitware.com">Kitware, Inc.</a> under the terms of the BSD 3 Clause Open Source
+                    <a href="Kitware/in-situ-data-viewer/blob/master/LICENSE">License</a>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>
