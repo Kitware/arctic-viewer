@@ -11,7 +11,7 @@ function handlePort(value) {
 }
 
 program
-  .version('0.2.0')
+  .version('0.2.1')
   .option('-p, --port [3000]', 'Start web server with given port', handlePort, 3000)
   .option('-d, --data [directory/http]', 'Data directory to serve. Should contain a info.json file.')
   .option('-s, --server-only', 'Do not open the web browser')

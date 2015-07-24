@@ -17,7 +17,7 @@ var outputDirectory = path.normalize(process.env.PWD),
 function processFile(url, destFile, extractedDir, doneCallback) {
     fs.exists(extractedDir, function(exists) {
         if(exists) {
-            console.log(" |  $ InSituDataViewer -d " + extractedDir);
+            console.log(" |  $ ArcticViewer -d " + extractedDir);
             doneCallback();
         } else {
             tarball.extractTarballDownload(

@@ -2,8 +2,8 @@
 
 ### Goal ###
 
-Provide a Data Viewer based on Web technologies and relying on the user browser
-to navigate and explore data generated InSitu or in batch mode.
+Provide a Data Viewer (ArcticView) based on Web technologies and relying on the
+user browser to navigate and explore data generated InSitu or in batch mode.
 
 ## Installation
 
@@ -11,37 +11,25 @@ to navigate and explore data generated InSitu or in batch mode.
 $ npm install -g in-situ-data-viewer
 ```
 
-After installing the package you will get 2 executable
-[**InSituDataViewer**, **InSituDataDownloader**] with the following set of
-options.
+After installing the package you will get one executable **ArcticViewer** with
+the following set of options.
 
 ```
-$ InSituDataViewer
+$ ArcticViewer
 
-  Usage: InSituDataViewer [options]
-
-  Options:
-
-    -h, --help                   output usage information
-    -V, --version                output the version number
-    -p, --port [3000]            Start web server with given port
-    -d, --data [directory/http]  Data directory to serve. Should contain a info.json file.
-    -s, --server-only            Do not open the web browser
-```
-
-
-```
-$ InSituDataDownloader
-
-  Usage: InSituDataDownloader [options]
+  Usage: ArcticViewer [options]
 
   Options:
 
     -h, --help                                output usage information
     -V, --version                             output the version number
-    -s, --download-sample-data                Download some try-out data [~100MB]
-    -d, --download [http://remote-host/data]  Url to the source of your in-situ data.
-    -o, --output [directory]                  Data directory where to download remote data locally
+    -p, --port [3000]                         Start web server with given port
+    -d, --data [directory/http]               Data directory to serve. Should contain a info.json file.
+    -s, --server-only                         Do not open the web browser
+
+    -D, --download-sample-data                Download some try-out data [~100MB] inside the current directory.
+    -d, --download [http://remote-host/data]  Url to the source of your in-situ data that you want to download inside the current directory.
+
 ```
 
 In order to try it out, you should download some sample datasets
@@ -50,23 +38,24 @@ In order to try it out, you should download some sample datasets
 Here is an example on how to download some sample data
 
 ```
-$ InSituDataDownloader -s -o ./tonic-data
+$ mkdir tonic-data && cd $_
+$ ArcticViewer -D
 
  | Downloading sample data (~100MB) into directory /Users/seb/tonic-data
  |
- | => Once the data will be downloaded, you will be able to try the InSituDataViewer with the following commands:
+ | => Once the data will be downloaded, you will be able to try the ArcticViewer with the following commands:
  |
- |  $ InSituDataViewer -d /Users/seb/tonic-data/mpas-probe-flat-earth
- |  $ InSituDataViewer -d /Users/seb/tonic-data/hydra-image-fluid-velocity
+ |  $ ArcticViewer -d /Users/seb/tonic-data/mpas-probe-flat-earth
+ |  $ ArcticViewer -d /Users/seb/tonic-data/hydra-image-fluid-velocity
  |
- | Thank you for trying this out... Seb
+ | Thank you for trying this out...
 ```
 
 Then you can load them using the provided feedback or by running the following
 command lines:
 
 ```
-$ InSituDataViewer -d ./tonic-data/mpas-probe-flat-earth
+$ ArcticViewer -d ./tonic-data/mpas-probe-flat-earth
 ```
 
 This will load a MPAS oceanic simulation data that represent a 3D volume of a
@@ -78,7 +67,7 @@ slice back and forth using the scroll of your input device.
 If you want to zoom or pan, you will have to scroll+[any modifier key] or drag+[any modifier key].
 
 ```
-$ InSituDataViewer -d ./tonic-data/hydra-image-fluid-velocity
+$ ArcticViewer -d ./tonic-data/hydra-image-fluid-velocity
 ```
 
 This will load an Hydra CFD simulation data that represent the fluid velocity
@@ -87,7 +76,7 @@ using some volume rendering technique.
 
 #### Licensing
 
-**in-situ-data-viewer** is licensed under [BSD Clause 3](LICENSE).
+**in-situ-data-viewer** aka ArcticViewer is licensed under [BSD Clause 3](LICENSE).
 
 #### Getting Involved
 
