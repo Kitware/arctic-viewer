@@ -11,13 +11,13 @@ function handlePort(value) {
 }
 
 program
-  .version('0.2.1')
+  .version('0.2.2')
   .option('-p, --port [3000]', 'Start web server with given port', handlePort, 3000)
   .option('-d, --data [directory/http]', 'Data directory to serve. Should contain a info.json file.')
   .option('-s, --server-only', 'Do not open the web browser')
 
   .option('-D, --download-sample-data', 'Download some try-out data [~100MB] inside the current directory.')
-  .option('-d, --download [http://remote-host/data]', 'Url to the source of your in-situ data that you want to download inside the current directory.')
+  .option('-R, --download [http://remote-host/data]', 'Url to the source of your in-situ data that you want to download inside the current directory.')
 
   .parse(process.argv);
 

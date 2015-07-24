@@ -28,7 +28,7 @@ $ ArcticViewer
     -s, --server-only                         Do not open the web browser
 
     -D, --download-sample-data                Download some try-out data [~100MB] inside the current directory.
-    -d, --download [http://remote-host/data]  Url to the source of your in-situ data that you want to download inside the current directory.
+    -R, --download [http://remote-host/data]  Url to the source of your in-situ data that you want to download inside the current directory.
 
 ```
 
