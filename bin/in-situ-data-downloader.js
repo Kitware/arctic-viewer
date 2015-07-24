@@ -1,5 +1,3 @@
-#! /usr/bin/env node
-
 var fs = require('fs'),
     path = require('path'),
     program = require('commander'),
@@ -7,79 +5,14 @@ var fs = require('fs'),
     ProgressBar = require('progress'),
     tarball = require('tarball-extract');
 
-program
-  .version('0.0.6')
-  .option('-s, --download-sample-data', 'Download some try-out data [~100MB]')
-  .option('-d, --download [http://remote-host/data]', 'Url to the source of your in-situ data.')
-  .option('-o, --output [directory]', 'Data directory where to download remote data locally')
-  .parse(process.argv);
-
-if (!process.argv.slice(2).length) {
-    return program.outputHelp();
-}
-
-// Handle relative path
-var outputDirectory = program.output ? program.output : process.env.PWD;
-if (outputDirectory[0] === '.') {
-    outputDirectory = path.normalize(path.join(process.env.PWD, outputDirectory));
-}
-
-var downloadQueries = [],
+var outputDirectory = path.normalize(process.env.PWD),
+    downloadQueries = [],
     downloadPatterns = [],
     argsIndex = [],
     argsValues = [],
     argsNames = [],
     dataDescriptor = null,
     progress = null;
-
-// Download and save the info.json
-if(program.download) {
-    http.get(program.download + '/info.json', function(res) {
-        var buffer = [];
-        res.on('data', function (chunk) {
-            buffer.push(chunk);
-        });
-        res.on('end', function () {
-            fs.writeFile(path.join(outputDirectory, 'info.json'),
-                        buffer.join(''),
-                        function (err) {
-                            if (err) throw err;
-                        }
-            );
-            dataDescriptor = JSON.parse(buffer.join(''));
-            buildDownloadStructure();
-        });
-
-    }).on('error', function(e) {
-        console.log("Got error: " + e.message);
-    });
-}
-
-if(program.downloadSampleData) {
-    console.log("\n | Downloading sample data (~100MB) into directory " + outputDirectory);
-    var baseURL = 'http://www.kitware.com/in-situ-data/tonic-sample-data/',
-        files = ['mpas-probe-flat-earth.tgz', 'hydra-image-fluid-velocity.tgz'],
-        doneCount = 0;
-
-    function done() {
-        doneCount++;
-
-        if(doneCount === files.length) {
-            console.log(" |\n | Thank you for trying this out... Seb\n");
-        }
-    }
-
-    mkdirp(outputDirectory, function(){
-        console.log(" |\n | => Once the data will be downloaded, you will be able to try the InSituDataViewer with the following commands:\n |");
-        for(var i = 0; i < files.length; i++) {
-            var url = baseURL + files[i],
-                destFile = path.join(outputDirectory, files[i]),
-                extractedDir = destFile.substring(0, destFile.length - 4);
-
-            processFile(url, destFile, extractedDir, done);
-        }
-    });
-}
 
 function processFile(url, destFile, extractedDir, doneCallback) {
     fs.exists(extractedDir, function(exists) {
@@ -93,7 +26,7 @@ function processFile(url, destFile, extractedDir, doneCallback) {
                 {},
                 function(err, result) {
                     if(!err) {
-                        console.log(" |  $ InSituDataViewer -d " + extractedDir);
+                        console.log(" |  $ ArcticViewer -d " + extractedDir);
                     } else {
                         console.log(' | oups something wrong happened while downloading ' + url);
                     }
@@ -232,3 +165,53 @@ function downloadFile(url) {
         }
     });
 }
+
+module.exports = {
+    downloadSampleData: function() {
+        console.log("\n | Downloading sample data (~100MB) into directory " + outputDirectory);
+        var baseURL = 'http://www.kitware.com/in-situ-data/tonic-sample-data/',
+            files = ['mpas-probe-flat-earth.tgz', 'hydra-image-fluid-velocity.tgz'],
+            doneCount = 0;
+
+        function done() {
+            doneCount++;
+
+            if(doneCount === files.length) {
+                console.log(" |\n | Thank you for trying this out...\n");
+            }
+        }
+
+        mkdirp(outputDirectory, function(){
+            console.log(" |\n | => Once the data will be downloaded, you will be able to try the ArcticViewer with the following commands:\n |");
+            for(var i = 0; i < files.length; i++) {
+                var url = baseURL + files[i],
+                    destFile = path.join(outputDirectory, files[i]),
+                    extractedDir = destFile.substring(0, destFile.length - 4);
+
+                processFile(url, destFile, extractedDir, done);
+            }
+        });
+    },
+
+    downloadData: function(url) {
+        http.get(url + '/info.json', function(res) {
+            var buffer = [];
+            res.on('data', function (chunk) {
+                buffer.push(chunk);
+            });
+            res.on('end', function () {
+                fs.writeFile(path.join(outputDirectory, 'info.json'),
+                            buffer.join(''),
+                            function (err) {
+                                if (err) throw err;
+                            }
+                );
+                dataDescriptor = JSON.parse(buffer.join(''));
+                buildDownloadStructure();
+            });
+
+        }).on('error', function(e) {
+            console.log("Got error: " + e.message);
+        });
+    }
+};
