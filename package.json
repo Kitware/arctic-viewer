@@ -65,7 +65,10 @@
   "scripts": {
     "build": "webpack",
     "build:debug": "webpack --display-modules",
-    "build:release": "webpack -p"
+    "build:release": "webpack -p",
+
+    "www": "tonic-site-generator site.config.js",
+    "www:http": "tonic-site-generator site.config.js --local-test && serve docs/www"
   },
   "bin": {
     "ArcticViewer": "./bin/in-situ-data-viewer-cli.js"

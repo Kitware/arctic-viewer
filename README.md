@@ -73,6 +73,10 @@ $ ArcticViewer -d ./tonic-data/hydra-image-fluid-velocity
 This will load an Hydra CFD simulation data that represent the fluid velocity
 using some volume rendering technique.
 
+## Documentation
+
+See the [documentation](https://kitware.github.io/in-situ-data-viewer) for a
+getting started guide, advanced documentation, and API descriptions.
 
 #### Licensing
 

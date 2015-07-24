@@ -1,0 +1,4 @@
+[submodule "docs/www"]
+	path = docs/www
+	url = https://github.com/Kitware/in-situ-data-viewer.git
+	branch = gh-pages
