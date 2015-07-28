@@ -167,6 +167,105 @@ it so you could create your own dataset.</p>
 
 <h1>Dataset structure</h1>
 
+<p>Arctic Viewer expect a dataset descriptor that will formalize that convention
+in a way it can be understood by the application. The application expect a file
+named <strong>info.json</strong> at the root of the tree structure (if any) with a content similar
+to the following one.</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;tonic-query-data-model&quot;</span><span class="p">,</span> <span class="s2">&quot;composite-pipeline&quot;</span> <span class="p">],</span>
+    <span class="s2">&quot;arguments_order&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;arguments&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;time&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;values&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span> <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;sprite&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;blob&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;mimeType&quot;</span><span class="o">:</span> <span class="s2">&quot;image/jpg&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;pattern&quot;</span><span class="o">:</span> <span class="s2">&quot;{time}/rgb.jpg&quot;</span>
+        <span class="p">},{</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;composite&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;pattern&quot;</span><span class="o">:</span> <span class="s2">&quot;{time}/composite.json&quot;</span>
+        <span class="p">},</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;CompositePipeline&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;layers&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">500</span> <span class="p">],</span>
+        <span class="s2">&quot;fields&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;A&quot;</span><span class="o">:</span> <span class="s2">&quot;salinity&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;B&quot;</span><span class="o">:</span> <span class="s2">&quot;temperature&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;C&quot;</span><span class="o">:</span> <span class="s2">&quot;bottomDepth&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;layer_fields&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;A&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;C&quot;</span> <span class="p">],</span>
+            <span class="s2">&quot;B&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span> <span class="p">],</span>
+            <span class="s2">&quot;C&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span> <span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;offset&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;AC&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;BA&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">&quot;BB&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;CA&quot;</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s2">&quot;CB&quot;</span><span class="o">:</span> <span class="mi">4</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;ids&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;A&quot;</span> <span class="p">],</span>
+                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Earth core&quot;</span><span class="p">,</span>
+            <span class="p">},{</span>
+                <span class="s2">&quot;ids&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span> <span class="p">],</span>
+                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Contour by temperature&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;children&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;ids&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;B&quot;</span> <span class="p">],</span>
+                        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;t=25.0&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;layer&quot;</span>
+                    <span class="p">},{</span>
+                        <span class="s2">&quot;ids&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;C&quot;</span> <span class="p">],</span>
+                        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;t=20.0&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;layer&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">],</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In that meta description, we find the pipeline tree described but also we have
+the mapping of the image sprite with the layer and its color by. The first
+character is the layer and the second one is the actual field used for the
+color by.</p>
+
+<p>Then for each query (view position, time, configuration, ...), the dataset is
+composed of an <strong>image sprite</strong> and a <strong>composite.json</strong> file.</p>
+
+<p>The image sprite represent each layer independently with each of its ColorBy
+settings.</p>
+
+<p>The <strong>composite.json</strong> on the other end, provide the pixel ordering for each of
+the possible layers with a content similar to the following one:</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+    <span class="s2">&quot;pixel-order&quot;</span><span class="o">:</span> <span class="s2">&quot;@2258+A+CBA+CA+CB+...&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The <strong>pixel-order</strong> string describe the layer order for each pixel starting from
+the top left corner of the image.</p>
+
+<p>The encoding can be described as follow:</p>
+
+<ul>
+<li><strong>@456</strong> : Skip 456 pixels as no layer are contributing to those pixels.</li>
+<li><strong>CBA</strong>: For the given pixel, the layer <em>C</em> is on top of <em>B</em> which is on top of <em>A</em>. Which Mean if <em>C</em> is hidden, then the pixel of the layer <em>B</em> should be used.</li>
+<li><strong>+</strong> : Character delimiter between pixel or pixel group.</li>
+</ul>
+
+<h1>Image Sprite</h1>
+
+<p><img src="/in-situ-data-viewer/docs/composite-sprite.jpg" alt="Image Sprite" title="Image Sprite of each layer"></p>
+
           <div class="section-nav">
     <div class=""grid">
   <div class="unit half">

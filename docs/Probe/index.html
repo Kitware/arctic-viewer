@@ -167,6 +167,58 @@ it so you could create your own dataset.</p>
 
 <h1>Dataset structure</h1>
 
+<p>Arctic Viewer expect a dataset descriptor that will formalize that convention
+in a way it can be understood by the application. The application expect a file
+named <strong>info.json</strong> at the root of the tree structure (if any) with a content similar
+to the following one.</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;tonic-query-data-model&quot;</span><span class="p">,</span> <span class="s2">&quot;in-situ-data-prober&quot;</span> <span class="p">],</span>
+    <span class="s2">&quot;arguments_order&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;arguments&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;time&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;loop&quot;</span><span class="o">:</span> <span class="s2">&quot;reverse&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ui&quot;</span><span class="o">:</span> <span class="s2">&quot;slider&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;values&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span> <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;InSituDataProber&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">30</span> <span class="p">],</span>
+        <span class="s2">&quot;fields&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;temperature&quot;</span><span class="p">,</span> <span class="s2">&quot;salinity&quot;</span> <span class="p">],</span>
+        <span class="s2">&quot;ranges&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;salinity&quot;</span><span class="o">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">38</span><span class="p">],</span>
+            <span class="s2">&quot;temperature&quot;</span><span class="o">:</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;slices&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;slice_0&quot;</span><span class="p">,</span> <span class="s2">&quot;slice_1&quot;</span><span class="p">,</span> <span class="s2">&quot;slice_2&quot;</span> <span class="p">],</span>
+        <span class="s2">&quot;spacing&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">4.0</span> <span class="p">],</span>
+        <span class="s2">&quot;sprite_size&quot;</span><span class="o">:</span> <span class="mi">10</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;slice_0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;blob&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;mimeType&quot;</span><span class="o">:</span> <span class="s2">&quot;image/png&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;pattern&quot;</span><span class="o">:</span> <span class="s2">&quot;{time}/{field}_0.png&quot;</span>
+        <span class="p">},{</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;slice_1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;blob&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;mimeType&quot;</span><span class="o">:</span> <span class="s2">&quot;image/png&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;pattern&quot;</span><span class="o">:</span> <span class="s2">&quot;{time}/{field}_1.png&quot;</span>
+        <span class="p">},{</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;slice_2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;blob&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;mimeType&quot;</span><span class="o">:</span> <span class="s2">&quot;image/png&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;pattern&quot;</span><span class="o">:</span> <span class="s2">&quot;{time}/{field}_2.png&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>In that meta description, we find the volume size, the set of fields,
+the data range, the spacing and how much layers are available in a sprite.</p>
+
+<h1>Image Sprite</h1>
+
+<p><img src="/in-situ-data-viewer/docs/probe-sprite.png" alt="Image Sprite" title="Image Sprite with raw scalar field encoded"></p>
+
           <div class="section-nav">
     <div class=""grid">
   <div class="unit half">
