@@ -20,6 +20,11 @@ module.exports = {
         "repository": "Kitware/in-situ-data-viewer",
         "timezone": "America/Denver",
         "project": "in-situ-data-viewer",
-        "noApi" : "no mdoc link"
+        "noApi" : "no mdoc link",
+        "noTravis": "no testables set",
+        "status": [
+            {"subject": "api_stability", "status": "fair", "color": "green"},
+            {"subject": "feature_complete", "status": "★★☆☆☆", "color": "green"}
+        ]
     }
 };
