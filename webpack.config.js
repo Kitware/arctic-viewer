@@ -22,6 +22,7 @@ module.exports = {
     loaders: [
       { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=60000&mimetype=application/font-woff" },
       { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=60000" },
+      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'},
       { test: /\.css$/, loader: "style-loader!css-loader!autoprefixer-loader?browsers=last 2 version" },
       { test: /\.c$/i, loader: "shader" },
       { test: require.resolve("./lib/in-situ-data-viewer.js"), loader: "expose?ArcticViewer" }
