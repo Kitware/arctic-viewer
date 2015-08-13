@@ -4,7 +4,9 @@ var fs = require('fs'),
     program = require('commander'),
     express = require('express'),
     httpProxy = require('http-proxy'),
-    downloader = require('./in-situ-data-downloader.js');
+    gzipStatic = require('connect-gzip-static'),
+    downloader = require('./in-situ-data-downloader.js'),
+    oneDay = 86400000;
 
 function handlePort(value) {
     return Number(value);
@@ -62,7 +64,7 @@ if(program.downloadSampleData) {
         }
 
         // Serve data from static content
-        app.use('/data', express.static(dataPath));
+        app.use('/data', gzipStatic(dataPath, { maxAge: oneDay }));
     }
 
     // Print server information

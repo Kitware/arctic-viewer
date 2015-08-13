@@ -12,6 +12,7 @@
     "progress": "latest",
     "express": "latest",
     "http-proxy": "latest",
+    "connect-gzip-static": "latest",
     "open": "latest",
     "commander": "latest",
     "tarball-extract": "latest"
