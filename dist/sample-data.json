@@ -50,13 +50,13 @@
   {
     "title": "MPAS contours - WebGL RGBD",
     "filesize":"4.92GB",
-    "thumbnail": "http://www.kitware.com/in-situ-data/webgl/mpas-contours-rgbd-png.png",
-    "url": "http://www.kitware.com/in-situ-data/webgl/mpas-contours-rgbd-png.tgz"
+    "thumbnail": "http://www.kitware.com/in-situ-data/webgl/mpas-contours-rgbd.png",
+    "url": "http://www.kitware.com/in-situ-data/webgl/mpas-contours-rgbd.tgz"
   },
   {
     "title": "MPAS contours - WebGL RGBD Binary",
     "filesize":"5.75GB",
-    "thumbnail": "http://www.kitware.com/in-situ-data/webgl/mpas-contours-rgbd-bin.png",
-    "url": "http://www.kitware.com/in-situ-data/webgl/mpas-contours-rgbd-bin.tgz"
+    "thumbnail": "http://www.kitware.com/in-situ-data/webgl/mpas-contours-rgbdb.png",
+    "url": "http://www.kitware.com/in-situ-data/webgl/mpas-contours-rgbdb.tgz"
   }
 ]
