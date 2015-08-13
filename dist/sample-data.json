@@ -14,14 +14,20 @@
   {
     "title": "MPAS contours - WebGL RGBD",
     "filesize":"448.2MB",
-    "thumbnail": "http://www.kitware.com/in-situ-data/webgl/mpas-contours-rgbd.png",
-    "url": "http://www.kitware.com/in-situ-data/webgl/mpas-contours-rgbd.tgz"
+    "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/mpas-contours-rgbd.png",
+    "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/mpas-contours-rgbd.tgz"
   },
   {
     "title": "MPAS contours - WebGL RGBD Binary",
     "filesize":"523.7MB",
-    "thumbnail": "http://www.kitware.com/in-situ-data/webgl/mpas-contours-rgbdb.png",
-    "url": "http://www.kitware.com/in-situ-data/webgl/mpas-contours-rgbdb.tgz"
+    "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/mpas-contours-rgbdb.png",
+    "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/mpas-contours-rgbdb.tgz"
+  },
+  {
+    "title": "Diskout - WebGL sxyz-light",
+    "filesize":"216.8MB",
+    "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/diskout-sxyz-light.png",
+    "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/diskout-sxyz-light.tgz"
   },
   {
   	"title": "Hydra hi-res velocity",
@@ -40,23 +46,5 @@
     "filesize":"141.9MB",
     "thumbnail": "http://www.kitware.com/in-situ-data/hydra/probe-full-shortest.png",
     "url": "http://www.kitware.com/in-situ-data/hydra/probe-full-shortest.tgz"
-  },
-  {
-    "title": "Diskout - WebGL sxyz-light",
-    "filesize":"216.8MB",
-    "thumbnail": "http://www.kitware.com/in-situ-data/webgl/diskout-sxyz-light.png",
-    "url": "http://www.kitware.com/in-situ-data/webgl/diskout-sxyz-light.tgz"
-  },
-  {
-    "title": "MPAS contours - WebGL RGBD",
-    "filesize":"4.92GB",
-    "thumbnail": "http://www.kitware.com/in-situ-data/webgl/mpas-contours-rgbd.png",
-    "url": "http://www.kitware.com/in-situ-data/webgl/mpas-contours-rgbd.tgz"
-  },
-  {
-    "title": "MPAS contours - WebGL RGBD Binary",
-    "filesize":"5.75GB",
-    "thumbnail": "http://www.kitware.com/in-situ-data/webgl/mpas-contours-rgbdb.png",
-    "url": "http://www.kitware.com/in-situ-data/webgl/mpas-contours-rgbdb.tgz"
   }
 ]
