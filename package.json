@@ -1,12 +1,12 @@
 {
-  "name": "in-situ-data-viewer",
-  "description": "Standalone application useful to load and explore InSitu data products.",
-  "version": "0.2.4",
+  "name": "arctic-viewer",
+  "description": "Standalone application useful to load and explore InSitu/Batch data products.",
+  "version": "0.0.1",
   "license": "BSD-3-Clause",
-  "main": "./lib/in-situ-data-viewer.js",
+  "main": "./lib/arctic-viewer.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Kitware/in-situ-data-viewer.git"
+    "url": "https://github.com/Kitware/arctic-viewer.git"
   },
   "dependencies": {
     "progress": "latest",
@@ -73,7 +73,7 @@
     "www:http": "tonic-site-generator site.config.js --local-test && serve docs/www"
   },
   "bin": {
-    "ArcticViewer": "./bin/in-situ-data-viewer-cli.js"
+    "ArcticViewer": "./bin/arctic-viewer-cli.js"
   },
   "preferGlobal": true
 }

@@ -2,7 +2,7 @@ var webpack = require('webpack');
 
 module.exports = {
   plugins: [],
-  entry: './lib/in-situ-data-viewer.js',
+  entry: './lib/arctic-viewer.js',
   output: {
     path: './dist',
     filename: 'viewer.js',

@@ -1,4 +1,4 @@
-## InSitu Data Viewer ##
+## ArcticViewer ##
 
 ### Goal ###
 
@@ -8,7 +8,7 @@ user browser to navigate and explore data generated InSitu or in batch mode.
 ## Installation
 
 ```
-$ npm install -g in-situ-data-viewer
+$ npm install -g arctic-viewer
 ```
 
 After installing the package you will get one executable **ArcticViewer** with
@@ -75,12 +75,12 @@ using some volume rendering technique.
 
 ## Documentation
 
-See the [documentation](https://kitware.github.io/in-situ-data-viewer) for a
+See the [documentation](https://kitware.github.io/arctic-viewer) for a
 getting started guide, advanced documentation, and API descriptions.
 
 #### Licensing
 
-**in-situ-data-viewer** aka ArcticViewer is licensed under [BSD Clause 3](LICENSE).
+**arctic-viewer** aka ArcticViewer is licensed under [BSD Clause 3](LICENSE).
 
 #### Getting Involved
 

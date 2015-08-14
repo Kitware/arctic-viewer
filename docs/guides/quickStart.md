@@ -26,7 +26,7 @@ To install it globally on your system, you just need to run the following comman
 line.
 
 ```sh
-$ npm install -g in-situ-data-viewer
+$ npm install -g arctic-viewer
 ```
 
 # Command line tool

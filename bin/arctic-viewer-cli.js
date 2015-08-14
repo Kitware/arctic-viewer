@@ -5,7 +5,7 @@ var fs = require('fs'),
     express = require('express'),
     httpProxy = require('http-proxy'),
     gzipStatic = require('connect-gzip-static'),
-    downloader = require('./in-situ-data-downloader.js'),
+    downloader = require('./arctic-data-downloader.js'),
     oneDay = 86400000;
 
 function handlePort(value) {
