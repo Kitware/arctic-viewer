@@ -25,7 +25,7 @@ module.exports = {
       { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'},
       { test: /\.css$/, loader: "style-loader!css-loader!autoprefixer-loader?browsers=last 2 version" },
       { test: /\.c$/i, loader: "shader" },
-      { test: require.resolve("./lib/in-situ-data-viewer.js"), loader: "expose?ArcticViewer" }
+      { test: require.resolve("./lib/arctic-viewer.js"), loader: "expose?ArcticViewer" }
     ]
   },
   jshint: {
