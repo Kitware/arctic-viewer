@@ -25,7 +25,7 @@
     "tonic-data-manager"     : "0.0.8",
     "tonic-query-data-model" : "0.0.8",
     "tonic-image-builder"    : "0.0.4",
-    "tonic-widgets"          : "0.0.5",
+    "tonic-widgets"          : "0.0.6",
 
     "tonic-site-generator": "Kitware/tonic-site-generator",
 
