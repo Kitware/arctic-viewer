@@ -46,5 +46,11 @@
     "filesize":"141.9MB",
     "thumbnail": "http://www.kitware.com/in-situ-data/hydra/probe-full-shortest.png",
     "url": "http://www.kitware.com/in-situ-data/hydra/probe-full-shortest.tgz"
+  },
+  {
+    "title": "Garfield comics",
+    "filesize":"1 KB",
+    "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/garfield.jpg",
+    "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/garfield.tgz"
   }
 ]
