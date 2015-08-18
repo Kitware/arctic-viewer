@@ -22,10 +22,10 @@
     "monologue.js": "0.3.3",
     "mout": "0.11.0",
 
-    "tonic-data-manager"     : "0.0.8",
-    "tonic-query-data-model" : "0.0.8",
-    "tonic-image-builder"    : "0.0.4",
-    "tonic-widgets"          : "0.0.6",
+    "tonic-data-manager"     : "Kitware/tonic-data-manager",
+    "tonic-query-data-model" : "Kitware/tonic-query-data-model",
+    "tonic-image-builder"    : "Kitware/tonic-image-builder",
+    "tonic-widgets"          : "Kitware/tonic-widgets",
 
     "tonic-site-generator": "Kitware/tonic-site-generator",
 
