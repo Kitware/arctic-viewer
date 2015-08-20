@@ -52,5 +52,11 @@
     "filesize":"1 KB",
     "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/garfield.jpg",
     "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/garfield.tgz"
+  },
+  {
+    "title": "Ensemble demo",
+    "filesize":"98.3 MB",
+    "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/ensemble.jpg",
+    "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/ensemble.tgz"
   }
 ]
