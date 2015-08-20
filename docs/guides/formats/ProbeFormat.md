@@ -3,6 +3,7 @@ layout: docs
 title: Probe
 permalink: /docs/Probe/
 prev_section: Composite
+next_section: Ensemble
 repo_path: /docs/guides/formats/ProbeFormat.md
 ---
 
