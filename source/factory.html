@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>ArcticViewer</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="/arctic-viewer/css/main.css">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+<header class="site-header">
+
+    <nav class="mobile-nav show-on-mobiles">
+        <a class="page-link" href="/arctic-viewer/"><i class="fa fa-home fa-fw fa-lg"></i></a>
+        <a class="page-link" href="/arctic-viewer/docs/home"><i class="fa fa-book fa-fw fa-lg"></i></a>
+        <a class="page-link" href="/arctic-viewer/news"><i class="fa fa-newspaper-o fa-fw fa-lg"></i></a>
+    </nav>
+    <div class="wrapper">
+
+        <a class="site-title center-on-mobiles" href="/">
+            <img src="/arctic-viewer/img/logo.png" height="40" alt="Logo">
+            ArcticViewer
+        </a>
+        <nav class="site-nav hide-on-mobiles">
+            <a href="#" class="menu-icon">
+                <svg viewBox="0 0 18 15">
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                </svg>
+            </a>
+            <div class="trigger">
+                <a class="page-link" href="/arctic-viewer/">Home</a>
+                <a class="page-link" href="/arctic-viewer/docs/home">Docs</a>
+                <a class="page-link" href="/arctic-viewer/news">News</a>
+            </div>
+        </nav>
+    </div>
+
+</header>
+
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>factory.js</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="arctic-viewer.html">
+                    arctic-viewer.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="factory.html">
+                    factory.js
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        
+        
+          <div class='highlight'><pre><span class="hljs-keyword">var</span> <span class="hljs-comment">// Core elements</span>
+    QueryDataModel     = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-query-data-model/lib/QueryDataModel'</span>),
+    LookupTableManager = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-image-builder/lib/model/LookupTable/LookupTableManager'</span>),
+    PipelineModel      = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-image-builder/lib/model/PipelineState'</span>),</pre></div>
+        
+      
+        
+        <p>Image builder</p>
+
+        
+          <div class='highlight'><pre>    CompositeImageBuilder      = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-image-builder/lib/builder/Composite'</span>),
+    DataProberImageBuilder     = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-image-builder/lib/builder/DataProber'</span>),
+    PixelOperatorImageBuilder = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-image-builder/lib/builder/PixelOperator'</span>),
+    QueryDataModelImageBuilder = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-image-builder/lib/builder/QueryDataModel'</span>),
+    WebGlCompositeImageBuilder = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-image-builder/lib/builder/WebGlComposite'</span>),</pre></div>
+        
+      
+        
+        <p>React UI map</p>
+
+        
+          <div class='highlight'><pre>    ReactClassMap = {
+        GenericViewer     : <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-widgets/lib/react/viewer/ImageBuilder'</span>),
+        ProbeViewerWidget : <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-widgets/lib/react/viewer/Probe3D'</span>),
+        MultiViewerWidget : <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-widgets/lib/react/viewer/MultiLayout'</span>)
+    },</pre></div>
+        
+      
+        
+        <p>Global instances</p>
+
+        
+          <div class='highlight'><pre>    lutManager = <span class="hljs-keyword">new</span> LookupTableManager(),</pre></div>
+        
+      
+        
+        <p>External dependencies</p>
+
+        
+          <div class='highlight'><pre>    React = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react'</span>),
+    contains = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mout/src/array/contains'</span>);</pre></div>
+        
+      
+        
+        <hr>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getJSON</span>(<span class="hljs-params">url, callback</span>) </span>{
+    <span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();
+
+    xhr.open(<span class="hljs-string">'GET'</span>, url, <span class="hljs-literal">true</span>);
+    xhr.setRequestHeader(<span class="hljs-string">'Access-Control-Allow-Origin'</span>, <span class="hljs-string">'*'</span>);
+    xhr.responseType = <span class="hljs-string">'text'</span>;
+
+    xhr.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{
+        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.status === <span class="hljs-number">200</span>) {
+            <span class="hljs-keyword">return</span> callback(<span class="hljs-literal">null</span>, <span class="hljs-built_in">JSON</span>.parse(xhr.response));
+        }
+        callback(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(e), xhr);
+    };
+
+    xhr.onerror = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{
+        callback(e, xhr);
+    };
+
+    xhr.send();
+}</pre></div>
+        
+      
+        
+        <hr>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createViewer</span>(<span class="hljs-params">url, callback</span>) </span>{
+    <span class="hljs-keyword">var</span> viewer = { ui: <span class="hljs-string">'GenericViewer'</span> },
+        pathItems = url.split(<span class="hljs-string">'/'</span>),
+        basepath = pathItems.slice(<span class="hljs-number">0</span>, pathItems.length - <span class="hljs-number">1</span>).join(<span class="hljs-string">'/'</span>) + <span class="hljs-string">'/'</span>;
+
+    getJSON(url, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, data</span>) </span>{
+        <span class="hljs-keyword">var</span> dataType = data.type;</pre></div>
+        
+      
+        
+        <p>Update background if available</p>
+
+        
+          <div class='highlight'><pre>        <span class="hljs-keyword">if</span>(data &amp;&amp; data.metadata &amp;&amp; data.metadata.backgroundColor) {
+            viewer.bgColor = data.metadata.backgroundColor;
+        }</pre></div>
+        
+      
+        
+        <p>Handle QueryDataModel data type</p>
+
+        
+          <div class='highlight'><pre>        <span class="hljs-keyword">if</span>(contains(dataType, <span class="hljs-string">'tonic-query-data-model'</span>)) {
+            viewer.queryDataModel = <span class="hljs-keyword">new</span> QueryDataModel(data, basepath);
+
+            <span class="hljs-keyword">if</span>(contains(dataType, <span class="hljs-string">'in-situ-data-prober'</span>)) {
+                viewer.imageBuilder = <span class="hljs-keyword">new</span> DataProberImageBuilder(viewer.queryDataModel, lutManager);
+                viewer.imageBuilder.setProbeLineNotification(<span class="hljs-literal">true</span>);
+                viewer.imageBuilder.update();
+                viewer.ui = <span class="hljs-string">'ProbeViewerWidget'</span>;
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(dataType.length === <span class="hljs-number">1</span>) {
+                viewer.imageBuilder = <span class="hljs-keyword">new</span> QueryDataModelImageBuilder(viewer.queryDataModel);
+                viewer.imageBuilder.update();
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(contains(dataType, <span class="hljs-string">'composite-pipeline'</span>)) {
+                viewer.pipelineModel = <span class="hljs-keyword">new</span> PipelineModel(viewer.queryDataModel.originalData);
+                viewer.imageBuilder = <span class="hljs-keyword">new</span> CompositeImageBuilder(viewer.queryDataModel, viewer.pipelineModel);
+                viewer.imageBuilder.update();
+            } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(contains(dataType, <span class="hljs-string">'webgl-composite'</span>)) {
+                viewer.pipelineModel = <span class="hljs-keyword">new</span> PipelineModel(viewer.queryDataModel.originalData);
+                viewer.imageBuilder = <span class="hljs-keyword">new</span> WebGlCompositeImageBuilder(viewer.queryDataModel, viewer.pipelineModel, lutManager);
+                viewer.imageBuilder.update();
+            }
+
+            callback(viewer);
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(contains(dataType, <span class="hljs-string">'ensemble-dataset'</span>)) {
+            <span class="hljs-keyword">var</span> renderers = {},
+                queryDataModel = <span class="hljs-literal">null</span>,
+                ready = <span class="hljs-number">0</span>,
+                expected = data.Ensemble.datasets.length;
+
+            data.Ensemble.datasets.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ds</span>) </span>{
+                createViewer(basepath + ds.data, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">viewer</span>) </span>{
+                    ready++;
+                    renderers[ds.name] = { builder: viewer.imageBuilder, name: ds.name, queryDataModel: viewer.queryDataModel };
+                    viewer.imageBuilder.name = ds.name; <span class="hljs-comment">// Used for pixel operator if any</span></pre></div>
+        
+      
+        
+        <p>Debug start</p>
+
+        
+          <div class='highlight'><pre>                    viewer.imageBuilder.name = ds.name;
+                    viewer.queryDataModel.name = ds.name;</pre></div>
+        
+      
+        
+        <p>Debug end</p>
+
+        
+          <div class='highlight'><pre>
+                    <span class="hljs-keyword">if</span>(!queryDataModel) {
+                        queryDataModel = viewer.queryDataModel;
+                    }
+
+                    <span class="hljs-keyword">if</span>(ready === expected) {</pre></div>
+        
+      
+        
+        <p>Apply binding if any</p>
+
+        
+          <div class='highlight'><pre>                        bindDatasets(data.Ensemble.binding || [], renderers);</pre></div>
+        
+      
+        
+        <p>Create pixel operators if any</p>
+
+        
+          <div class='highlight'><pre>                        createOperators(data.Ensemble.operators || [], renderers);</pre></div>
+        
+      
+        
+        <p>Ready for UI deployment</p>
+
+        
+          <div class='highlight'><pre>                        callback({ renderers, queryDataModel, ui: <span class="hljs-string">'MultiViewerWidget'</span> });
+                    }
+                });
+            });
+        }
+    });
+}</pre></div>
+        
+      
+        
+        <hr>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createUI</span>(<span class="hljs-params">viewer, container</span>) </span>{
+    <span class="hljs-keyword">if</span>(viewer.bgColor) {
+        container.style[<span class="hljs-string">'background-color'</span>] = viewer.bgColor;
+    }
+
+    <span class="hljs-keyword">return</span> React.render(React.createElement(ReactClassMap[viewer.ui], viewer), container);
+}</pre></div>
+        
+      
+        
+        <hr>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createQueryDataModelCallback</span>(<span class="hljs-params">datasets, args</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data, envelope</span>) </span>{
+        <span class="hljs-keyword">var</span> argName = data.name,
+            argValue = data.value,
+            count = datasets.length;
+
+        <span class="hljs-keyword">if</span>(args.indexOf(argName) !== -<span class="hljs-number">1</span>) {
+            <span class="hljs-keyword">while</span>(count--) {
+                <span class="hljs-keyword">var</span> dataset = datasets[count];
+                <span class="hljs-keyword">if</span>(dataset.getValue(argName) !== argValue) {
+                    dataset.setValue(argName, argValue);
+                    dataset.fetchData();
+                }
+            }
+        }
+    };
+}</pre></div>
+        
+      
+        
+        <hr>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createImageBuilderCallback</span>(<span class="hljs-params">renderers, methodToCall</span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data, envelope</span>) </span>{
+        <span class="hljs-keyword">var</span> count = renderers.length;
+
+        <span class="hljs-keyword">while</span>(count--) {
+            <span class="hljs-keyword">var</span> renderer = renderers[count];
+            renderer[methodToCall](data);
+        }
+    };
+}</pre></div>
+        
+      
+        
+        <hr>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">bindDatasets</span>(<span class="hljs-params">bindConfig, renderers</span>) </span>{
+    bindConfig.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">binding</span>) </span>{
+        <span class="hljs-keyword">var</span> datasets = [],
+            rendererList = [];
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> name <span class="hljs-keyword">in</span> renderers) {
+            <span class="hljs-keyword">if</span>(binding.datasets.indexOf(name) !== -<span class="hljs-number">1</span>) {
+                rendererList.push(renderers[name].builder || renderers[name].painter);
+                <span class="hljs-keyword">if</span>(renderers[name].builder) {
+                    datasets.push(renderers[name].builder.getQueryDataModel());
+                }
+            }
+        }
+        <span class="hljs-keyword">var</span> callbackFn = createQueryDataModelCallback(datasets, binding.arguments);
+        datasets.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">queryDataModel</span>) </span>{
+            queryDataModel.onStateChange(callbackFn);
+        });</pre></div>
+        
+      
+        
+        <p>Bind image builder properties</p>
+
+        
+          <div class='highlight'><pre>        <span class="hljs-keyword">if</span>(binding.other) {
+            binding.other.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">rendererBinding</span>) </span>{
+                <span class="hljs-keyword">var</span> rendererCallback = createImageBuilderCallback(rendererList, rendererBinding.setter);
+                rendererList.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">renderer</span>) </span>{
+                    renderer[rendererBinding.listener](rendererCallback);
+                });
+            });
+
+        }
+    });
+}</pre></div>
+        
+      
+        
+        <hr>
+
+        
+      
+        
+        
+        
+          <div class='highlight'><pre>
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createOperators</span>(<span class="hljs-params">operatorConfig, renderers</span>) </span>{
+    operatorConfig.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">operator</span>)</span>{</pre></div>
+        
+      
+        
+        <p>Create Pixel Operator</p>
+
+        
+          <div class='highlight'><pre>        <span class="hljs-keyword">var</span> pixelOperator = <span class="hljs-keyword">new</span> PixelOperatorImageBuilder(operator.operation, operator.datasets);
+        pixelOperator.name = operator.name; <span class="hljs-comment">// Used for pixel operator if any</span></pre></div>
+        
+      
+        
+        <p>Register PixelOperator</p>
+
+        
+          <div class='highlight'><pre>        renderers[operator.name] = { builder: pixelOperator, name: operator.name };
+    });</pre></div>
+        
+      
+        
+        <p>Bind each image builder after all have been created</p>
+
+        
+          <div class='highlight'><pre>    operatorConfig.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">operator</span>)</span>{
+        <span class="hljs-keyword">var</span> pixelOperator = renderers[operator.name].builder;</pre></div>
+        
+      
+        
+        <p>Generic callback to push data into the PixelOperator</p>
+
+        
+          <div class='highlight'><pre>        <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pushDataToPixelOperator</span>(<span class="hljs-params">data, envelope</span>) </span>{
+            pixelOperator.updateData(data.builder.name, data);
+        }</pre></div>
+        
+      
+        
+        <p>Listen to all datasets that PixelOperator care about</p>
+
+        
+          <div class='highlight'><pre>        operator.datasets.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>) </span>{
+            renderers[name].builder.onImageReady(pushDataToPixelOperator);
+        });
+    });
+}</pre></div>
+        
+      
+    </div>
+  </div>
+</body>
+</html>

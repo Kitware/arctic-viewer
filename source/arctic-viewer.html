@@ -48,6 +48,27 @@
         
 
         
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="arctic-viewer.html">
+                    arctic-viewer.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="factory.html">
+                    factory.js
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
       </div>
 
       
@@ -66,75 +87,7 @@
 
         
           <div class='highlight'><pre>
-<span class="hljs-keyword">var</span> <span class="hljs-comment">// Core elements</span>
-    QueryDataModel     = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-query-data-model/lib/QueryDataModel'</span>),
-    LookupTableManager = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-image-builder/lib/model/LookupTable/LookupTableManager'</span>),
-    PipelineModel      = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-image-builder/lib/model/PipelineState'</span>),</pre></div>
-        
-      
-        
-        <p>Image builder</p>
-
-        
-          <div class='highlight'><pre>    CompositeImageBuilder      = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-image-builder/lib/builder/Composite'</span>),
-    DataProberImageBuilder     = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-image-builder/lib/builder/DataProber'</span>),
-    QueryDataModelImageBuilder = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-image-builder/lib/builder/QueryDataModel'</span>),
-    WebGlCompositeImageBuilder = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-image-builder/lib/builder/WebGlComposite'</span>),</pre></div>
-        
-      
-        
-        <p>Viewers</p>
-
-        
-          <div class='highlight'><pre>    ImageBuilderViewerWidget = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-widgets/lib/react/viewer/ImageBuilder'</span>),
-    ProbeViewerWidget        = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-widgets/lib/react/viewer/Probe3D'</span>),
-    MultiViewerWidget        = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-widgets/lib/react/viewer/MultiLayout'</span>),</pre></div>
-        
-      
-        
-        <p>External dependencies</p>
-
-        
-          <div class='highlight'><pre>    React = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react'</span>),
-    contains = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mout/src/array/contains'</span>),
-    lutManager = <span class="hljs-keyword">new</span> LookupTableManager();</pre></div>
-        
-      
-        
-        <p>Helper method to fetch remote JSON object ———————————–</p>
-
-        
-          <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDataDescription</span>(<span class="hljs-params">url, callback</span>) </span>{
-    <span class="hljs-keyword">var</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();
-
-    xhr.open(<span class="hljs-string">'GET'</span>, url, <span class="hljs-literal">true</span>);
-    xhr.setRequestHeader(<span class="hljs-string">'Access-Control-Allow-Origin'</span>, <span class="hljs-string">'*'</span>);
-    xhr.responseType = <span class="hljs-string">'text'</span>;
-
-    xhr.onload = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e</span>) </span>{
-        <span class="hljs-keyword">if</span>(<span class="hljs-keyword">this</span>.status === <span class="hljs-number">200</span>) {
-            <span class="hljs-keyword">return</span> callback(<span class="hljs-literal">null</span>, <span class="hljs-built_in">JSON</span>.parse(xhr.response));
-        }
-        callback(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(e), xhr);
-    };
-    xhr.send();
-}</pre></div>
-        
-      
-        
-        <p>Generic data viewer ———————————————————</p>
-
-        
-          <div class='highlight'><pre>
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createGenericViewer</span>(<span class="hljs-params">queryDataModel, imageBuilder, container</span>) </span>{
-    <span class="hljs-keyword">return</span> React.render(
-                React.createElement(
-                    ImageBuilderViewerWidget,
-                    { queryDataModel, imageBuilder}
-                ),
-                container);
-}</pre></div>
+<span class="hljs-keyword">var</span> Factory = <span class="hljs-built_in">require</span>(<span class="hljs-string">'./factory.js'</span>);</pre></div>
         
       
         
@@ -142,107 +95,13 @@
 
         
           <div class='highlight'><pre>
-<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">load</span>(<span class="hljs-params">url, container</span>) </span>{</pre></div>
-        
-      
-        
-        <p>Fetch JSON descriptor</p>
-
-        
-          <div class='highlight'><pre>    getDataDescription(url, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error, data</span>) </span>{
-        <span class="hljs-keyword">if</span>(error) {
-            <span class="hljs-keyword">return</span> alert(<span class="hljs-string">"Unable to download metadata at "</span> + url);
-        }</pre></div>
-        
-      
-        
-        <p>Update background if available</p>
-
-        
-          <div class='highlight'><pre>        <span class="hljs-keyword">if</span>(data &amp;&amp; data.metadata &amp;&amp; data.metadata.backgroundColor) {
-            container.style[<span class="hljs-string">'background-color'</span>] = data.metadata.backgroundColor;
-        }</pre></div>
-        
-      
-        
-        <p>Reserve the set of possible variables</p>
-
-        
-          <div class='highlight'><pre>        <span class="hljs-keyword">var</span> dataType = data.type,
-            queryDataModel = <span class="hljs-literal">null</span>,
-            imageBuilder = <span class="hljs-literal">null</span>;</pre></div>
-        
-      
-        
-        <p>Create a QueryDataModel if the data needs it</p>
-
-        
-          <div class='highlight'><pre>        <span class="hljs-keyword">if</span>(contains(dataType, <span class="hljs-string">'tonic-query-data-model'</span>)) {
-            queryDataModel = <span class="hljs-keyword">new</span> QueryDataModel(data, <span class="hljs-string">'/data/'</span>);
-        }</pre></div>
-        
-      
-        
-        <p>Initialize viewers that need a QueryDataModel</p>
-
-        
-          <div class='highlight'><pre>        <span class="hljs-keyword">if</span>(queryDataModel) {</pre></div>
-        
-      
-        
-        <p>Custom probe viewer</p>
-
-        
-          <div class='highlight'><pre>            <span class="hljs-keyword">if</span>(contains(dataType, <span class="hljs-string">'in-situ-data-prober'</span>)) {
-                imageBuilder = <span class="hljs-keyword">new</span> DataProberImageBuilder(queryDataModel, lutManager);
-                imageBuilder.update();
-
-                <span class="hljs-keyword">return</span> React.render(
-                            React.createElement(
-                                ProbeViewerWidget,
-                                { queryDataModel, imageBuilder}
-                            ),
-                            container);
-            }</pre></div>
-        
-      
-        
-        <p>Basic image viewer</p>
-
-        
-          <div class='highlight'><pre>            <span class="hljs-keyword">if</span>(dataType.length === <span class="hljs-number">1</span>) {
-                imageBuilder = <span class="hljs-keyword">new</span> QueryDataModelImageBuilder(queryDataModel);
-                imageBuilder.update();
-                <span class="hljs-keyword">return</span> createGenericViewer(queryDataModel, imageBuilder, container);
-            }</pre></div>
-        
-      
-        
-        <p>Composite Data Viewer</p>
-
-        
-          <div class='highlight'><pre>            <span class="hljs-keyword">if</span>(contains(dataType, <span class="hljs-string">'composite-pipeline'</span>)) {
-                <span class="hljs-keyword">var</span> pipelineModel = <span class="hljs-keyword">new</span> PipelineModel(queryDataModel.originalData),
-                imageBuilder = <span class="hljs-keyword">new</span> CompositeImageBuilder(queryDataModel, pipelineModel);
-                imageBuilder.update();
-                <span class="hljs-keyword">return</span> createGenericViewer(queryDataModel, imageBuilder, container);
-            }</pre></div>
-        
-      
-        
-        <p>WebGL Composite data viewer</p>
-
-        
-          <div class='highlight'><pre>            <span class="hljs-keyword">if</span>(contains(dataType, <span class="hljs-string">'webgl-composite'</span>)) {
-                <span class="hljs-keyword">var</span> pipelineModel = <span class="hljs-keyword">new</span> PipelineModel(queryDataModel.originalData),
-                imageBuilder = <span class="hljs-keyword">new</span> WebGlCompositeImageBuilder(queryDataModel, pipelineModel, lutManager);
-                imageBuilder.update();
-
-                <span class="hljs-keyword">return</span> createGenericViewer(queryDataModel, imageBuilder, container);
-            }
-        } <span class="hljs-keyword">else</span> {
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">load</span>(<span class="hljs-params">url, container</span>) </span>{
+    Factory.createViewer(url, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">viewer</span>) </span>{
+        <span class="hljs-keyword">if</span>(!viewer) {
             <span class="hljs-keyword">return</span> alert(<span class="hljs-string">"The metadata format seems to be unsupported."</span>);
         }
+
+        Factory.createUI(viewer, container);
     });
 }</pre></div>
         
