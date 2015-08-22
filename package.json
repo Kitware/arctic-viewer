@@ -1,7 +1,7 @@
 {
   "name": "arctic-viewer",
   "description": "Standalone application useful to load and explore InSitu/Batch data products.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "BSD-3-Clause",
   "main": "./lib/arctic-viewer.js",
   "repository": {
@@ -21,13 +21,14 @@
     "react": "0.13.3",
     "monologue.js": "0.3.3",
     "mout": "0.11.0",
+    "gl-matrix": "2.3.1",
 
-    "tonic-data-manager"     : "Kitware/tonic-data-manager",
-    "tonic-query-data-model" : "Kitware/tonic-query-data-model",
-    "tonic-image-builder"    : "Kitware/tonic-image-builder",
-    "tonic-widgets"          : "Kitware/tonic-widgets",
+    "tonic-data-manager"     : "0.0.10",
+    "tonic-query-data-model" : "0.0.10",
+    "tonic-image-builder"    : "0.0.6",
+    "tonic-widgets"          : "0.0.7",
 
-    "tonic-site-generator": "Kitware/tonic-site-generator",
+    "tonic-site-generator": "0.1.0",
 
     "normalize.css": "3.0.3",
     "font-awesome": "4.4.0",
@@ -52,7 +53,7 @@
     "style-loader": "0.12.3",
 
     "jasmine-core": "2.3.4",
-    "jest-cli": "0.4.19",
+    "jest-cli": "0.5.0",
     "karma": "0.13.9",
     "karma-cli": "0.1.0",
     "karma-jasmine": "0.3.6",
