@@ -93,13 +93,21 @@
         
       
         
+        <p>Painters</p>
+
+        
+          <div class='highlight'><pre>    LineChartPainter = <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-image-builder/lib/painter/LineChart'</span>),</pre></div>
+        
+      
+        
         <p>React UI map</p>
 
         
           <div class='highlight'><pre>    ReactClassMap = {
         GenericViewer     : <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-widgets/lib/react/viewer/ImageBuilder'</span>),
         ProbeViewerWidget : <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-widgets/lib/react/viewer/Probe3D'</span>),
-        MultiViewerWidget : <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-widgets/lib/react/viewer/MultiLayout'</span>)
+        MultiViewerWidget : <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-widgets/lib/react/viewer/MultiLayout'</span>),
+        ViewerSelector    : <span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-widgets/lib/react/widget/ButtonSelector'</span>)
     },</pre></div>
         
       
@@ -115,7 +123,9 @@
 
         
           <div class='highlight'><pre>    React = <span class="hljs-built_in">require</span>(<span class="hljs-string">'react'</span>),
-    contains = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mout/src/array/contains'</span>);</pre></div>
+    equals = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mout/src/array/equals'</span>),
+    contains = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mout/src/array/contains'</span>),
+    isEnsembleBuild = <span class="hljs-literal">false</span>;</pre></div>
         
       
         
@@ -184,10 +194,135 @@
             viewer.queryDataModel = <span class="hljs-keyword">new</span> QueryDataModel(data, basepath);
 
             <span class="hljs-keyword">if</span>(contains(dataType, <span class="hljs-string">'in-situ-data-prober'</span>)) {
-                viewer.imageBuilder = <span class="hljs-keyword">new</span> DataProberImageBuilder(viewer.queryDataModel, lutManager);
-                viewer.imageBuilder.setProbeLineNotification(<span class="hljs-literal">true</span>);
-                viewer.imageBuilder.update();
-                viewer.ui = <span class="hljs-string">'ProbeViewerWidget'</span>;
+                <span class="hljs-keyword">var</span> singleView = {
+                        name            : <span class="hljs-string">'Single View'</span>,
+                        imageBuilder    : <span class="hljs-keyword">new</span> DataProberImageBuilder(viewer.queryDataModel, lutManager),
+                        queryDataModel  : viewer.queryDataModel,
+                        ui              : <span class="hljs-string">'ProbeViewerWidget'</span>,
+                        destroy         : <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">this</span>.imageBuilder.destroy(); }
+                    },
+                    multiView = {
+                        name            : <span class="hljs-string">'Multi View'</span>,
+                        renderers       : {},
+                        queryDataModel  : viewer.queryDataModel,
+                        ui              : <span class="hljs-string">'MultiViewerWidget'</span>,
+                        destroy         : <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{ <span class="hljs-keyword">while</span>(<span class="hljs-keyword">this</span>.renderers.length) { <span class="hljs-keyword">this</span>.renderers.pop().destroy(); } }
+                    };</pre></div>
+        
+      
+        
+        <p>Configure single view</p>
+
+        
+          <div class='highlight'><pre>                singleView.imageBuilder.setProbeLineNotification(<span class="hljs-literal">true</span>);
+                singleView.imageBuilder.update();
+
+                <span class="hljs-keyword">if</span>(!isEnsembleBuild) {</pre></div>
+        
+      
+        
+        <p>Configure multi view</p>
+
+        
+          <div class='highlight'><pre>                    <span class="hljs-keyword">var</span> dimensions = viewer.queryDataModel.originalData.InSituDataProber.dimensions,
+                        imageBuilders = [
+                            <span class="hljs-keyword">new</span> DataProberImageBuilder(viewer.queryDataModel, lutManager),
+                            <span class="hljs-keyword">new</span> DataProberImageBuilder(viewer.queryDataModel, lutManager),
+                            <span class="hljs-keyword">new</span> DataProberImageBuilder(viewer.queryDataModel, lutManager)
+                        ],
+                        chartPainters = [
+                            <span class="hljs-keyword">new</span> LineChartPainter(<span class="hljs-string">'X: {x}'</span>),
+                            <span class="hljs-keyword">new</span> LineChartPainter(<span class="hljs-string">'Y: {x}'</span>),
+                            <span class="hljs-keyword">new</span> LineChartPainter(<span class="hljs-string">'Z: {x}'</span>)
+                        ];
+
+                    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateProbeLocation</span>(<span class="hljs-params">data, envelope</span>) </span>{
+                        imageBuilders.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">builder</span>) </span>{
+                            <span class="hljs-keyword">if</span>(!equals(data, builder.getProbe())) {
+                                builder.setProbe(data[<span class="hljs-number">0</span>], data[<span class="hljs-number">1</span>], data[<span class="hljs-number">2</span>])
+                            }
+                        });</pre></div>
+        
+      
+        
+        <p>Update charts</p>
+
+        
+          <div class='highlight'><pre>                        chartPainters[<span class="hljs-number">0</span>].setMarkerLocation(data[<span class="hljs-number">0</span>]/(dimensions[<span class="hljs-number">0</span>]-<span class="hljs-number">1</span>));
+                        chartPainters[<span class="hljs-number">1</span>].setMarkerLocation(data[<span class="hljs-number">1</span>]/(dimensions[<span class="hljs-number">1</span>]-<span class="hljs-number">1</span>));
+                        chartPainters[<span class="hljs-number">2</span>].setMarkerLocation(data[<span class="hljs-number">2</span>]/(dimensions[<span class="hljs-number">2</span>]-<span class="hljs-number">1</span>));
+                    }
+
+                    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateCrosshairVisibility</span>(<span class="hljs-params">data, envelope</span>) </span>{
+                        imageBuilders.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">builder</span>) </span>{
+                            builder.setCrossHairEnable(data);
+                        });</pre></div>
+        
+      
+        
+        <p>Update charts</p>
+
+        
+          <div class='highlight'><pre>                        chartPainters[<span class="hljs-number">0</span>].enableMarker(data);
+                        chartPainters[<span class="hljs-number">1</span>].enableMarker(data);
+                        chartPainters[<span class="hljs-number">2</span>].enableMarker(data);
+                    }
+
+                    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">updateChartPainters</span>(<span class="hljs-params">data, envelope</span>) </span>{
+                        <span class="hljs-keyword">if</span>(data.x.fields[<span class="hljs-number">0</span>].data.length) {
+                            chartPainters[<span class="hljs-number">0</span>].updateData(data.x);
+                        }
+                        <span class="hljs-keyword">if</span>(data.y.fields[<span class="hljs-number">0</span>].data.length) {
+                            chartPainters[<span class="hljs-number">1</span>].updateData(data.y);
+                        }
+                        <span class="hljs-keyword">if</span>(data.z.fields[<span class="hljs-number">0</span>].data.length) {
+                            chartPainters[<span class="hljs-number">2</span>].updateData(data.z);
+                        }
+                    }</pre></div>
+        
+      
+        
+        <p>Initialize the Image builders</p>
+
+        
+          <div class='highlight'><pre>                    <span class="hljs-keyword">var</span> methods = [].concat(singleView.imageBuilder.getRenderMethods());
+                    imageBuilders.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">builder</span>) </span>{
+                        <span class="hljs-keyword">var</span> name = methods.shift();
+                        builder.setRenderMethod(name);
+                        builder.setRenderMethodImutable();
+                        builder.setProbeLineNotification(<span class="hljs-literal">true</span>);
+                        builder.onProbeChange(updateProbeLocation);
+                        builder.onCrosshairVisibilityChange(updateCrosshairVisibility);
+                        builder.onProbeLineReady(updateChartPainters);
+                        builder.update();
+                        multiView.renderers[name] = { name, builder };
+                    });</pre></div>
+        
+      
+        
+        <p>Initialize the Chart painters</p>
+
+        
+          <div class='highlight'><pre>                    <span class="hljs-keyword">var</span> names = [<span class="hljs-string">'Line Chart X'</span>, <span class="hljs-string">'Line Chart Y'</span>, <span class="hljs-string">'Line Chart Z'</span>];
+                    chartPainters.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">painter</span>) </span>{
+                        <span class="hljs-keyword">var</span> name = names.shift();
+                        multiView.renderers[name] = { name, painter };
+                    })</pre></div>
+        
+      
+        
+        <p>Show the selector UI</p>
+
+        
+          <div class='highlight'><pre>                    viewer.list = [singleView, multiView];
+                    viewer.ui = <span class="hljs-string">'ViewerSelector'</span>;
+                    viewer.onChange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">idx, list</span>) </span>{
+                        callback(viewer.list[idx]);
+                    }
+                } <span class="hljs-keyword">else</span> {
+                    viewer.imageBuilder = singleView.imageBuilder;
+                    viewer.ui = singleView.ui;
+                }
             } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(dataType.length === <span class="hljs-number">1</span>) {
                 viewer.imageBuilder = <span class="hljs-keyword">new</span> QueryDataModelImageBuilder(viewer.queryDataModel);
                 viewer.imageBuilder.update();
@@ -206,28 +341,29 @@
             <span class="hljs-keyword">var</span> renderers = {},
                 queryDataModel = <span class="hljs-literal">null</span>,
                 ready = <span class="hljs-number">0</span>,
-                expected = data.Ensemble.datasets.length;
+                expected = data.Ensemble.datasets.length;</pre></div>
+        
+      
+        
+        <p>Let the factory know to not build everything</p>
+
+        
+          <div class='highlight'><pre>            isEnsembleBuild = <span class="hljs-literal">true</span>;
 
             data.Ensemble.datasets.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">ds</span>) </span>{
                 createViewer(basepath + ds.data, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">viewer</span>) </span>{
                     ready++;
-                    renderers[ds.name] = { builder: viewer.imageBuilder, name: ds.name, queryDataModel: viewer.queryDataModel };
-                    viewer.imageBuilder.name = ds.name; <span class="hljs-comment">// Used for pixel operator if any</span></pre></div>
-        
-      
-        
-        <p>Debug start</p>
+                    <span class="hljs-keyword">if</span>(viewer.ui === <span class="hljs-string">'ViewerSelector'</span>) {
+                        renderers[ds.name] = { builder: viewer.list[<span class="hljs-number">0</span>].imageBuilder, name: ds.name, queryDataModel: viewer.list[<span class="hljs-number">0</span>].queryDataModel };
+                        viewer.list[<span class="hljs-number">0</span>].imageBuilder.name = ds.name;
+                        <span class="hljs-keyword">while</span>(viewer.list.length &gt; <span class="hljs-number">1</span>) {
+                            viewer.list.pop().destroy();
+                        }
+                    } <span class="hljs-keyword">else</span> {
+                        renderers[ds.name] = { builder: viewer.imageBuilder, name: ds.name, queryDataModel: viewer.queryDataModel };
+                        viewer.imageBuilder.name = ds.name; <span class="hljs-comment">// Used for pixel operator if any</span>
+                    }
 
-        
-          <div class='highlight'><pre>                    viewer.imageBuilder.name = ds.name;
-                    viewer.queryDataModel.name = ds.name;</pre></div>
-        
-      
-        
-        <p>Debug end</p>
-
-        
-          <div class='highlight'><pre>
                     <span class="hljs-keyword">if</span>(!queryDataModel) {
                         queryDataModel = viewer.queryDataModel;
                     }
@@ -274,7 +410,24 @@
 <span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createUI</span>(<span class="hljs-params">viewer, container</span>) </span>{
     <span class="hljs-keyword">if</span>(viewer.bgColor) {
         container.style[<span class="hljs-string">'background-color'</span>] = viewer.bgColor;
-    }
+    }</pre></div>
+        
+      
+        
+        <p>Make sure we trigger a render when the UI is mounted</p>
+
+        
+          <div class='highlight'><pre>    setImmediate(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        <span class="hljs-keyword">var</span> renderers = viewer.renderers || {};
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">var</span> name <span class="hljs-keyword">in</span> renderers) {
+            <span class="hljs-keyword">if</span>(renderers[name].builder &amp;&amp; renderers[name].builder.update) {
+                renderers[name].builder.update();
+            }
+        }
+        <span class="hljs-keyword">if</span>(viewer.imageBuilder &amp;&amp; viewer.imageBuilder.update) {
+            viewer.imageBuilder.update();
+        }
+    });
 
     <span class="hljs-keyword">return</span> React.render(React.createElement(ReactClassMap[viewer.ui], viewer), container);
 }</pre></div>
@@ -293,17 +446,24 @@
     <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">data, envelope</span>) </span>{
         <span class="hljs-keyword">var</span> argName = data.name,
             argValue = data.value,
-            count = datasets.length;
+            count = datasets.length,
+            datasetToUpdate = [];
 
         <span class="hljs-keyword">if</span>(args.indexOf(argName) !== -<span class="hljs-number">1</span>) {
             <span class="hljs-keyword">while</span>(count--) {
                 <span class="hljs-keyword">var</span> dataset = datasets[count];
                 <span class="hljs-keyword">if</span>(dataset.getValue(argName) !== argValue) {
                     dataset.setValue(argName, argValue);
-                    dataset.fetchData();
+                    datasetToUpdate.push(dataset)
                 }
             }
         }
+
+        setImmediate(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+            <span class="hljs-keyword">while</span>(datasetToUpdate.length) {
+                datasetToUpdate.pop().fetchData();
+            }
+        });
     };
 }</pre></div>
         
