@@ -113,8 +113,8 @@
 	// Hot Module Replacement
 	if(false) {
 		// When the styles change, update the <style> tags
-		module.hot.accept("!!/Users/seb/Work/code/Tonic/apps/arctic-viewer/node_modules/font-awesome-webpack/node_modules/css-loader/index.js!/Users/seb/Work/code/Tonic/apps/arctic-viewer/node_modules/font-awesome-webpack/node_modules/less-loader/index.js!/Users/seb/Work/code/Tonic/apps/arctic-viewer/node_modules/font-awesome-webpack/font-awesome-styles.loader.js!/Users/seb/Work/code/Tonic/apps/arctic-viewer/node_modules/font-awesome-webpack/font-awesome.config.js", function() {
-			var newContent = require("!!/Users/seb/Work/code/Tonic/apps/arctic-viewer/node_modules/font-awesome-webpack/node_modules/css-loader/index.js!/Users/seb/Work/code/Tonic/apps/arctic-viewer/node_modules/font-awesome-webpack/node_modules/less-loader/index.js!/Users/seb/Work/code/Tonic/apps/arctic-viewer/node_modules/font-awesome-webpack/font-awesome-styles.loader.js!/Users/seb/Work/code/Tonic/apps/arctic-viewer/node_modules/font-awesome-webpack/font-awesome.config.js");
+		module.hot.accept("!!/Users/seb/Documents/work/projects/tonic/code/apps/arctic-viewer/node_modules/font-awesome-webpack/node_modules/css-loader/index.js!/Users/seb/Documents/work/projects/tonic/code/apps/arctic-viewer/node_modules/font-awesome-webpack/node_modules/less-loader/index.js!/Users/seb/Documents/work/projects/tonic/code/apps/arctic-viewer/node_modules/font-awesome-webpack/font-awesome-styles.loader.js!/Users/seb/Documents/work/projects/tonic/code/apps/arctic-viewer/node_modules/font-awesome-webpack/font-awesome.config.js", function() {
+			var newContent = require("!!/Users/seb/Documents/work/projects/tonic/code/apps/arctic-viewer/node_modules/font-awesome-webpack/node_modules/css-loader/index.js!/Users/seb/Documents/work/projects/tonic/code/apps/arctic-viewer/node_modules/font-awesome-webpack/node_modules/less-loader/index.js!/Users/seb/Documents/work/projects/tonic/code/apps/arctic-viewer/node_modules/font-awesome-webpack/font-awesome-styles.loader.js!/Users/seb/Documents/work/projects/tonic/code/apps/arctic-viewer/node_modules/font-awesome-webpack/font-awesome.config.js");
 			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 			update(newContent);
 		});
@@ -23979,6 +23979,11 @@
 	            xRatio = xRatio < 0 ? 0 : xRatio > 1 ? 1 : xRatio;
 	            yRatio = yRatio < 0 ? 0 : yRatio > 1 ? 1 : yRatio;
 
+	            if (self.renderMethod === 'XZ') {
+	                // We flipped Y
+	                yRatio = 1 - yRatio;
+	            }
+
 	            var xPos = Math.floor(xRatio * dimensions[axisMap[0]]),
 	                yPos = Math.floor(yRatio * dimensions[axisMap[1]]);
 
@@ -24545,6 +24550,12 @@
 
 	    // Update LookupTableManager with data range
 	    this.lookupTableManager.addFields(this.metadata.ranges);
+	    this.lutActiveSubscription = this.lookupTableManager.onActiveLookupTableChange(function (data, envelope) {
+	        if (_this.getField() !== data) {
+	            _this.setField(data);
+	            _this.render();
+	        }
+	    });
 
 	    var maxSize = 0;
 	    for (var i = 0; i < 3; ++i) {
@@ -25071,6 +25082,9 @@
 	DataProberImageBuilder.prototype.destroy = function () {
 	    this.off();
 
+	    this.lutActiveSubscription.unsubscribe();
+	    this.lutActiveSubscription = null;
+
 	    this.lutChangeSubscription.unsubscribe();
 	    this.lutChangeSubscription = null;
 
@@ -25087,7 +25101,7 @@
 
 	// Method meant to be used with the WidgetFactory
 	DataProberImageBuilder.prototype.getControlWidgets = function () {
-	    return ["LookupTableWidget", "ProbeControl", "QueryDataModelWidget"];
+	    return ["LookupTableManagerWidget", "ProbeControl", "QueryDataModelWidget"];
 	};
 
 	DataProberImageBuilder.prototype.getQueryDataModel = function () {
@@ -25096,6 +25110,10 @@
 
 	DataProberImageBuilder.prototype.getLookupTable = function () {
 	    return this.lookupTableManager.getLookupTable(this.getField());
+	};
+
+	DataProberImageBuilder.prototype.getOriginalRange = function () {
+	    return this.metadata.ranges[this.getField()];
 	};
 
 	DataProberImageBuilder.prototype.getLookupTableManager = function () {
@@ -49193,6 +49211,7 @@
 	        return React.createElement(_LookupTableManagerWidget, {
 	            key: 'LookupTableManagerWidget',
 	            ref: 'LookupTableManagerWidget',
+	            field: model.getField(),
 	            lookupTableManager: model.getLookupTableManager()
 	        });
 	    },
@@ -49638,7 +49657,8 @@
 	            renderer = React.createElement(MultiViewRenderer, {
 	                ref: 'imageRenderer',
 	                className: 'CatalystWidget_ImageViewerWidget',
-	                renderers: this.props.renderers
+	                renderers: this.props.renderers,
+	                layout: this.props.layout
 	            });
 	        }
 
@@ -52916,7 +52936,7 @@
 	        this.dragCenter = false;
 	        this.dragInViewport = null;
 	        this.center = [0.5, 0.5];
-	        this.layout = '3xT';
+	        this.layout = this.props.layout || '3xT';
 	        this.viewports = [];
 
 	        function drawCallback(data, envelope) {
@@ -54818,7 +54838,7 @@
 
 
 	// module
-	exports.push([module.id, ".ColorPicker {\n    min-width: 5em;\n    width: 100%;\n    box-sizing: border-box;\n    -webkit-flex-direction: column;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n}\n\n.ColorPicker__color {\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-flex-direction: row;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    margin-bottom: 10px;\n}\n\n.ColorPicker__color > canvas {\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 1.5em;\n    height: 1.5em;\n    border: 1px solid #000;\n    margin-right: 5px;\n}\n\n.ColorPicker__color > input {\n    -webkit-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    min-width: 1em;\n    margin-left: 5px;\n    margin-right: 5px;\n    border: none;\n    text-align: right;\n    padding-right: 10px;\n}\n\n.ColorPicker__swatch {\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-flex-direction: row;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    margin-left: 2px;\n    margin-right: 2px;\n}\n\n.ColorPicker__swatch > img {\n    width: 100%;\n}\n", ""]);
+	exports.push([module.id, ".ColorPicker {\n    min-width: 5em;\n    width: 100%;\n    box-sizing: border-box;\n    -webkit-flex-direction: column;\n        -ms-flex-direction: column;\n            flex-direction: column;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n\n}\n\n.ColorPicker__color {\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-flex-direction: row;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    margin-bottom: 10px;\n}\n\n.ColorPicker__color > canvas {\n    -webkit-flex: none;\n        -ms-flex: none;\n            flex: none;\n    width: 1.5em;\n    height: 1.5em;\n    border: 1px solid #000;\n    margin-right: 5px;\n}\n\n.ColorPicker__color > input {\n    -webkit-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    min-width: 1em;\n    margin-left: 5px;\n    margin-right: 5px;\n    border: none;\n    text-align: right;\n    padding-right: 10px;\n}\n\n.ColorPicker__swatch {\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-flex-direction: row;\n        -ms-flex-direction: row;\n            flex-direction: row;\n    margin-left: 2px;\n    margin-right: 2px;\n}\n\n.ColorPicker__swatch > img {\n    width: 100%;\n}\n", ""]);
 
 	// exports
 
@@ -54909,7 +54929,7 @@
 	    getInitialState: function getInitialState() {
 	        var luts = this.props.lookupTableManager.luts,
 	            fields = Object.keys(luts),
-	            field = fields[0];
+	            field = this.props.field || fields[0];
 	        return { field: field, fields: fields };
 	    },
 
@@ -54941,7 +54961,7 @@
 	        return React.createElement(
 	            CollapsibleElement,
 	            { title: 'Lookup Table',
-	                subtitle: React.createElement(Dropdown, { fields: this.state.fields, onChange: this.onFieldsChange }) },
+	                subtitle: React.createElement(Dropdown, { field: this.state.field, fields: this.state.fields, onChange: this.onFieldsChange }) },
 	            React.createElement(
 	                'div',
 	                { className: 'LookupTableWidget_selector' },
@@ -54973,7 +54993,7 @@
 	  getInitialState: function getInitialState() {
 	    return {
 	      open: false,
-	      field: this.props.fields[0]
+	      field: this.props.field || this.props.fields[0]
 	    };
 	  },
 	  toggleDropdown: function toggleDropdown() {
@@ -55163,7 +55183,7 @@
 
 	        this.probeDataListenerSubscription = imageBuilder.onProbeLineReady(function (data, envelope) {
 	            var field = imageBuilder.getFieldValueAtProbeLocation();
-	            if (_this.isMounted()) {
+	            if (_this.isMounted() && field !== _this.state.field) {
 	                _this.setState({ field: field });
 	            }
 	        });
@@ -55215,23 +55235,6 @@
 	            this.props.imageBuilder.render();
 	            this.forceUpdate();
 	        }
-	    },
-
-	    updateField: function updateField(event) {
-	        this.getImageBuilder(this.props).setField(event.target.value);
-
-	        if (this.props.imageBuilder) {
-	            this.props.imageBuilder.update();
-	        }
-
-	        if (this.props.imageBuilders) {
-	            for (var key in this.props.imageBuilders) {
-	                var builder = this.props.imageBuilders[key].builder;
-	                builder.update();
-	            }
-	        }
-
-	        this.forceUpdate();
 	    },
 
 	    probeChange: function probeChange(event) {
@@ -55302,24 +55305,12 @@
 	            ),
 	            React.createElement(
 	                CollapsibleElement,
-	                { title: 'Field', subtitle: this.state.showFieldValue ? valueStr : '' },
-	                React.createElement(
-	                    'select',
-	                    { style: { width: '100%' },
-	                        value: imageBuilder.getField(),
-	                        onChange: this.updateField },
-	                    imageBuilder.getFields().map(function (v) {
-	                        return React.createElement(
-	                            'option',
-	                            { key: v, value: v },
-	                            v
-	                        );
-	                    })
-	                )
-	            ),
-	            React.createElement(
-	                CollapsibleElement,
-	                { title: 'Probe', ref: 'ProbeInput', onChange: this.onProbeVisibilityChange, open: imageBuilder.isCrossHairEnabled() },
+	                {
+	                    title: 'Probe',
+	                    subtitle: this.state.showFieldValue ? valueStr : '',
+	                    ref: 'ProbeInput',
+	                    onChange: this.onProbeVisibilityChange,
+	                    open: imageBuilder.isCrossHairEnabled() },
 	                React.createElement(NumberSliderControl, { name: '0',
 	                    min: '0', max: imageBuilder.metadata.dimensions[0] - 1,
 	                    key: 'slider-x',
@@ -55764,6 +55755,12 @@
 	    this.props.operator.setOperation(operation);
 	  },
 
+	  componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
+	    if (this.state.operation !== nextProps.operator.getOperation()) {
+	      this.setState({ operation: nextProps.operator.getOperation() });
+	    }
+	  },
+
 	  render: function render() {
 	    return React.createElement(
 	      CollapsibleElement,
@@ -55889,7 +55886,7 @@
 
 	var React = __webpack_require__(104),
 	    QueryDataModelWidget = __webpack_require__(290),
-	    LookupTableWidget = __webpack_require__(297),
+	    LookupTableManagerWidget = __webpack_require__(305),
 	    ProbeControl = __webpack_require__(310),
 	    CollapsibleElement = __webpack_require__(287),
 	    CatalystWidget = __webpack_require__(265),
@@ -56054,14 +56051,12 @@
 	            React.createElement(
 	                CatalystWidget,
 	                { queryDataModel: queryDataModel, imageBuilder: imageBuilder, mouseListener: imageBuilder.getListeners() },
-	                React.createElement(
-	                    CollapsibleElement,
-	                    { title: 'LookupTable' },
-	                    React.createElement(LookupTableWidget, {
-	                        originalRange: imageBuilder.metadata.ranges[imageBuilder.getField()],
-	                        lut: imageBuilder.getLookupTable(),
-	                        lutManager: imageBuilder.getLookupTableManager() })
-	                ),
+	                React.createElement(LookupTableManagerWidget, {
+	                    key: 'LookupTableManagerWidget',
+	                    ref: 'LookupTableManagerWidget',
+	                    lookupTableManager: imageBuilder.getLookupTableManager(),
+	                    field: imageBuilder.getField()
+	                }),
 	                React.createElement(ProbeControl, {
 	                    ref: 'ProbeControl',
 	                    imageBuilder: imageBuilder }),
@@ -56294,9 +56289,14 @@
 	            controlWidgets = WidgetFactory.getWidgets(this.state.activeRenderer.builder || this.state.activeRenderer.painter);
 	        }
 
+	        // Add menuAddOn if any at the top
+	        if (this.props.menuAddOn) {
+	            controlWidgets = this.props.menuAddOn.concat(controlWidgets);
+	        }
+
 	        return React.createElement(
 	            CatalystWidget,
-	            { ref: 'catalystWidget', queryDataModel: queryDataModel, renderers: this.props.renderers, renderer: 'MultiViewRenderer' },
+	            { ref: 'catalystWidget', queryDataModel: queryDataModel, renderers: this.props.renderers, renderer: 'MultiViewRenderer', layout: this.props.layout },
 	            React.createElement(MultiViewControl, { renderer: this.state.renderer }),
 	            controlWidgets
 	        );
