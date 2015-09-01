@@ -23033,6 +23033,10 @@
 	Monologue.mixInto(LookupTableManager);
 
 	LookupTableManager.prototype.addLookupTable = function (name, range, preset) {
+	    if (!this.activeField) {
+	        this.activeField = name;
+	    }
+
 	    var lut = this.luts[name];
 	    if (lut === undefined) {
 	        lut = new LookupTable(name);
@@ -23067,6 +23071,7 @@
 	    setImmediate(function () {
 	        _this2.emit(ACTIVE_LOOKUP_TABLE_CHANGE_TOPIC, name);
 	    });
+	    this.activeField = name;
 	    return this.luts[name];
 	};
 
@@ -23074,6 +23079,10 @@
 	    for (var field in fieldsRange) {
 	        this.addLookupTable(field, fieldsRange[field]);
 	    }
+	};
+
+	LookupTableManager.prototype.getActiveField = function () {
+	    return this.activeField;
 	};
 
 	LookupTableManager.prototype.onChange = function (callback) {
@@ -25594,6 +25603,12 @@
 
 	WebGlImageBuidler.prototype.getLookupTableManager = function () {
 	    return this.lookupTableManager;
+	};
+
+	// --------------------------------------------------------------------------
+
+	WebGlImageBuidler.prototype.getField = function () {
+	    return this.lookupTableManager.getActiveField();
 	};
 
 	// --------------------------------------------------------------------------
