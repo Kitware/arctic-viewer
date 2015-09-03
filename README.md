@@ -86,4 +86,4 @@ getting started guide, advanced documentation, and API descriptions.
 
 Fork our repository and do great things. At [Kitware](http://www.kitware.com),
 we've been contributing to open-source software for 15 years and counting, and
-want to make **in-situ-data-viewer** useful to as many people as possible.
+want to make **arctic-viewer** useful to as many people as possible.
