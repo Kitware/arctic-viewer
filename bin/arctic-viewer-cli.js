@@ -6,14 +6,15 @@ var fs = require('fs'),
     httpProxy = require('http-proxy'),
     gzipStatic = require('connect-gzip-static'),
     downloader = require('./arctic-data-downloader.js'),
-    oneDay = 86400000;
+    oneDay = 86400000,
+    onMinute = 60000;
 
 function handlePort(value) {
     return Number(value);
 }
 
 program
-  .version('0.2.2')
+  .version('0.0.7')
   .option('-p, --port [3000]', 'Start web server with given port', handlePort, 3000)
   .option('-d, --data [directory/http]', 'Data directory to serve. Should contain a info.json file.')
   .option('-s, --server-only', 'Do not open the web browser')
@@ -64,11 +65,11 @@ if(program.downloadSampleData) {
         }
 
         // Serve data from static content
-        app.use('/data', gzipStatic(dataPath, { maxAge: oneDay }));
+        app.use('/data', gzipStatic(dataPath, { maxAge: onMinute }));
     }
 
     // Print server information
-    console.log("\nIn-Situ Data Viewer\n  => Serve " + dataPath + " on port " + program.port + "\n");
+    console.log("\nArcticViewer\n  => Serve " + dataPath + " on port " + program.port + "\n");
 
     // Start server and listening
     app.listen(program.port);
