@@ -23,8 +23,8 @@
     "mout": "0.11.0",
     "gl-matrix": "2.3.1",
 
-    "tonic-data-manager"     : "0.0.10",
-    "tonic-query-data-model" : "0.0.10",
+    "tonic-data-manager"     : "0.0.11",
+    "tonic-query-data-model" : "0.0.12",
     "tonic-mouse-handler"    : "0.0.6",
     "tonic-image-builder"    : "Kitware/tonic-image-builder",
     "tonic-widgets"          : "Kitware/tonic-widgets",
