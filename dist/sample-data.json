@@ -58,5 +58,11 @@
     "filesize":"98.3 MB",
     "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/ensemble.jpg",
     "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/ensemble.tgz"
+  },
+  {
+    "title": "Volume",
+    "filesize":"189 MB",
+    "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/head_frozen_ct_ios.png",
+    "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/head_frozen_ct_ios.tgz"
   }
 ]

@@ -1,7 +1,7 @@
 {
   "name": "arctic-viewer",
   "description": "Standalone application useful to load and explore InSitu/Batch data products.",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "license": "BSD-3-Clause",
   "main": "./lib/arctic-viewer.js",
   "repository": {
@@ -26,8 +26,8 @@
     "tonic-data-manager"     : "0.0.11",
     "tonic-query-data-model" : "0.0.12",
     "tonic-mouse-handler"    : "0.0.6",
-    "tonic-image-builder"    : "Kitware/tonic-image-builder",
-    "tonic-widgets"          : "Kitware/tonic-widgets",
+    "tonic-image-builder"    : "0.0.8",
+    "tonic-widgets"          : "0.0.9",
 
     "tonic-site-generator": "0.1.0",
 
