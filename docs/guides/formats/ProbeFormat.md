@@ -2,7 +2,7 @@
 layout: docs
 title: Probe
 permalink: /docs/Probe/
-prev_section: Composite
+prev_section: DepthSortedComposite
 next_section: Ensemble
 repo_path: /docs/guides/formats/ProbeFormat.md
 ---

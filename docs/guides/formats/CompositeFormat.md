@@ -3,7 +3,7 @@ layout: docs
 title: Composite
 permalink: /docs/Composite/
 prev_section: ImageBased
-next_section: Probe
+next_section: DepthSortedComposite
 repo_path: /docs/guides/formats/CompositeFormat.md
 ---
 
