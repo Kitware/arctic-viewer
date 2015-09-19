@@ -64,5 +64,11 @@
     "filesize":"141.7 MB",
     "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/head_ct.png",
     "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/head_ct.tgz"
+  },
+  {
+    "title": "Diskout - Sorted Composite",
+    "filesize":"750.1 MB",
+    "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/diskout.png",
+    "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/diskout.tgz"
   }
 ]
