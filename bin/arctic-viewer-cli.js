@@ -1,8 +1,11 @@
 #! /usr/bin/env node
 
 var fs = require('fs'),
+    path = require('path'),
+    mkdirp = require('mkdirp'),
     program = require('commander'),
     express = require('express'),
+    bodyParser = require('body-parser'),
     httpProxy = require('http-proxy'),
     gzipStatic = require('connect-gzip-static'),
     downloader = require('./arctic-data-downloader.js'),
@@ -13,11 +16,27 @@ function handlePort(value) {
     return Number(value);
 }
 
+function getExportPath(args) {
+    var result = program.outputPattern,
+        keyPattern = ['{', '}'];
+
+    for(var opt in args) {
+        result = result.replace(keyPattern.join(opt), args[opt]);
+    }
+
+    // Create directory if need be
+    mkdirp.sync(path.dirname(result));
+
+    return result;
+}
+
 program
   .version('0.0.8')
   .option('-p, --port [3000]', 'Start web server with given port', handlePort, 3000)
   .option('-d, --data [directory/http]', 'Data directory to serve. Should contain a info.json file.')
   .option('-s, --server-only', 'Do not open the web browser')
+
+  .option('-o, --output-pattern [path/pattern]', 'Provide a destination path for the exported images. i.e.: /opt/data/{time}/{pipeline}/{phi}_{theta}.jpg', './export/{__}.jpg')
 
   .option('-D, --download-sample-data', 'Download some try-out data [~100MB] inside the current directory.')
   .option('-R, --download [http://remote-host/data]', 'Url to the source of your in-situ data that you want to download inside the current directory.')
@@ -70,6 +89,19 @@ if(program.downloadSampleData) {
 
     // Print server information
     console.log("\nArcticViewer\n  => Serve " + dataPath + " on port " + program.port + "\n");
+
+    // Add image export handler
+    app.use(bodyParser.json({limit: 10000000}));
+    app.post('/export', function(req, res) {
+        var data = req.body,
+            args = data.arguments,
+            base64Data = data.image.split('base64,')[1];
+
+        require("fs").writeFile(getExportPath(args), base64Data, 'base64', function(err) {
+        });
+
+        res.send('Data saved');
+    });
 
     // Start server and listening
     app.listen(program.port);

@@ -9,12 +9,14 @@
     "url": "https://github.com/Kitware/arctic-viewer.git"
   },
   "dependencies": {
-    "progress": "latest",
+    "body-parser": "^1.14.0",
+    "commander": "latest",
+    "connect-gzip-static": "latest",
     "express": "latest",
     "http-proxy": "latest",
-    "connect-gzip-static": "latest",
+    "mkdirp": "^0.5.1",
     "open": "latest",
-    "commander": "latest",
+    "progress": "latest",
     "tarball-extract": "latest"
   },
   "devDependencies": {
@@ -22,19 +24,15 @@
     "monologue.js": "0.3.3",
     "mout": "0.11.0",
     "gl-matrix": "2.3.1",
-
-    "tonic-data-manager"     : "0.0.11",
-    "tonic-query-data-model" : "0.0.13",
-    "tonic-mouse-handler"    : "0.0.6",
-    "tonic-image-builder"    : "0.0.8",
-    "tonic-widgets"          : "0.0.9",
-
+    "tonic-data-manager": "0.0.11",
+    "tonic-query-data-model": "0.0.13",
+    "tonic-mouse-handler": "0.0.6",
+    "tonic-image-builder": "0.0.8",
+    "tonic-widgets": "0.0.9",
     "tonic-site-generator": "0.1.0",
-
     "normalize.css": "3.0.3",
     "font-awesome": "4.4.0",
     "font-awesome-webpack": "0.0.3",
-
     "jshint": "2.8.0",
     "jshint-loader": "0.8.3",
     "file-loader": "0.8.4",
@@ -46,13 +44,10 @@
     "node-libs-browser": "0.5.2",
     "webpack": "1.11.0",
     "serve": "1.4.0",
-
     "html-webpack-plugin": "1.6.1",
-
     "css-loader": "0.16.0",
     "autoprefixer-loader": "2.0.0",
     "style-loader": "0.12.3",
-
     "jasmine-core": "2.3.4",
     "jest-cli": "0.5.0",
     "karma": "0.13.9",
@@ -62,14 +57,12 @@
     "karma-phantomjs-launcher": "0.2.1",
     "karma-chrome-launcher": "0.2.0",
     "karma-firefox-launcher": "0.1.6",
-    "karma-safari-launcher": "0.1.1",
-    "serve": "1.4.0"
+    "karma-safari-launcher": "0.1.1"
   },
   "scripts": {
     "build": "webpack",
     "build:debug": "webpack --display-modules",
     "build:release": "webpack -p",
-
     "www": "tonic-site-generator site.config.js",
     "www:http": "tonic-site-generator site.config.js --local-test && serve docs/www"
   },
