@@ -73,6 +73,14 @@ $ ArcticViewer -d ./tonic-data/hydra-image-fluid-velocity
 This will load an Hydra CFD simulation data that represent the fluid velocity
 using some volume rendering technique.
 
+## Development
+
+```sh
+$ npm install -g semantic-release-cli
+$ npm install
+$ npm run build
+```
+
 ## Documentation
 
 See the [documentation](https://kitware.github.io/arctic-viewer) for a
