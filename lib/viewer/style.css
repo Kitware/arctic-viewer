@@ -1,7 +1,7 @@
 .ArcticViewer {
 
 }
-/* 78CDF3  003B4E*/
+/* outline: 60606F | text: 003B4E | lightBlue: 72C2EC */
 .ArcticViewer__bar {
     position: relative;
     width: 100%;
@@ -47,6 +47,10 @@
     margin-right: 25px;
     box-shadow: 5px 5px 5px #888888;
     cursor: pointer;
+    text-align: center;
+}
+.DataSetView__thumbnail > i {
+    font-size: 250px;
 }
 
 .DataSetView__titleBar {

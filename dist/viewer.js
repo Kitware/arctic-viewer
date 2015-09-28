@@ -48585,8 +48585,9 @@
 	    },
 
 	    render: function render() {
-	        return React.createElement('div', { className: 'DataSetView', onClick: this.openDataSet }, React.createElement('div', { className: 'DataSetView__thumbnail',
-	            style: { backgroundImage: 'url(' + this.props.base + this.props.item.thumbnail + ')' } }), React.createElement('div', { className: 'DataSetView__titleBar' }, React.createElement('strong', null, this.props.item.name), React.createElement('span', { className: 'DataSetView__size' }, this.props.item.size)), React.createElement('div', { className: 'DataSetView__description' }, this.props.item.description));
+	        return React.createElement('div', { className: 'DataSetView' }, React.createElement('div', { className: 'DataSetView__thumbnail',
+	            onClick: this.openDataSet,
+	            style: { backgroundImage: 'url(' + this.props.base + this.props.item.thumbnail + ')' } }, React.createElement('i', { className: this.props.item.thumbnail ? '' : 'fa fa-question' })), React.createElement('div', { className: 'DataSetView__titleBar' }, React.createElement('strong', null, this.props.item.name), React.createElement('span', { className: 'DataSetView__size' }, this.props.item.size)), React.createElement('div', { className: 'DataSetView__description' }, this.props.item.description));
 	    }
 	});
 	module.exports = exports['default'];
@@ -48626,7 +48627,7 @@
 
 
 	// module
-	exports.push([module.id, ".ArcticViewer {\n\n}\n/* 78CDF3  003B4E*/\n.ArcticViewer__bar {\n    position: relative;\n    width: 100%;\n    background-color: #003B4E;\n    color: #78CDF3;\n    padding-bottom: 5px;\n    border-bottom: 1px solid #003B4E;\n}\n\n.ArcticViewer__bar > img {\n    height: 30px;\n    position: relative;\n    top: 5px;\n    margin-left: 10px;\n}\n\n.ArcticViewer__bar > strong {\n    font-size: 25px;\n}\n\n.ArcticViewer__content {\n    position: relative;\n    width: 100vw;\n    height: calc(100vh - 30px);\n}\n\n.DataSetView {\n    padding: 20px;\n    display: block;\n    clear: both;\n}\n\n.DataSetView__thumbnail {\n    float: left;\n    position: relative;\n    width: 250px;\n    height: 250px;\n    border: 2px solid #888888;\n    border-radius: 5px;\n    background-position: 50% 50%;\n    background-size: 250px;\n    background-repeat: no-repeat;\n    margin-right: 25px;\n    box-shadow: 5px 5px 5px #888888;\n    cursor: pointer;\n}\n\n.DataSetView__titleBar {\n    font-size: 18px;\n}\n\n.DataSetView__titleBar > strong {\n    font-size: 25px;\n}\n\n.DataSetView__description {\n    padding: 25px 25px 0 0;\n    height: 200px;\n    overflow: auto;\n}\n\n.DataSetView__type {\n    float: right;\n}\n\n.DataSetView__size {\n    float: right;\n}\n", ""]);
+	exports.push([module.id, ".ArcticViewer {\n\n}\n/* outline: 60606F | text: 003B4E | lightBlue: 72C2EC */\n.ArcticViewer__bar {\n    position: relative;\n    width: 100%;\n    background-color: #003B4E;\n    color: #78CDF3;\n    padding-bottom: 5px;\n    border-bottom: 1px solid #003B4E;\n}\n\n.ArcticViewer__bar > img {\n    height: 30px;\n    position: relative;\n    top: 5px;\n    margin-left: 10px;\n}\n\n.ArcticViewer__bar > strong {\n    font-size: 25px;\n}\n\n.ArcticViewer__content {\n    position: relative;\n    width: 100vw;\n    height: calc(100vh - 30px);\n}\n\n.DataSetView {\n    padding: 20px;\n    display: block;\n    clear: both;\n}\n\n.DataSetView__thumbnail {\n    float: left;\n    position: relative;\n    width: 250px;\n    height: 250px;\n    border: 2px solid #888888;\n    border-radius: 5px;\n    background-position: 50% 50%;\n    background-size: 250px;\n    background-repeat: no-repeat;\n    margin-right: 25px;\n    box-shadow: 5px 5px 5px #888888;\n    cursor: pointer;\n    text-align: center;\n}\n.DataSetView__thumbnail > i {\n    font-size: 250px;\n}\n\n.DataSetView__titleBar {\n    font-size: 18px;\n}\n\n.DataSetView__titleBar > strong {\n    font-size: 25px;\n}\n\n.DataSetView__description {\n    padding: 25px 25px 0 0;\n    height: 200px;\n    overflow: auto;\n}\n\n.DataSetView__type {\n    float: right;\n}\n\n.DataSetView__size {\n    float: right;\n}\n", ""]);
 
 	// exports
 

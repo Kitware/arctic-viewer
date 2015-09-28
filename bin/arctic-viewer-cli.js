@@ -9,6 +9,7 @@ var fs = require('fs'),
     httpProxy = require('http-proxy'),
     gzipStatic = require('connect-gzip-static'),
     downloader = require('./arctic-data-downloader.js'),
+    preCheckDataDir = require('./arctic-dataset-list-builder.js'),
     oneDay = 86400000,
     onMinute = 60000;
 
@@ -82,6 +83,9 @@ if(program.downloadSampleData) {
         if(!fs.statSync(dataPath).isDirectory()) {
             dataPath = path.dirname(dataPath);
         }
+
+        // Build Dataset list if need be
+        preCheckDataDir(dataPath);
 
         // Serve data from static content
         app.use('/data', gzipStatic(dataPath, { maxAge: onMinute }));
