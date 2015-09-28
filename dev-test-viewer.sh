@@ -14,4 +14,4 @@ cp -r ../../tonic-widgets/lib                      ./node_modules/tonic-widgets/
 npm run build
 
 # Run local code base
-./bin/arctic-viewer-cli.js -s -d $1
+./bin/arctic-viewer-cli.js -s -d $@

@@ -1,0 +1,72 @@
+.ArcticViewer {
+
+}
+/* 78CDF3  003B4E*/
+.ArcticViewer__bar {
+    position: relative;
+    width: 100%;
+    background-color: #003B4E;
+    color: #78CDF3;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #003B4E;
+}
+
+.ArcticViewer__bar > img {
+    height: 30px;
+    position: relative;
+    top: 5px;
+    margin-left: 10px;
+}
+
+.ArcticViewer__bar > strong {
+    font-size: 25px;
+}
+
+.ArcticViewer__content {
+    position: relative;
+    width: 100vw;
+    height: calc(100vh - 30px);
+}
+
+.DataSetView {
+    padding: 20px;
+    display: block;
+    clear: both;
+}
+
+.DataSetView__thumbnail {
+    float: left;
+    position: relative;
+    width: 250px;
+    height: 250px;
+    border: 2px solid #888888;
+    border-radius: 5px;
+    background-position: 50% 50%;
+    background-size: 250px;
+    background-repeat: no-repeat;
+    margin-right: 25px;
+    box-shadow: 5px 5px 5px #888888;
+    cursor: pointer;
+}
+
+.DataSetView__titleBar {
+    font-size: 18px;
+}
+
+.DataSetView__titleBar > strong {
+    font-size: 25px;
+}
+
+.DataSetView__description {
+    padding: 25px 25px 0 0;
+    height: 200px;
+    overflow: auto;
+}
+
+.DataSetView__type {
+    float: right;
+}
+
+.DataSetView__size {
+    float: right;
+}
