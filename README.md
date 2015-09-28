@@ -86,6 +86,12 @@ $ npm run build
 See the [documentation](https://kitware.github.io/arctic-viewer) for a
 getting started guide, advanced documentation, and API descriptions.
 
+__Note__: The development dependency listed in the package.json file for less
+("less": "^1.5") is a peerDependencies of less-loader@0.7.8, which is a dependency of
+font-awesome-webpack@0.0.3. peerDependencies were automatically downloaded in
+npm@2, but in npm@3 the behavior varies from warnings to errors. The
+peerDependency must be handled (installed) as a dependency.
+
 #### Licensing
 
 **arctic-viewer** aka ArcticViewer is licensed under [BSD Clause 3](LICENSE).
