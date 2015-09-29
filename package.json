@@ -17,7 +17,8 @@
     "mkdirp": "^0.5.1",
     "open": "latest",
     "progress": "latest",
-    "tarball-extract": "latest"
+    "tarball-extract": "latest",
+    "du": "0.1.0"
   },
   "devDependencies": {
     "tonic-data-manager": "0.0.11",

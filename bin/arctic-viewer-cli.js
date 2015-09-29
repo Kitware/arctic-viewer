@@ -31,6 +31,22 @@ function getExportPath(args) {
     return result;
 }
 
+function extractImageBase64(rawString) {
+    return removeHead(rawString, 'base64,');
+}
+
+function removeHead(rawString, keyword) {
+    var cutIdx = rawString.indexOf(keyword);
+
+    if(cutIdx === -1) {
+        return null;
+    }
+
+    // Need to shift idx and cut string
+    cutIdx += keyword.length;
+    return rawString.slice(cutIdx);
+}
+
 program
   .version('0.0.8')
   .option('-p, --port [3000]', 'Start web server with given port', handlePort, 3000)
@@ -99,12 +115,50 @@ if(program.downloadSampleData) {
     app.post('/export', function(req, res) {
         var data = req.body,
             args = data.arguments,
-            base64Data = data.image.split('base64,')[1];
+            base64Data = extractImageBase64(data.image);
 
-        require("fs").writeFile(getExportPath(args), base64Data, 'base64', function(err) {
-        });
+        if(base64Data) {
+            require("fs").writeFile(getExportPath(args), base64Data, 'base64', function(err) {
+            });
+        } else {
+            // We should get the URL of image and copy it with a different name
+        }
 
         res.send('Data saved');
+    });
+
+    // Add metadata update
+    app.post('/update', function(req, res) {
+        var data = req.body,
+            title = data.title.replace(/<br>/g, '').replace(/<br\/>/g, ''),
+            description = data.description.replace(/<br>/g, '').replace(/<br\/>/g, ''),
+            dsPath = path.join(dataPath, removeHead(data.path, '/data/')),
+            imagePath = data.image,
+            base64Data = extractImageBase64(data.image);
+
+        // Create thumbnail
+        if(base64Data) {
+            // Write thumbnail as base64
+            var thumbnailPath = path.join(dsPath, 'thumbnail.png');
+            fs.writeFile(thumbnailPath, base64Data, 'base64', function(err) {});
+        } else {
+            // Copy image
+            console.log('Should copy image: ', imagePath);
+        }
+
+        // Update info.json
+        var infoPath = path.join(dsPath, 'info.json'),
+            originalData = require(infoPath);
+
+        if(!originalData.metadata) {
+            originalData.metadata = {};
+        }
+
+        originalData.metadata.title = title;
+        originalData.metadata.description = description;
+        fs.writeFile(infoPath, JSON.stringify(originalData, null, 2));
+
+        res.send('Data updated');
     });
 
     // Start server and listening
