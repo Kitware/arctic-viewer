@@ -19,6 +19,7 @@
     "commander": "latest",
     "connect-gzip-static": "latest",
     "cz-conventional-changelog": "1.1.0",
+    "du": "0.1.0",
     "express": "latest",
     "font-awesome": "4.4.0",
     "font-awesome-webpack": "0.0.3",
