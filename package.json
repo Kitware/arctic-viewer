@@ -22,7 +22,6 @@
     "du": "0.1.0",
     "express": "latest",
     "font-awesome": "4.4.0",
-    "font-awesome-webpack": "0.0.3",
     "gl-matrix": "2.3.1",
     "http-proxy": "latest",
     "mkdirp": "^0.5.1",
@@ -32,9 +31,7 @@
     "open": "latest",
     "progress": "latest",
     "react": "0.13.3",
-    "tarball-extract": "latest",
-
-    "less": "^1.5"
+    "tarball-extract": "latest"
   },
   "devDependencies": {
   },
