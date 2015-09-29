@@ -9,33 +9,33 @@
     "url": "https://github.com/Kitware/arctic-viewer.git"
   },
   "dependencies": {
-    "body-parser": "^1.14.0",
-    "commander": "latest",
-    "connect-gzip-static": "latest",
-    "express": "latest",
-    "http-proxy": "latest",
-    "mkdirp": "^0.5.1",
-    "open": "latest",
-    "progress": "latest",
-    "tarball-extract": "latest"
-  },
-  "devDependencies": {
     "tonic-data-manager": "0.0.11",
     "tonic-image-builder": "0.0.8",
     "tonic-mouse-handler": "0.0.6",
     "tonic-query-data-model": "0.0.13",
     "tonic-widgets": "0.0.9",
 
+    "body-parser": "^1.14.0",
+    "commander": "latest",
+    "connect-gzip-static": "latest",
     "cz-conventional-changelog": "1.1.0",
+    "express": "latest",
     "font-awesome": "4.4.0",
     "font-awesome-webpack": "0.0.3",
     "gl-matrix": "2.3.1",
+    "http-proxy": "latest",
+    "mkdirp": "^0.5.1",
     "monologue.js": "0.3.3",
     "mout": "0.11.0",
     "normalize.css": "3.0.3",
+    "open": "latest",
+    "progress": "latest",
     "react": "0.13.3",
+    "tarball-extract": "latest",
 
     "less": "^1.5"
+  },
+  "devDependencies": {
   },
   "scripts": {
     "commit": "git-cz",
