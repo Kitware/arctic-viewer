@@ -1,16 +1,19 @@
-sudo: false
 language: node_js
+sudo: false
+notifications:
+  email:
+    recipients:
+      - tristan.wright@kitware.com
+      - sebastien.jourdain@kitware.com
+    on_success: change
+    on_failure: always
 cache:
   directories:
     - node_modules
-notifications:
-  email: false
 node_js:
-  - iojs
+  - "4.1"
 before_install:
-  - npm i -g npm@^2.0.0
-before_script:
-  - npm prune
+  - npm run dep:travis
 script:
   - npm run build:release
 after_success:

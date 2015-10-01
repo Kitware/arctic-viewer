@@ -9,31 +9,30 @@
     "url": "https://github.com/Kitware/arctic-viewer.git"
   },
   "dependencies": {
-    "tonic-data-manager": "0.0.11",
-    "tonic-image-builder": "0.0.8",
-    "tonic-mouse-handler": "0.0.6",
-    "tonic-query-data-model": "0.0.13",
-    "tonic-widgets": "0.0.9",
+    "tonic-data-manager": "1.0.0",
+    "tonic-image-builder": "0.1.0",
+    "tonic-mouse-handler": "1.0.0",
+    "tonic-query-data-model": "1.0.0",
+    "tonic-widgets": "0.1.0",
 
-    "body-parser": "^1.14.0",
-    "commander": "latest",
-    "connect-gzip-static": "latest",
-    "cz-conventional-changelog": "1.1.0",
-    "du": "0.1.0",
-    "express": "latest",
     "font-awesome": "4.4.0",
-    "gl-matrix": "2.3.1",
-    "http-proxy": "latest",
-    "mkdirp": "^0.5.1",
-    "monologue.js": "0.3.3",
     "mout": "0.11.0",
     "normalize.css": "3.0.3",
-    "open": "latest",
-    "progress": "latest",
     "react": "0.13.3",
-    "tarball-extract": "latest"
+
+    "body-parser": "1.14.0",
+    "commander": "2.8.1",
+    "connect-gzip-static": "1.0.0",
+    "du": "0.1.0",
+    "express": "4.13.3",
+    "http-proxy": "1.11.2",
+    "mkdirp": "0.5.1",
+    "open": "0.0.5",
+    "progress": "1.1.8",
+    "tarball-extract": "0.0.3"
   },
   "devDependencies": {
+    "cz-conventional-changelog": "1.1.0"
   },
   "scripts": {
     "build": "webpack",
@@ -46,8 +45,13 @@
     "commit": "git-cz",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
 
-    "dep:local": "npm install tonic-site-generator@0.1.0 autoprefixer-loader@2.0.0 babel-core@5.8.22 babel-loader@5.3.2 commitizen@1.0.4 css-loader@0.16.0 expose-loader@0.7.0 file-loader@0.8.4 html-webpack-plugin@1.6.1 jasmine-core@2.3.4 jest-cli@0.5.0 jshint@2.8.0 jshint-loader@0.8.3 json-loader@^0.5.2 karma@0.13.10 karma-chrome-launcher@0.2.0 karma-cli@0.1.0 karma-firefox-launcher@0.1.6 karma-jasmine@0.3.6 karma-phantomjs-launcher@0.2.1 karma-safari-launcher@0.1.1 node-libs-browser@0.5.2 phantomjs@1.9.18 semantic-release@4.3.5 semantic-release-cli@1.2.0 serve@1.4.0 shader-loader@1.1.3 style-loader@0.12.3 url-loader@0.5.6 webpack@1.11.0",
-    "dep:global": "npm run dep:local -- -g"
+    "dep:webpack": "npm install node-libs-browser@0.5.2 autoprefixer-loader@2.0.0 babel-core@5.8.22 babel-loader@5.3.2 css-loader@0.16.0 expose-loader@0.7.0 file-loader@0.8.4 html-webpack-plugin@1.6.1 jshint@2.8.0 jshint-loader@0.8.3 json-loader@^0.5.2 shader-loader@1.1.3 style-loader@0.12.3 url-loader@0.5.6 webpack@1.11.0",
+    "dep:www"    : "npm install tonic-site-generator@0.1.0 serve@1.4.0",
+    "dep:release": "npm install commitizen@1.0.4 semantic-release@4.3.5",
+
+    "dep:travis" : "npm run dep:webpack && npm run dep:release",
+    "dep:local"  : "npm run dep:webpack && npm run dep:www && npm run dep:release",
+    "dep:global" : "npm run dep:webpack -- -g && npm run dep:www -- -g && npm run dep:release -- -g"
   },
   "bin": {
     "ArcticViewer": "./bin/arctic-viewer-cli.js"
