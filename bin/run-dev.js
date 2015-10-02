@@ -27,6 +27,5 @@ var cmd = [ path.join(__dirname, 'arctic-viewer-cli.js'), '-s', '-d' ];
 for (var i = 2; i < process.argv.length; i++) {
     cmd.push(process.argv[i]);
 }
-console.log('exec', cmd.join(' '));
 exec(cmd.join(' '));
 
