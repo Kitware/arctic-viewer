@@ -43,6 +43,7 @@
     "build": "webpack",
     "build:debug": "webpack --display-modules",
     "build:release": "webpack -p",
+    "build:bundle": "node ./bin/bundle.js",
 
     "www": "tonic-site-generator site.config.js",
     "www:http": "tonic-site-generator site.config.js --local-test && serve docs/www",
