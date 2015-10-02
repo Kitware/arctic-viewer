@@ -76,7 +76,7 @@ function generateBundle(nodeConf) {
                 // Move to next bundle
                 next();
             } else {
-                console.log(' | oups something wrong happened while downloading ' + url);
+                console.log(' | oups something wrong happened while downloading ' + nodeConf.url);
             }
         }
     );
