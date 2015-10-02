@@ -9,10 +9,10 @@
     "url": "https://github.com/Kitware/arctic-viewer.git"
   },
   "dependencies": {
-    "tonic-data-manager": "1.0.0",
+    "tonic-data-manager": "1.1.0",
     "tonic-image-builder": "0.2.0",
     "tonic-mouse-handler": "1.0.0",
-    "tonic-query-data-model": "1.0.0",
+    "tonic-query-data-model": "1.1.0",
     "tonic-widgets": "0.2.0",
 
     "font-awesome": "4.4.0",
