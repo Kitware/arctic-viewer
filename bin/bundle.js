@@ -10,6 +10,7 @@ var path = require('path'),
     directoryToCopy = [
         path.join(__dirname, '../bin'),
         path.join(__dirname, '../dist'),
+        path.join(__dirname, '../LICENSE'),
         path.join(__dirname, '../node_modules'),
     ],
     nodePaths = [
@@ -18,7 +19,16 @@ var path = require('path'),
         { name: 'linux_x86', url: 'https://nodejs.org/dist/v4.1.1/node-v4.1.1-linux-x86.tar.gz' },
         // { name: 'win32', url: [ 'https://nodejs.org/dist/v4.1.1/win-x86/node.exe', 'https://nodejs.org/dist/v4.1.1/win-x86/node.lib'] },
         // { name: 'win64', url: [ 'https://nodejs.org/dist/v4.1.1/win-x64/node.exe', 'https://nodejs.org/dist/v4.1.1/win-x64/node.lib'] }
-    ];
+    ],
+    unixScript = '#!/bin/bash\n'
+               + 'SOURCE="${BASH_SOURCE[0]}"\n'
+               + 'while [ -h "$SOURCE" ]; do\n'
+               + '  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"\n'
+               + '  SOURCE="$(readlink "$SOURCE")"\n'
+               + '  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"\n'
+               + 'done\n'
+               + 'DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"\n'
+               + '$DIR/bin/node $DIR/bin/arctic-viewer-cli.js $@';
 
 // Create download destination
 rm('-rf', bundleRoot);
@@ -47,8 +57,8 @@ function generateBundle(nodeConf) {
     })
 
     // Create Exec file
-    var execScript = path.join(bundleDest, 'ArcticViewer.sh');
-    './bin/node ./bin/arctic-viewer-cli.js $@'.to(execScript);
+    var execScript = path.join(bundleDest, 'ArcticViewer');
+    unixScript.to(execScript);
     chmod('u+x', execScript);
 
     // Download node and put the binary into bundle
