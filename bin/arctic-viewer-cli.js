@@ -11,7 +11,8 @@ var fs = require('fs'),
     downloader = require('./arctic-data-downloader.js'),
     preCheckDataDir = require('./arctic-dataset-list-builder.js'),
     oneDay = 86400000,
-    onMinute = 60000;
+    onMinute = 60000,
+    clientConfiguration = {};
 
 function handlePort(value) {
     return Number(value);
@@ -48,17 +49,28 @@ function removeHead(rawString, keyword) {
 }
 
 program
-  .version('0.0.8')
+  .version('0.3.2')
   .option('-p, --port [3000]', 'Start web server with given port', handlePort, 3000)
   .option('-d, --data [directory/http]', 'Data directory to serve. Should contain a info.json file.')
   .option('-s, --server-only', 'Do not open the web browser')
 
   .option('-o, --output-pattern [path/pattern]', 'Provide a destination path for the exported images. i.e.: /opt/data/{time}/{pipeline}/{phi}_{theta}.jpg', './export/{__}.jpg')
 
-  .option('-D, --download-sample-data', 'Download some try-out data [~100MB] inside the current directory.')
-  .option('-R, --download [http://remote-host/data]', 'Url to the source of your in-situ data that you want to download inside the current directory.')
+  .option('--download-sample-data', 'Download some try-out data [~100MB] inside the current directory.')
+  .option('--download [http://remote-host/data]', 'Url to the source of your data that you want to download inside the current directory.')
+
+  .option('-M, --magic-lens', 'Enable MagicLens inside client configuration')
+  .option('-S, --single-view', 'Enable SingleView inside client configuration')
+  .option('-R, --recording', 'Enable Recording inside client configuration')
+  .option('-D, --development', 'Enable Development inside client configuration')
 
   .parse(process.argv);
+
+// Update client configuration:
+clientConfiguration.MagicLens   = !!program.magicLens;
+clientConfiguration.SingleView  = !!program.singleView;
+clientConfiguration.Recording   = !!program.recording;
+clientConfiguration.Development = !!program.development;
 
 if (!process.argv.slice(2).length) {
     return program.outputHelp();
@@ -159,6 +171,11 @@ if(program.downloadSampleData) {
         fs.writeFile(infoPath, JSON.stringify(originalData, null, 2));
 
         res.send('Data updated');
+    });
+
+    // Add config.json endpoint
+    app.get('/config.json', function(req, res) {
+        res.send(JSON.stringify(clientConfiguration, null, 2));
     });
 
     // Start server and listening

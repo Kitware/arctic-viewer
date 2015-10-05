@@ -21,14 +21,20 @@ $ ArcticViewer
 
   Options:
 
-    -h, --help                                output usage information
-    -V, --version                             output the version number
-    -p, --port [3000]                         Start web server with given port
-    -d, --data [directory/http]               Data directory to serve. Should contain a info.json file.
-    -s, --server-only                         Do not open the web browser
+    -h, --help                            output usage information
+    -V, --version                         output the version number
+    -p, --port [3000]                     Start web server with given port
+    -d, --data [directory/http]           Data directory to serve. Should contain a info.json file.
+    -s, --server-only                     Do not open the web browser
+    -o, --output-pattern [path/pattern]   Provide a destination path for the exported images. i.e.: /opt/data/{time}/{pipeline}/{phi}_{theta}.jpg
 
-    -D, --download-sample-data                Download some try-out data [~100MB] inside the current directory.
-    -R, --download [http://remote-host/data]  Url to the source of your in-situ data that you want to download inside the current directory.
+    --download-sample-data                Download some try-out data [~100MB] inside the current directory.
+    --download [http://remote-host/data]  Url to the source of your data that you want to download inside the current directory.
+
+    -M, --magic-lens                      Enable MagicLens inside client configuration
+    -S, --single-view                     Enable SingleView inside client configuration
+    -R, --recording                       Enable Recording inside client configuration
+    -D, --development                     Enable Development inside client configuration
 
 ```
 
@@ -39,7 +45,7 @@ Here is an example on how to download some sample data
 
 ```
 $ mkdir tonic-data && cd $_
-$ ArcticViewer -D
+$ ArcticViewer --download-sample-data
 
  | Downloading sample data (~100MB) into directory /Users/seb/tonic-data
  |

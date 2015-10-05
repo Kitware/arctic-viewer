@@ -13,7 +13,7 @@
     "tonic-image-builder": "0.2.0",
     "tonic-mouse-handler": "1.0.0",
     "tonic-query-data-model": "1.1.0",
-    "tonic-widgets": "0.2.0",
+    "tonic-widgets": "0.3.0",
 
     "font-awesome": "4.4.0",
     "mout": "0.11.0",
@@ -34,7 +34,8 @@
     "mkdirp": "0.5.1",
     "open": "0.0.5",
     "progress": "1.1.8",
-    "tarball-extract": "0.0.3"
+    "tarball-extract": "0.0.3",
+    "shelljs": "0.5.3"
   },
   "devDependencies": {
     "cz-conventional-changelog": "1.1.0"
@@ -43,7 +44,7 @@
     "build": "webpack",
     "build:debug": "webpack --display-modules",
     "build:release": "webpack -p",
-    "build:bundle": "node ./bin/bundle.js",
+    "build:bundle": "./bin/bundle.js",
 
     "test": "./bin/run-dev.js",
 
