@@ -17,6 +17,10 @@ module.exports = {
           test: /\.js$/,
           include: /tonic-/,
           loader: "babel-loader"
+      },{
+        test: /\.js$/,
+        include: /react-contenteditable/,
+        loader: "babel-loader"
       }
     ],
     loaders: [
