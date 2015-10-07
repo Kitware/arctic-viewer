@@ -1,8 +1,9 @@
 #! /usr/bin/env node
 
+require('shelljs/global');
+
 var fs = require('fs'),
     path = require('path'),
-    mkdirp = require('mkdirp'),
     program = require('commander'),
     express = require('express'),
     bodyParser = require('body-parser'),
@@ -27,7 +28,7 @@ function getExportPath(args) {
     }
 
     // Create directory if need be
-    mkdirp.sync(path.dirname(result));
+    mkdir('-p', path.dirname(result));
 
     return result;
 }
