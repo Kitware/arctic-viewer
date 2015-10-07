@@ -6,12 +6,13 @@ var path = require('path'),
     tarball = require('tarball-extract'),
     nodeDest = path.join(__dirname, '../bundles/nodes'),
     bundleRoot = path.join(__dirname, '../bundles'),
+    packageJSON = require(path.join(__dirname, '../package.json')),
     bundleIdx = 0,
+    baseNodeModulePath = path.join(__dirname, '../node_modules'),
     directoryToCopy = [
         path.join(__dirname, '../bin'),
         path.join(__dirname, '../dist'),
         path.join(__dirname, '../LICENSE'),
-        path.join(__dirname, '../node_modules'),
     ],
     nodePaths = [
         { name: 'osx', url: 'https://nodejs.org/dist/v4.1.1/node-v4.1.1-darwin-x64.tar.gz' },
@@ -55,6 +56,13 @@ function generateBundle(nodeConf) {
     directoryToCopy.forEach(function(d) {
         cp('-r', d, bundleDest);
     })
+
+    // Copy only needed node_modules
+    var destNodeModules = path.join(bundleDest, 'node_modules');
+    mkdir('-p', destNodeModules);
+    for(var moduleName in packageJSON.dependencies) {
+        cp('-r', path.join(baseNodeModulePath, moduleName), destNodeModules);
+    }
 
     // Create Exec file
     var execScript = path.join(bundleDest, 'ArcticViewer');
