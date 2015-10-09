@@ -194,13 +194,13 @@ module.exports = {
     },
 
     downloadData: function(url) {
-        http.get(url + '/info.json', function(res) {
+        http.get(url + '/index.json', function(res) {
             var buffer = [];
             res.on('data', function (chunk) {
                 buffer.push(chunk);
             });
             res.on('end', function () {
-                fs.writeFile(path.join(outputDirectory, 'info.json'),
+                fs.writeFile(path.join(outputDirectory, 'index.json'),
                             buffer.join(''),
                             function (err) {
                                 if (err) throw err;

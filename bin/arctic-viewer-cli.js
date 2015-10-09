@@ -12,7 +12,7 @@ var fs = require('fs'),
     downloader = require('./arctic-data-downloader.js'),
     preCheckDataDir = require('./arctic-dataset-list-builder.js'),
     oneDay = 86400000,
-    onMinute = 60000,
+    tenSeconds = 10000,
     clientConfiguration = {};
 
 function handlePort(value) {
@@ -52,7 +52,7 @@ function removeHead(rawString, keyword) {
 program
   .version('0.3.2')
   .option('-p, --port [3000]', 'Start web server with given port', handlePort, 3000)
-  .option('-d, --data [directory/http]', 'Data directory to serve. Should contain a info.json file.')
+  .option('-d, --data [directory/http]', 'Data directory to serve. Should contain a index.json file.')
   .option('-s, --server-only', 'Do not open the web browser')
 
   .option('-o, --output-pattern [path/pattern]', 'Provide a destination path for the exported images. i.e.: /opt/data/{time}/{pipeline}/{phi}_{theta}.jpg', './export/{__}.jpg')
@@ -117,7 +117,7 @@ if(program.downloadSampleData) {
         preCheckDataDir(dataPath);
 
         // Serve data from static content
-        app.use('/data', gzipStatic(dataPath, { maxAge: onMinute }));
+        app.use('/data', gzipStatic(dataPath, { maxAge: tenSeconds }));
     }
 
     // Print server information
@@ -159,9 +159,9 @@ if(program.downloadSampleData) {
             console.log('Should copy image: ', imagePath);
         }
 
-        // Update info.json
-        var infoPath = path.join(dsPath, 'info.json'),
-            originalData = require(infoPath);
+        // Update index.json
+        var indexPath = path.join(dsPath, 'index.json'),
+            originalData = require(indexPath);
 
         if(!originalData.metadata) {
             originalData.metadata = {};
@@ -169,7 +169,7 @@ if(program.downloadSampleData) {
 
         originalData.metadata.title = title;
         originalData.metadata.description = description;
-        fs.writeFile(infoPath, JSON.stringify(originalData, null, 2));
+        fs.writeFile(indexPath, JSON.stringify(originalData, null, 2));
 
         res.send('Data updated');
     });

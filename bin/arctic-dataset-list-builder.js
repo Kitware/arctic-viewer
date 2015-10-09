@@ -16,8 +16,8 @@ function formatFileSize(size) {
 }
 
 function updateDatasetSize(basepath) {
-    var infoPath = path.join(basepath, 'info.json'),
-        originalData = require(infoPath);
+    var indexPath = path.join(basepath, 'index.json'),
+        originalData = require(indexPath);
     du(basepath, function(err, size) {
         if(err) {
             return console.log('Error computing size of', basepath);
@@ -32,7 +32,7 @@ function updateDatasetSize(basepath) {
         originalData.metadata.size = formatFileSize(size);
 
         // Save to disk
-        fs.writeFile(infoPath, JSON.stringify(originalData, null, 2));
+        fs.writeFile(indexPath, JSON.stringify(originalData, null, 2));
     });
 }
 
@@ -46,7 +46,7 @@ function addDataset(listToFill, fullpath, dirName, json) {
     dataset.size        = metadata.size || '';
     dataset.thumbnail   = metadata.thumbnail;
     dataset.type        = json.type;
-    dataset.path        = dirName + '/info.json';
+    dataset.path        = dirName + '/index.json';
 
     if(!metadata.size) {
         // Update size for next time
@@ -67,7 +67,7 @@ function addDataset(listToFill, fullpath, dirName, json) {
 }
 
 function processDirectory(basePath) {
-    var dataToLoadPath = path.join(basePath, 'info.json');
+    var dataToLoadPath = path.join(basePath, 'index.json');
     if (fs.existsSync(dataToLoadPath)) {
         var existingDataset = require(dataToLoadPath);
         try {
@@ -88,14 +88,14 @@ function processDirectory(basePath) {
 
     subDirectories.forEach(function(dirName) {
         var dsPath = path.join(basePath, dirName),
-            infoPath = path.join(dsPath, 'info.json');
-        if (fs.existsSync(infoPath)) {
-            addDataset(datasets, dsPath, dirName, require(infoPath));
+            indexPath = path.join(dsPath, 'index.json');
+        if (fs.existsSync(indexPath)) {
+            addDataset(datasets, dsPath, dirName, require(indexPath));
         }
     });
 
 
-    fs.writeFile(path.join(basePath, 'info.json'), JSON.stringify(result, null, 2));
+    fs.writeFile(path.join(basePath, 'index.json'), JSON.stringify(result, null, 2));
 }
 
 // Expose method
