@@ -1,7 +1,31 @@
 [
   {
-  	"title": "MPAS probe flat earth",
-  	"filesize":"43.3MB",
+    "title": "Head CT",
+    "filesize":"14 MB",
+    "thumbnail": "http://tonic.kitware.com.s3-website-us-west-2.amazonaws.com/arctic-viewer/head-ct.png",
+    "url": "http://tonic.kitware.com.s3-website-us-west-2.amazonaws.com/arctic-viewer/head-ct.tgz"
+  },
+  {
+    "title": "Diskout - Sorted Composite",
+    "filesize":"750.1 MB",
+    "thumbnail": "http://tonic.kitware.com.s3-website-us-west-2.amazonaws.com/arctic-viewer/diskout-composite.png",
+    "url": "http://tonic.kitware.com.s3-website-us-west-2.amazonaws.com/arctic-viewer/diskout-composite.tgz"
+  },
+  {
+    "title": "MPAS composite",
+    "filesize":"162.3 MB",
+    "thumbnail": "http://tonic.kitware.com.s3-website-us-west-2.amazonaws.com/arctic-viewer/mpas-composite-earth.png",
+    "url": "http://tonic.kitware.com.s3-website-us-west-2.amazonaws.com/arctic-viewer/mpas-composite-earth.tgz"
+  },
+  {
+    "title": "MPAS - Raw probe",
+    "filesize":"37.5 MB",
+    "thumbnail": "http://tonic.kitware.com.s3-website-us-west-2.amazonaws.com/arctic-viewer/mpas-flat-earth-prober.png",
+    "url": "http://tonic.kitware.com.s3-website-us-west-2.amazonaws.com/arctic-viewer/mpas-flat-earth-prober.tgz"
+  },
+  {
+    "title": "MPAS probe flat earth",
+    "filesize":"43.3MB",
     "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/mpas-probe-flat-earth.png",
     "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/mpas-probe-flat-earth.tgz"
   },
@@ -58,17 +82,5 @@
     "filesize":"98.3 MB",
     "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/ensemble.jpg",
     "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/ensemble.tgz"
-  },
-  {
-    "title": "Head CT",
-    "filesize":"141.7 MB",
-    "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/head_ct.png",
-    "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/head_ct.tgz"
-  },
-  {
-    "title": "Diskout - Sorted Composite",
-    "filesize":"750.1 MB",
-    "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/diskout.png",
-    "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/diskout.tgz"
   }
 ]
