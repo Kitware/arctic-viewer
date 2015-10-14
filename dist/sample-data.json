@@ -1,86 +1,48 @@
 [
   {
-    "title": "Head CT",
+    "title": "Diskout Ref - Composite",
+    "filesize":"40 MB",
+    "thumbnail": "http://tonic.kitware.com/arctic-viewer/diskout-composite.png",
+    "url": "http://tonic.kitware.com/arctic-viewer/diskout-composite.ios.tgz"
+  },{
+    "title": "Ensemble - Demo",
+    "filesize":" MB",
+    "thumbnail": "http://tonic.kitware.com/arctic-viewer/ensemble.jpg",
+    "url": "http://tonic.kitware.com/arctic-viewer/ensemble.tgz"
+  },{
+    "title": "Garfield Comic",
+    "filesize":" MB",
+    "thumbnail": "http://tonic.kitware.com/arctic-viewer/garfield.jpg",
+    "url": "http://tonic.kitware.com/arctic-viewer/garfield.tgz"
+  },{
+    "title": "Head CT - 3 features composite",
     "filesize":"14 MB",
-    "thumbnail": "http://tonic.kitware.com.s3-website-us-west-2.amazonaws.com/arctic-viewer/head-ct.png",
-    "url": "http://tonic.kitware.com.s3-website-us-west-2.amazonaws.com/arctic-viewer/head-ct.tgz"
-  },
-  {
-    "title": "Diskout - Sorted Composite",
-    "filesize":"750.1 MB",
-    "thumbnail": "http://tonic.kitware.com.s3-website-us-west-2.amazonaws.com/arctic-viewer/diskout-composite.png",
-    "url": "http://tonic.kitware.com.s3-website-us-west-2.amazonaws.com/arctic-viewer/diskout-composite.tgz"
-  },
-  {
-    "title": "MPAS composite",
+    "thumbnail": "http://tonic.kitware.com/arctic-viewer/head_ct_3_features.png",
+    "url": "http://tonic.kitware.com/arctic-viewer/head_ct_3_features.ios.tgz"
+  },{
+    "title": "Head CT - 4 features composite",
+    "filesize":"13.1 MB",
+    "thumbnail": "http://tonic.kitware.com/arctic-viewer/head_ct_4_features.png",
+    "url": "http://tonic.kitware.com/arctic-viewer/head_ct_4_features.ios.tgz"
+  },{
+    "title": "Hydra - Fluid Velocity",
+    "filesize":"50.8 MB",
+    "thumbnail": "http://tonic.kitware.com/arctic-viewer/hydra-image-fluid-velocity.jpg",
+    "url": "http://tonic.kitware.com/arctic-viewer/hydra-image-fluid-velocity.tgz"
+  },{
+    "title": "MPAS - Composite Temperature contours",
     "filesize":"162.3 MB",
-    "thumbnail": "http://tonic.kitware.com.s3-website-us-west-2.amazonaws.com/arctic-viewer/mpas-composite-earth.png",
-    "url": "http://tonic.kitware.com.s3-website-us-west-2.amazonaws.com/arctic-viewer/mpas-composite-earth.tgz"
-  },
-  {
-    "title": "MPAS - Raw probe",
+    "thumbnail": "http://tonic.kitware.com/arctic-viewer/mpas-composite-earth.png",
+    "url": "http://tonic.kitware.com/arctic-viewer/mpas-composite-earth.ios.tgz"
+  },{
+    "title": "MPAS - Flat earth prober",
     "filesize":"37.5 MB",
-    "thumbnail": "http://tonic.kitware.com.s3-website-us-west-2.amazonaws.com/arctic-viewer/mpas-flat-earth-prober.png",
-    "url": "http://tonic.kitware.com.s3-website-us-west-2.amazonaws.com/arctic-viewer/mpas-flat-earth-prober.tgz"
-  },
-  {
-    "title": "MPAS probe flat earth",
-    "filesize":"43.3MB",
-    "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/mpas-probe-flat-earth.png",
-    "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/mpas-probe-flat-earth.tgz"
-  },
-  {
-  	"title": "Hydra image fluid velocity",
-  	"filesize":"55MB",
-    "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/hydra-image-fluid-velocity.jpg",
-    "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/hydra-image-fluid-velocity.tgz"
-  },
-  {
-    "title": "MPAS contours - WebGL RGBD",
-    "filesize":"448.2MB",
-    "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/mpas-contours-rgbd.png",
-    "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/mpas-contours-rgbd.tgz"
-  },
-  {
-    "title": "MPAS contours - WebGL RGBD Binary",
-    "filesize":"523.7MB",
-    "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/mpas-contours-rgbdb.png",
-    "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/mpas-contours-rgbdb.tgz"
-  },
-  {
-    "title": "Diskout - WebGL sxyz-light",
-    "filesize":"216.8MB",
-    "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/diskout-sxyz-light.png",
-    "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/diskout-sxyz-light.tgz"
-  },
-  {
-  	"title": "Hydra hi-res velocity",
-  	"filesize":"467MB",
-  	"thumbnail": "http://www.kitware.com/in-situ-data/hydra/hi-res-vel.jpg",
-  	"url": "http://www.kitware.com/in-situ-data/hydra/hi-res-vel.tgz"
-  },
-  {
-  	"title": "Hydra hi-res vorticity",
-  	"filesize":"2.73GB",
-  	"thumbnail": "http://www.kitware.com/in-situ-data/hydra/hi-res-vorticity.jpg",
-  	"url": "http://www.kitware.com/in-situ-data/hydra/hi-res-vorticity.tgz"
-  },
-  {
-    "title": "Hydra probe full shortest",
-    "filesize":"141.9MB",
-    "thumbnail": "http://www.kitware.com/in-situ-data/hydra/probe-full-shortest.png",
-    "url": "http://www.kitware.com/in-situ-data/hydra/probe-full-shortest.tgz"
-  },
-  {
-    "title": "Garfield comics",
-    "filesize":"1 KB",
-    "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/garfield.jpg",
-    "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/garfield.tgz"
-  },
-  {
-    "title": "Ensemble demo",
-    "filesize":"98.3 MB",
-    "thumbnail": "http://www.kitware.com/in-situ-data/tonic-sample-data/ensemble.jpg",
-    "url": "http://www.kitware.com/in-situ-data/tonic-sample-data/ensemble.tgz"
+    "thumbnail": "http://tonic.kitware.com/arctic-viewer/mpas-flat-earth-prober.png",
+    "url": "http://tonic.kitware.com/arctic-viewer/mpas-flat-earth-prober.ios.tgz"
+  },{
+    "title": "MPAS - High contours resolution",
+    "filesize":"583.7 MB",
+    "thumbnail": "http://tonic.kitware.com/arctic-viewer/mpas-hd-500-7t.png",
+    "url": "http://tonic.kitware.com/arctic-viewer/mpas-hd-500-7t.tgz"
   }
 ]
