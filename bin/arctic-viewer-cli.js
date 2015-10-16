@@ -13,7 +13,8 @@ var fs = require('fs'),
     preCheckDataDir = require('./arctic-dataset-list-builder.js'),
     oneDay = 86400000,
     tenSeconds = 10000,
-    clientConfiguration = {};
+    clientConfiguration = {},
+    ipList = require('./network');
 
 function handlePort(value) {
     return Number(value);
@@ -121,7 +122,17 @@ if(program.downloadSampleData) {
     }
 
     // Print server information
-    console.log("\nArcticViewer\n  => Serve " + dataPath + " on port " + program.port + "\n");
+    if(ipList.length === 1) {
+        console.log("\nArcticViewer\n  => Serve " + dataPath + "\n  |  http://" + ipList[0].ip + ":" + program.port + "/\n");
+    } else {
+        console.log("\nArcticViewer\n  => Serve " + dataPath + " on port " + program.port + "\n");
+        ipList.forEach(function(l){
+            console.log("    ", l.name, "=> http://" + l.ip + ":" + program.port + "/");
+        });
+        console.log();
+    }
+
+
 
     // Add image export handler
     app.use(bodyParser.json({limit: 10000000}));

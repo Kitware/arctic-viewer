@@ -12,15 +12,11 @@ module.exports = {
       {
           test: /\.js$/,
           exclude: /node_modules/,
-          loader: "jshint-loader!babel-loader"
+          loader: "jshint-loader!babel" // ?optional[]=runtime&optimisation.react.inlineElements
       },{
           test: /\.js$/,
           include: /tonic-/,
-          loader: "babel-loader"
-      },{
-        test: /\.js$/,
-        include: /react-contenteditable/,
-        loader: "babel-loader"
+          loader: "babel" // ?optional[]=runtime&optimisation.react.inlineElements
       }
     ],
     loaders: [
