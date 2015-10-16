@@ -1,0 +1,10 @@
+{
+  "stage": 0,
+  "ignore": [
+    "monologue"
+  ],
+  "optional": [
+    // "optimisation.react.inlineElements",
+    // "optimisation.react.constantElements"
+  ]
+}
