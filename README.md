@@ -24,12 +24,13 @@ $ ArcticViewer
     -h, --help                            output usage information
     -V, --version                         output the version number
     -p, --port [3000]                     Start web server with given port
-    -d, --data [directory/http]           Data directory to serve. Should contain a info.json file.
+    -d, --data [directory/http]           Data directory to serve
     -s, --server-only                     Do not open the web browser
-    -o, --output-pattern [path/pattern]   Provide a destination path for the exported images. i.e.: /opt/data/{time}/{pipeline}/{phi}_{theta}.jpg
 
-    --download-sample-data                Download some try-out data [~100MB] inside the current directory.
-    --download [http://remote-host/data]  Url to the source of your data that you want to download inside the current directory.
+    -o, --output-pattern [path/pattern]   Provide a path/pattern for the exported images
+
+    --download-sample-data                Choose data to download inside current directory
+    --download [http://remote-host/data]  Download remote data inside current directory
 
     -M, --magic-lens                      Enable MagicLens inside client configuration
     -S, --single-view                     Enable SingleView inside client configuration
@@ -98,9 +99,18 @@ using some volume rendering technique.
 ## Development
 
 ```sh
-$ npm install -g semantic-release-cli
+$ git clone https://github.com/Kitware/tonic.git
+$ cd tonic
 $ npm install
-$ npm run build
+$ cd tonic-applications/arctic-viewer
+```
+
+Loading a dataset with your current code base (ImageBuilder, Widgets...)
+
+```sh
+$ npm t -- /path/to/your/data
+# With Magic Lens
+$ npm t -- /path/to/your/data -M
 ```
 
 ## Documentation

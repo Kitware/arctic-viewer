@@ -51,15 +51,15 @@ function removeHead(rawString, keyword) {
 }
 
 program
-  .version('0.3.2')
+  .version('0.6.3')
   .option('-p, --port [3000]', 'Start web server with given port', handlePort, 3000)
-  .option('-d, --data [directory/http]', 'Data directory to serve. Should contain a index.json file.')
-  .option('-s, --server-only', 'Do not open the web browser')
+  .option('-d, --data [directory/http]', 'Data directory to serve')
+  .option('-s, --server-only', 'Do not open the web browser\n')
 
-  .option('-o, --output-pattern [path/pattern]', 'Provide a destination path for the exported images. i.e.: /opt/data/{time}/{pipeline}/{phi}_{theta}.jpg', './export/{__}.jpg')
+  .option('-o, --output-pattern [path/pattern]', 'Provide a path/pattern for the exported images\n', './export/{__}.jpg')
 
-  .option('--download-sample-data', 'Download some try-out data [~100MB] inside the current directory.')
-  .option('--download [http://remote-host/data]', 'Url to the source of your data that you want to download inside the current directory.')
+  .option('--download-sample-data', 'Choose data to download inside current directory')
+  .option('--download [http://remote-host/data]', 'Download remote data inside current directory\n')
 
   .option('-M, --magic-lens', 'Enable MagicLens inside client configuration')
   .option('-S, --single-view', 'Enable SingleView inside client configuration')
