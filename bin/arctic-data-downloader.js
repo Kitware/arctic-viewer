@@ -14,6 +14,47 @@ var outputDirectory = path.normalize(process.env.PWD),
     dataDescriptor = null,
     progress = null;
 
+require('shelljs/global');
+
+var availableData = {
+    'diskout-composite': {
+        url: 'http://tonic.kitware.com/arctic-viewer/diskout-composite.tgz',
+        size: ' 40.0 MB'
+    },
+    'ensemble': {
+        url: 'http://tonic.kitware.com/arctic-viewer/ensemble.tgz',
+        size: ' 94.2 MB'
+    },
+    'garfield': {
+        url: 'http://tonic.kitware.com/arctic-viewer/garfield.tgz',
+        size: '  292 KB'
+    },
+    'head_ct_3_features': {
+        url: 'http://tonic.kitware.com/arctic-viewer/head_ct_3_features.tgz',
+        size: ' 13.7 MB'
+    },
+    'head_ct_4_features': {
+        url: 'http://tonic.kitware.com/arctic-viewer/head_ct_4_features.tgz',
+        size: ' 13.1 MB'
+    },
+    'hydra-image-fluid-velocity': {
+        url: 'http://tonic.kitware.com/arctic-viewer/hydra-image-fluid-velocity.tgz',
+        size: ' 50.8 MB'
+    },
+    'mpas-composite-earth': {
+        url: 'http://tonic.kitware.com/arctic-viewer/mpas-composite-earth.tgz',
+        size: '162.3 MB'
+    },
+    'mpas-flat-earth-prober': {
+        url: 'http://tonic.kitware.com/arctic-viewer/mpas-flat-earth-prober.tgz',
+        size: ' 37.5 MB'
+    },
+    'mpas-hd-500-7t': {
+        url: 'http://tonic.kitware.com/arctic-viewer/mpas-hd-500-7t.tgz',
+        size: '552.5 MB'
+    }
+};
+
 function processFile(url, destFile, extractedDir, doneCallback) {
     fs.exists(extractedDir, function(exists) {
         if(exists) {
@@ -27,6 +68,7 @@ function processFile(url, destFile, extractedDir, doneCallback) {
                 function(err, result) {
                     if(!err) {
                         console.log(" |  $ ArcticViewer -d " + extractedDir);
+                        rm(destFile);
                     } else {
                         console.log(' | oups something wrong happened while downloading ' + url);
                     }
@@ -166,29 +208,59 @@ function downloadFile(url) {
     });
 }
 
-module.exports = {
-    downloadSampleData: function() {
-        console.log("\n | Downloading sample data (~100MB) into directory " + outputDirectory);
-        var baseURL = 'http://www.kitware.com/in-situ-data/tonic-sample-data/',
-            files = ['mpas-probe-flat-earth.tgz', 'hydra-image-fluid-velocity.tgz'],
-            doneCount = 0;
+function downloadAvailableDatasets(list) {
+    var downloadCount = 0,
+        doneCount = 0;
 
-        function done() {
-            doneCount++;
+    console.log(" |\n | => Once the data will be downloaded, you will be able to try the ArcticViewer with the following commands:\n |");
 
-            if(doneCount === files.length) {
-                console.log(" |\n | Thank you for trying this out...\n");
+    function done() {
+        doneCount++;
+        if(downloadCount === doneCount) {
+            console.log(" |\n | Thank you for trying this out...\n");
+        }
+    }
+
+    while(list.length) {
+        var dsIdx = list.pop();
+        var idx = 0;
+        for(var name in availableData) {
+            idx++;
+            if(idx === dsIdx) {
+                downloadCount++;
+                var url = availableData[name].url,
+                    destFile = path.join(outputDirectory, name + '.tgz'),
+                    extractedDir = destFile.substring(0, destFile.length - 4);
+                processFile(url, destFile, extractedDir, done);
             }
         }
+    }
+}
 
-        mkdirp(outputDirectory, function(){
-            console.log(" |\n | => Once the data will be downloaded, you will be able to try the ArcticViewer with the following commands:\n |");
-            for(var i = 0; i < files.length; i++) {
-                var url = baseURL + files[i],
-                    destFile = path.join(outputDirectory, files[i]),
-                    extractedDir = destFile.substring(0, destFile.length - 4);
+module.exports = {
+    downloadSampleData: function() {
+        console.log("\n | Available datasets for download (path: " + outputDirectory + ')');
 
-                processFile(url, destFile, extractedDir, done);
+        var idx = 1;
+        for(var name in availableData) {
+            console.log(" |   ("+ (idx++)+ ')', availableData[name].size, ' - ' , name);
+        }
+        console.log(' | ')
+
+        var message = ' | Press Enter to quit or the dataset number to download: ',
+            listToDownload = [];
+
+        process.stdin.resume();
+        process.stdin.setEncoding('utf8');
+        process.stdout.write(message);
+        process.stdin.on('data', function (text) {
+            var n = Number(text);
+            listToDownload.push(n);
+            if(text === '\n') {
+                process.stdin.pause();
+                downloadAvailableDatasets(listToDownload);
+            } else {
+                process.stdout.write(message);
             }
         });
     },
