@@ -64,7 +64,7 @@ $ ArcticViewer --download-sample-data
  | Press Enter to quit or the dataset number to download: 8
  | Press Enter to quit or the dataset number to download:
  |
- | => Once the data will be downloaded, you will be able to try the ArcticViewer with the following commands:
+ | => You will be able to try ArcticViewer with those commands:
  |
  |  $ ArcticViewer -d /tmp/head_ct_4_features
  |  $ ArcticViewer -d /tmp/diskout-composite

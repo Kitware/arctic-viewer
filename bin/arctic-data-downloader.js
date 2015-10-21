@@ -212,7 +212,7 @@ function downloadAvailableDatasets(list) {
     var downloadCount = 0,
         doneCount = 0;
 
-    console.log(" |\n | => Once the data will be downloaded, you will be able to try the ArcticViewer with the following commands:\n |");
+    console.log(" |\n | => You will be able to try ArcticViewer with those commands:\n |");
 
     function done() {
         doneCount++;
