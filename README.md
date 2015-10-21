@@ -47,14 +47,30 @@ Here is an example on how to download some sample data
 $ mkdir tonic-data && cd $_
 $ ArcticViewer --download-sample-data
 
- | Downloading sample data (~100MB) into directory /Users/seb/tonic-data
+ | Available datasets for download (path: /tmp)
+ |   (1)  40.0 MB  -  diskout-composite
+ |   (2)  94.2 MB  -  ensemble
+ |   (3)   292 KB  -  garfield
+ |   (4)  13.7 MB  -  head_ct_3_features
+ |   (5)  13.1 MB  -  head_ct_4_features
+ |   (6)  50.8 MB  -  hydra-image-fluid-velocity
+ |   (7) 162.3 MB  -  mpas-composite-earth
+ |   (8)  37.5 MB  -  mpas-flat-earth-prober
+ |   (9) 552.5 MB  -  mpas-hd-500-7t
+ |
+ | Press Enter to quit or the dataset number to download: 1
+ | Press Enter to quit or the dataset number to download: 5
+ | Press Enter to quit or the dataset number to download: 8
+ | Press Enter to quit or the dataset number to download:
  |
  | => Once the data will be downloaded, you will be able to try the ArcticViewer with the following commands:
  |
- |  $ ArcticViewer -d /Users/seb/tonic-data/mpas-probe-flat-earth
- |  $ ArcticViewer -d /Users/seb/tonic-data/hydra-image-fluid-velocity
+ |  $ ArcticViewer -d /tmp/head_ct_4_features
+ |  $ ArcticViewer -d /tmp/diskout-composite
+ |  $ ArcticViewer -d /tmp/mpas-flat-earth-prober
  |
  | Thank you for trying this out...
+
 ```
 
 Then you can load them using the provided feedback or by running the following
