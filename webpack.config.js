@@ -33,5 +33,8 @@ module.exports = {
     devel: true, // suppress alert and console global warnings
     browser: true, // suppress global browser object warnings
     globalstrict: true // Babel add 'use strict'
+  },
+  externals: {
+    "three": "THREE"
   }
 };
