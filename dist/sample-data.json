@@ -3,7 +3,7 @@
     "title": "Diskout Ref - Composite",
     "filesize":"40 MB",
     "thumbnail": "http://tonic.kitware.com/arctic-viewer/diskout-composite.png",
-    "url": "http://tonic.kitware.com/arctic-viewer/diskout-composite.ios.tgz"
+    "url": "http://tonic.kitware.com/arctic-viewer/diskout-composite.tgz"
   },{
     "title": "Ensemble - Demo",
     "filesize":"94.2 MB",
@@ -18,12 +18,12 @@
     "title": "Head CT - 3 features composite",
     "filesize":"14 MB",
     "thumbnail": "http://tonic.kitware.com/arctic-viewer/head_ct_3_features.png",
-    "url": "http://tonic.kitware.com/arctic-viewer/head_ct_3_features.ios.tgz"
+    "url": "http://tonic.kitware.com/arctic-viewer/head_ct_3_features.tgz"
   },{
     "title": "Head CT - 4 features composite",
     "filesize":"13.1 MB",
     "thumbnail": "http://tonic.kitware.com/arctic-viewer/head_ct_4_features.png",
-    "url": "http://tonic.kitware.com/arctic-viewer/head_ct_4_features.ios.tgz"
+    "url": "http://tonic.kitware.com/arctic-viewer/head_ct_4_features.tgz"
   },{
     "title": "Hydra - Fluid Velocity",
     "filesize":"50.8 MB",
@@ -33,12 +33,12 @@
     "title": "MPAS - Composite Temperature contours",
     "filesize":"162.3 MB",
     "thumbnail": "http://tonic.kitware.com/arctic-viewer/mpas-composite-earth.png",
-    "url": "http://tonic.kitware.com/arctic-viewer/mpas-composite-earth.ios.tgz"
+    "url": "http://tonic.kitware.com/arctic-viewer/mpas-composite-earth.tgz"
   },{
     "title": "MPAS - Flat earth prober",
     "filesize":"37.5 MB",
     "thumbnail": "http://tonic.kitware.com/arctic-viewer/mpas-flat-earth-prober.png",
-    "url": "http://tonic.kitware.com/arctic-viewer/mpas-flat-earth-prober.ios.tgz"
+    "url": "http://tonic.kitware.com/arctic-viewer/mpas-flat-earth-prober.tgz"
   },{
     "title": "MPAS - High contours resolution",
     "filesize":"583.7 MB",
