@@ -77,7 +77,7 @@
     "dot-location": [1, "property"],
     "eqeqeq": 1,
     "guard-for-in": 0,
-    "no-alert": 1,
+    "no-alert": 0,
     "no-caller": 1,
     "no-div-regex": 1,
     "no-else-return": 1,
@@ -109,7 +109,7 @@
     "no-script-url": 1,
     "no-self-compare": 1,
     "no-sequences": 1,
-    "no-throw-literal": 1,
+    "no-throw-literal": 0,
     "no-unused-expressions": 0,
     "no-void": 0,
     "no-warning-comments": [1, { "terms": ["todo", "tofix"], "location": "start" }],
@@ -130,8 +130,8 @@
     "no-shadow": 1,
     "no-undef-init": 1,
     "no-undef": 1,
-    "no-undefined": 1,
-    "no-unused-vars": [1, { "vars": "local", "args": "after-used" }],
+    "no-undefined": 0,
+    "no-unused-vars": [1, { "vars": "local", "args": "none" }],
     "no-use-before-define": 1,
 
     /* Node.js */
@@ -209,7 +209,7 @@
     "max-len": [1, 160, 2],
     "max-params": 0,
     "max-statements": 0,
-    "no-bitwise": 1,
+    "no-bitwise": 0,
     "no-plusplus": 0,
 
     /* Babel */
@@ -223,7 +223,7 @@
 
     /* React */
     "react/display-name": 1,
-    "react/jsx-boolean-value": 1,
+    "react/jsx-boolean-value": 0,
     "react/jsx-no-duplicate-props": 1,
     "react/jsx-no-undef": 1,
     // "react/jsx-quotes": [1, "single"],

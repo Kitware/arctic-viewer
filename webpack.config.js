@@ -1,5 +1,3 @@
-var webpack = require('webpack');
-
 module.exports = {
   plugins: [],
   entry: './lib/arctic-viewer.js',
@@ -12,8 +10,8 @@ module.exports = {
       {
             test: /\.js$/,
             loader: "eslint-loader",
-            exclude: /node_modules/
-      }
+            exclude: /node_modules/,
+      },
     ],
     loaders: [
       { test: require.resolve("./lib/arctic-viewer.js"), loader: "expose?ArcticViewer" },
@@ -23,19 +21,14 @@ module.exports = {
       { test: /\.css$/, loader: "style-loader!css-loader!autoprefixer-loader?browsers=last 2 version" },
       { test: /\.c$/i, loader: "shader" },
       { test: /\.js$/, include: /node_modules\/tonic-/, loader: "babel?presets[]=react,presets[]=es2015" },
-      { test: /\.js$/, exclude: /node_modules/, loader: "babel?presets[]=react,presets[]=es2015" }
-    ]
-  },
-  jshint: {
-    esnext: true,
-    devel: true, // suppress alert and console global warnings
-    browser: true, // suppress global browser object warnings
-    globalstrict: true // Babel add 'use strict'
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel?presets[]=react,presets[]=es2015" },
+    ],
   },
   externals: {
-    "three": "THREE"
+    "three": "THREE",
+    // "ArcticViewer": "ArcticViewer",
   },
   eslint: {
-      configFile: '.eslintrc'
-  }
+      configFile: '.eslintrc',
+  },
 };
