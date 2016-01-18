@@ -51,7 +51,7 @@
     "commit": "git cz",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
 
-    "dep:webpack": "npm install node-libs-browser@0.5.2 autoprefixer-loader@2.0.0 babel-core@5.8.22 babel-loader@5.3.2 css-loader@0.16.0 expose-loader@0.7.0 file-loader@0.8.4 html-webpack-plugin@1.6.1 jshint@2.8.0 jshint-loader@0.8.3 json-loader@^0.5.2 shader-loader@1.1.3 style-loader@0.12.3 url-loader@0.5.6 webpack@1.11.0",
+    "dep:webpack": "npm install node-libs-browser@0.5.3 babel-core@6.3.17 eslint@1.10.3 eslint-plugin-babel@3.0.0 eslint-plugin-react@3.11.3 babel-eslint@4.1.6 autoprefixer-loader@3.1.0 babel-loader@6.2.0 babel-preset-es2015@6.3.13 babel-preset-react@6.3.13 css-loader@0.23.0 expose-loader@0.7.1 file-loader@0.8.5 json-loader@0.5.4 style-loader@0.13.0 url-loader@0.5.7 eslint-loader@1.1.1 webpack@1.12.9",
     "dep:www"    : "npm install tonic-site-generator@0.1.0 serve@1.4.0",
     "dep:release": "npm install commitizen@2.4.6 semantic-release@4.3.5",
 
