@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>ArcticViewer</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="/arctic-viewer/css/main.css">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+<header class="site-header">
+
+    <nav class="mobile-nav show-on-mobiles">
+        <a class="page-link" href="/arctic-viewer/"><i class="fa fa-home fa-fw fa-lg"></i></a>
+        <a class="page-link" href="/arctic-viewer/docs/home"><i class="fa fa-book fa-fw fa-lg"></i></a>
+        <a class="page-link" href="/arctic-viewer/news"><i class="fa fa-newspaper-o fa-fw fa-lg"></i></a>
+    </nav>
+    <div class="wrapper">
+
+        <a class="site-title center-on-mobiles" href="/">
+            <img src="/arctic-viewer/img/logo.png" height="40" alt="Logo">
+            ArcticViewer
+        </a>
+        <nav class="site-nav hide-on-mobiles">
+            <a href="#" class="menu-icon">
+                <svg viewBox="0 0 18 15">
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                </svg>
+            </a>
+            <div class="trigger">
+                <a class="page-link" href="/arctic-viewer/">Home</a>
+                <a class="page-link" href="/arctic-viewer/docs/home">Docs</a>
+                <a class="page-link" href="/arctic-viewer/news">News</a>
+            </div>
+        </nav>
+    </div>
+
+</header>
+
+  <div class="container">
+    <div class="page">
+
+      <div class="header">
+        
+          <h1>DataProber.js</h1>
+        
+
+        
+          <div class="toc">
+            <h3>Table of Contents</h3>
+            <ol>
+              
+                
+                <li>
+                  <a class="source" href="arctic-viewer.html">
+                    arctic-viewer.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="factory.html">
+                    factory.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="CompositeImageQueryDataModel.html">
+                    CompositeImageQueryDataModel.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="CompositePipeline.html">
+                    CompositePipeline.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="DataProber.html">
+                    DataProber.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="DepthComposite.html">
+                    DepthComposite.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="FloatImage.html">
+                    FloatImage.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="Geometry.html">
+                    Geometry.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="ImageQueryDataModel.html">
+                    ImageQueryDataModel.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="SortedComposite.html">
+                    SortedComposite.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="index.html">
+                    index.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="DataSetView.html">
+                    DataSetView.js
+                  </a>
+                </li>
+              
+                
+                <li>
+                  <a class="source" href="index.html">
+                    index.js
+                  </a>
+                </li>
+              
+            </ol>
+          </div>
+        
+      </div>
+
+      
+        
+        
+        
+          <div class='highlight'><pre><span class="hljs-keyword">import</span> DataProberImageBuilder       <span class="hljs-keyword">from</span> <span class="hljs-string">'tonic-core/lib/builder/image/DataProber'</span>;
+<span class="hljs-keyword">import</span> BinaryDataProberImageBuilder <span class="hljs-keyword">from</span> <span class="hljs-string">'tonic-core/lib/builder/image/BinaryDataProber'</span>;
+<span class="hljs-keyword">import</span> LineChartPainter             <span class="hljs-keyword">from</span> <span class="hljs-string">'tonic-core/lib/painter/LineChart'</span>;
+<span class="hljs-keyword">import</span> equals                       <span class="hljs-keyword">from</span> <span class="hljs-string">'mout/src/array/equals'</span>;
+<span class="hljs-keyword">import</span> contains                     <span class="hljs-keyword">from</span> <span class="hljs-string">'mout/src/array/contains'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">build</span>(<span class="hljs-params">{viewer, dataType, callback}</span>) </span>{
+    <span class="hljs-keyword">var</span> ProberImageBuilder = DataProberImageBuilder,
+        dimensions = <span class="hljs-literal">null</span>;</pre></div>
+        
+      
+        
+        <p>Can we handle the data</p>
+
+        
+          <div class='highlight'><pre>    <span class="hljs-keyword">if</span>(!contains(dataType, <span class="hljs-string">'in-situ-data-prober'</span>) &amp;&amp; !(contains(dataType, <span class="hljs-string">'data-prober'</span>) &amp;&amp; contains(dataType, <span class="hljs-string">'binary'</span>))) {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }</pre></div>
+        
+      
+        
+        <p>Handle the image and binary format</p>
+
+        
+          <div class='highlight'><pre>    <span class="hljs-keyword">if</span>(contains(dataType, <span class="hljs-string">'data-prober'</span>) &amp;&amp; contains(dataType, <span class="hljs-string">'binary'</span>)) {
+        ProberImageBuilder = BinaryDataProberImageBuilder;
+        dimensions = viewer.queryDataModel.originalData.DataProber.dimensions;
+    } <span class="hljs-keyword">else</span> {
+        dimensions = viewer.queryDataModel.originalData.InSituDataProber.dimensions;
+    }</pre></div>
+        
+      
+        
+        <p>Create 2 viewer choice</p>
+
+        
+          <div class='highlight'><pre>    <span class="hljs-keyword">const</span> singleView = {
+            name            : <span class="hljs-string">'Single View'</span>,
+            imageBuilder    : <span class="hljs-keyword">new</span> ProberImageBuilder(viewer.queryDataModel, viewer.config.lookupTableManager),
+            queryDataModel  : viewer.queryDataModel,
+            ui              : <span class="hljs-string">'ProbeViewerWidget'</span>,
+            allowMagicLens  : <span class="hljs-literal">false</span>,
+            destroy         : () =&gt; { <span class="hljs-keyword">this</span>.imageBuilder.destroy(); },
+        },
+        multiView = {
+            name            : <span class="hljs-string">'Multi View'</span>,
+            renderers       : {},
+            queryDataModel  : viewer.queryDataModel,
+            ui              : <span class="hljs-string">'MultiViewerWidget'</span>,
+            allowMagicLens  : <span class="hljs-literal">false</span>,
+            destroy         : () =&gt; { <span class="hljs-keyword">while</span>(<span class="hljs-keyword">this</span>.renderers.length) { <span class="hljs-keyword">this</span>.renderers.pop().destroy(); } },
+        };</pre></div>
+        
+      
+        
+        <p>Configure single view</p>
+
+        
+          <div class='highlight'><pre>    singleView.imageBuilder.setProbeLineNotification(<span class="hljs-literal">true</span>);
+    singleView.imageBuilder.update();
+
+    <span class="hljs-keyword">if</span>(!viewer.config.ensemble) {</pre></div>
+        
+      
+        
+        <p>Configure multi view</p>
+
+        
+          <div class='highlight'><pre>        <span class="hljs-keyword">const</span> imageBuilders = [
+                <span class="hljs-keyword">new</span> ProberImageBuilder(viewer.queryDataModel, viewer.config.lookupTableManager),
+                <span class="hljs-keyword">new</span> ProberImageBuilder(viewer.queryDataModel, viewer.config.lookupTableManager),
+                <span class="hljs-keyword">new</span> ProberImageBuilder(viewer.queryDataModel, viewer.config.lookupTableManager),
+            ],
+            chartPainters = [
+                <span class="hljs-keyword">new</span> LineChartPainter(<span class="hljs-string">'X: {x}'</span>),
+                <span class="hljs-keyword">new</span> LineChartPainter(<span class="hljs-string">'Y: {x}'</span>),
+                <span class="hljs-keyword">new</span> LineChartPainter(<span class="hljs-string">'Z: {x}'</span>),
+            ],
+            updateProbeLocation = (data, envelope) =&gt; {
+                imageBuilders.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">builder</span>) </span>{
+                    <span class="hljs-keyword">if</span>(!equals(data, builder.getProbe())) {
+                        builder.setProbe(data[<span class="hljs-number">0</span>], data[<span class="hljs-number">1</span>], data[<span class="hljs-number">2</span>])
+                    }
+                });</pre></div>
+        
+      
+        
+        <p>Update charts</p>
+
+        
+          <div class='highlight'><pre>                chartPainters[<span class="hljs-number">0</span>].setMarkerLocation(data[<span class="hljs-number">0</span>]/(dimensions[<span class="hljs-number">0</span>]<span class="hljs-number">-1</span>));
+                chartPainters[<span class="hljs-number">1</span>].setMarkerLocation(data[<span class="hljs-number">1</span>]/(dimensions[<span class="hljs-number">1</span>]<span class="hljs-number">-1</span>));
+                chartPainters[<span class="hljs-number">2</span>].setMarkerLocation(data[<span class="hljs-number">2</span>]/(dimensions[<span class="hljs-number">2</span>]<span class="hljs-number">-1</span>));
+            },
+            updateCrosshairVisibility = (data, envelope) =&gt; {
+                imageBuilders.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">builder</span>) </span>{
+                    builder.setCrossHairEnable(data);
+                });</pre></div>
+        
+      
+        
+        <p>Update charts</p>
+
+        
+          <div class='highlight'><pre>                chartPainters[<span class="hljs-number">0</span>].enableMarker(data);
+                chartPainters[<span class="hljs-number">1</span>].enableMarker(data);
+                chartPainters[<span class="hljs-number">2</span>].enableMarker(data);
+            },
+            updateChartPainters = (data, envelope) =&gt; {
+                <span class="hljs-keyword">if</span>(data.x.fields[<span class="hljs-number">0</span>].data.length) {
+                    chartPainters[<span class="hljs-number">0</span>].updateData(data.x);
+                }
+                <span class="hljs-keyword">if</span>(data.y.fields[<span class="hljs-number">0</span>].data.length) {
+                    chartPainters[<span class="hljs-number">1</span>].updateData(data.y);
+                }
+                <span class="hljs-keyword">if</span>(data.z.fields[<span class="hljs-number">0</span>].data.length) {
+                    chartPainters[<span class="hljs-number">2</span>].updateData(data.z);
+                }
+            };</pre></div>
+        
+      
+        
+        <p>Initialize the Image builders</p>
+
+        
+          <div class='highlight'><pre>        <span class="hljs-keyword">const</span> methods = [].concat(singleView.imageBuilder.getRenderMethods());
+        imageBuilders.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">builder</span>) </span>{
+            <span class="hljs-keyword">var</span> name = methods.shift();
+            builder.setRenderMethod(name);
+            builder.setRenderMethodImutable();
+            builder.setProbeLineNotification(<span class="hljs-literal">true</span>);
+            builder.onProbeChange(updateProbeLocation);
+            builder.onCrosshairVisibilityChange(updateCrosshairVisibility);
+            builder.onProbeLineReady(updateChartPainters);
+            builder.update();
+            multiView.renderers[name] = { name, builder };
+        });</pre></div>
+        
+      
+        
+        <p>Initialize the Chart painters</p>
+
+        
+          <div class='highlight'><pre>        <span class="hljs-keyword">const</span> names = [<span class="hljs-string">'Line Chart X'</span>, <span class="hljs-string">'Line Chart Y'</span>, <span class="hljs-string">'Line Chart Z'</span>];
+        chartPainters.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">painter</span>) </span>{
+            <span class="hljs-keyword">const</span> name = names.shift();
+            multiView.renderers[name] = { name, painter };
+        })</pre></div>
+        
+      
+        
+        <p>Show the selector UI</p>
+
+        
+          <div class='highlight'><pre>        viewer.list = [singleView, multiView];
+        viewer.ui = <span class="hljs-string">'ViewerSelector'</span>;
+        viewer.allowMagicLens = <span class="hljs-literal">false</span>;
+        viewer.onChange = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">idx, list</span>) </span>{
+            callback(viewer.list[idx]);
+        }
+    } <span class="hljs-keyword">else</span> {
+        viewer.imageBuilder = singleView.imageBuilder;
+        viewer.ui = singleView.ui;
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+}</pre></div>
+        
+      
+    </div>
+  </div>
+</body>
+</html>

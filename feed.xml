@@ -5,9 +5,9 @@
     <description>Command line tool that let you explore interactively your cold data using your web browser.</description>
     <link>/arctic-viewer/</link>
     <atom:link href="/arctic-viewer/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 21 Aug 2015 21:30:45 -0600</pubDate>
-    <lastBuildDate>Fri, 21 Aug 2015 21:30:45 -0600</lastBuildDate>
-    <generator>Jekyll v2.5.3</generator>
+    <pubDate>Tue, 26 Jan 2016 09:59:26 -0700</pubDate>
+    <lastBuildDate>Tue, 26 Jan 2016 09:59:26 -0700</lastBuildDate>
+    <generator>Jekyll v3.0.1</generator>
     
   </channel>
 </rss>

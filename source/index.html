@@ -44,7 +44,7 @@
 
       <div class="header">
         
-          <h1>arctic-viewer.js</h1>
+          <h1>index.js</h1>
         
 
         
@@ -152,51 +152,53 @@
         
         
         
-          <div class='highlight'><pre><span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> Factory <span class="hljs-keyword">from</span> <span class="hljs-string">'./factory.js'</span>;</pre></div>
+          <div class='highlight'><pre><span class="hljs-keyword">import</span> React        <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> DataSetView  <span class="hljs-keyword">from</span> <span class="hljs-string">'./DataSetView'</span>;</pre></div>
         
       
         
-        <p>CSS loading —————————————————————-</p>
+        <p>Load CSS</p>
 
         
-          <div class='highlight'><pre>
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'font-awesome/css/font-awesome.css'</span>);
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'normalize.css'</span>);
-<span class="hljs-built_in">require</span>(<span class="hljs-string">'tonic-ui/lib/css/state.css'</span>);</pre></div>
-        
-      
-        
-        <p>Dependencies injections —————————————————-</p>
+          <div class='highlight'><pre><span class="hljs-built_in">require</span>(<span class="hljs-string">'./style.css'</span>);
 
-        
-          <div class='highlight'><pre>
-<span class="hljs-keyword">const</span> iOS = <span class="hljs-regexp">/iPad|iPhone|iPod/</span>.test(navigator.platform);</pre></div>
-        
-      
-        
-        <p>Add class to body if iOS device ——————————————–</p>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> React.createClass({
 
-        
-          <div class='highlight'><pre>
-<span class="hljs-keyword">if</span>(iOS) {
-    <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">'body'</span>).classList.add(<span class="hljs-string">'is-ios-device'</span>);
-}</pre></div>
-        
-      
-        
-        <p>Expose viewer factory method ———————————————–</p>
+    displayName: <span class="hljs-string">'ArcticViewer'</span>,
 
-        
-          <div class='highlight'><pre>
-<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">load</span>(<span class="hljs-params">url, container</span>) </span>{
-    Factory.createViewer(url, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">viewer</span>) </span>{
-        <span class="hljs-keyword">if</span>(!viewer) {
-            <span class="hljs-keyword">return</span> alert(<span class="hljs-string">"The metadata format seems to be unsupported."</span>);
-        }
+    propTypes: {
+        basePath:   React.PropTypes.string,
+        icon:       React.PropTypes.string,
+        list:       React.PropTypes.array,
+        title:      React.PropTypes.string,
+    },
 
-        Factory.createUI(viewer, container);
-    });
-}</pre></div>
+    getDefaultProps() {
+        <span class="hljs-keyword">return</span> {
+            title: <span class="hljs-string">'Arctic Viewer'</span>,
+            icon : <span class="hljs-built_in">require</span>(<span class="hljs-string">'./icon.png'</span>),
+            list : [],
+            basePath: <span class="hljs-string">'/'</span>,
+        };
+    },
+
+    render() {
+        <span class="hljs-keyword">const</span> base = <span class="hljs-keyword">this</span>.props.basePath;
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">'ArcticViewer'</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">'ArcticViewer__bar'</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{this.props.icon}</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">strong</span>&gt;</span>{ this.props.title }<span class="hljs-tag">&lt;/<span class="hljs-name">strong</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">'ArcticViewer__content'</span>&gt;</span>
+                    { this.props.list.map(function(item, i) {
+                        return <span class="hljs-tag">&lt;<span class="hljs-name">DataSetView</span> <span class="hljs-attr">base</span>=<span class="hljs-string">{</span> <span class="hljs-attr">base</span> } <span class="hljs-attr">item</span>=<span class="hljs-string">{item}</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{'dataset_'+i}</span>/&gt;</span>
+                    })}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        )</span>;
+    },
+});</pre></div>
         
       
     </div>

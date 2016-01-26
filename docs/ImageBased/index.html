@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Image base</title>
-  <meta name="description" content="Command line tool that let you explore interactively your cold data using your web browser.">
+  <meta name="description" content="Introduction">
 
   <link rel="stylesheet" href="/arctic-viewer/css/main.css">
   <link rel="canonical" href="/arctic-viewer/docs/ImageBased/">
@@ -86,6 +86,8 @@
     
   
     
+  
+    
       <option value="/arctic-viewer/docs/home/">Quick Start</option>
     
   
@@ -99,6 +101,8 @@
 
   
 
+  
+    
   
     
   
@@ -128,9 +132,31 @@
   
     
   
+    
+  
 
   
 
+  
+    
+  
+    
+      <option value="/arctic-viewer/docs/DepthSortedComposite/">Depth-Sorted Composite</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
   
     
   
@@ -147,6 +173,8 @@
 
   
 
+  
+    
   
     
   
@@ -208,19 +236,19 @@ can be understood by the application. The application expect a file named
 <strong>info.json</strong> at the root of the tree structure (if any) with a content similar
 to the following one.</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
-    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;tonic-query-data-model&quot;</span> <span class="p">],</span>
-    <span class="s2">&quot;arguments_order&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;arguments&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;time&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;values&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span> <span class="p">]</span>
+    <span class="s2">"type"</span><span class="err">:</span> <span class="p">[</span> <span class="s2">"tonic-query-data-model"</span> <span class="p">],</span>
+    <span class="s2">"arguments_order"</span><span class="err">:</span> <span class="p">[</span><span class="s2">"time"</span><span class="p">],</span>
+    <span class="s2">"arguments"</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s2">"time"</span><span class="err">:</span> <span class="p">{</span>
+            <span class="s2">"values"</span><span class="err">:</span> <span class="p">[</span> <span class="s2">"0"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"4"</span><span class="p">,</span> <span class="s2">"5"</span> <span class="p">]</span>
         <span class="p">}</span>
     <span class="p">},</span>
-    <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="s2">"data"</span><span class="err">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;image&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;blob&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;mimeType&quot;</span><span class="o">:</span> <span class="s2">&quot;image/jpg&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;pattern&quot;</span><span class="o">:</span> <span class="s2">&quot;sky_{time}.jpg&quot;</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"image"</span><span class="p">,</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"blob"</span><span class="p">,</span>
+            <span class="s2">"mimeType"</span><span class="p">:</span> <span class="s2">"image/jpg"</span><span class="p">,</span>
+            <span class="s2">"pattern"</span><span class="p">:</span> <span class="s2">"sky_{time}.jpg"</span>
         <span class="p">}</span>
     <span class="p">]</span>
 <span class="p">}</span>
@@ -256,12 +284,12 @@ set of possible values.</p>
 <p><strong>Bind</strong></p>
 
 <p>You can bind a parameter to a mouse action like follow:</p>
-<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="s2">&quot;mouse&quot;</span> <span class="o">:</span> <span class="p">{</span>
-    <span class="s2">&quot;drag&quot;</span> <span class="o">:</span> <span class="p">{</span>           <span class="c1">// Type of the mouse event</span>
-        <span class="s2">&quot;modifier&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>   <span class="c1">// Which modifier NONE | ALT | SHIFT | META | CTR</span>
-        <span class="s2">&quot;coordinate&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> <span class="c1">// Which coordinate [x,y]. 0 for x and 1 for y.</span>
-        <span class="s2">&quot;step&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>      <span class="c1">// How much drag on x or y is needed to switch to the next value of the parameter</span>
-        <span class="s2">&quot;orientation&quot;</span><span class="o">:</span> <span class="mi">1</span> <span class="c1">// Which way to go based on the delta. (1 or -1)</span>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="s2">"mouse"</span> <span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"drag"</span> <span class="err">:</span> <span class="p">{</span>           <span class="c1">// Type of the mouse event</span>
+        <span class="s2">"modifier"</span><span class="err">:</span> <span class="mi">0</span><span class="p">,</span>   <span class="c1">// Which modifier NONE | ALT | SHIFT | META | CTR</span>
+        <span class="s2">"coordinate"</span><span class="err">:</span> <span class="mi">0</span><span class="p">,</span> <span class="c1">// Which coordinate [x,y]. 0 for x and 1 for y.</span>
+        <span class="s2">"step"</span><span class="err">:</span> <span class="mi">10</span><span class="p">,</span>      <span class="c1">// How much drag on x or y is needed to switch to the next value of the parameter</span>
+        <span class="s2">"orientation"</span><span class="err">:</span> <span class="mi">1</span> <span class="c1">// Which way to go based on the delta. (1 or -1)</span>
     <span class="p">},</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -309,9 +337,9 @@ character to denote a sub-directory.</p>
   
 
   
-    
-  
 
+  
+    
   
     
   
@@ -338,9 +366,9 @@ character to denote a sub-directory.</p>
   
 
   
-    
-  
 
+  
+    
   
     
   
@@ -359,8 +387,6 @@ character to denote a sub-directory.</p>
   
 
   
-    
-  
 
   
     
@@ -375,14 +401,37 @@ character to denote a sub-directory.</p>
   
     
   
+    
+  
 
+
+  
 
   
 
   
     
   
+    
+      <li class=""><a href="/arctic-viewer/docs/DepthSortedComposite/">Depth-Sorted Composite</a></li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
 
+
+  
+
+  
+
+  
+    
   
     
   
@@ -401,9 +450,9 @@ character to denote a sub-directory.</p>
   
 
   
-    
-  
 
+  
+    
   
     
   

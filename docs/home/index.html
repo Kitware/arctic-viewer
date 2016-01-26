@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Quick Start</title>
-  <meta name="description" content="Command line tool that let you explore interactively your cold data using your web browser.">
+  <meta name="description" content="Introduction">
 
   <link rel="stylesheet" href="/arctic-viewer/css/main.css">
   <link rel="canonical" href="/arctic-viewer/docs/home/">
@@ -86,6 +86,8 @@
     
   
     
+  
+    
       <option value="/arctic-viewer/docs/home/">Quick Start</option>
     
   
@@ -99,6 +101,8 @@
 
   
 
+  
+    
   
     
   
@@ -128,9 +132,31 @@
   
     
   
+    
+  
 
   
 
+  
+    
+  
+    
+      <option value="/arctic-viewer/docs/DepthSortedComposite/">Depth-Sorted Composite</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
   
     
   
@@ -147,6 +173,8 @@
 
   
 
+  
+    
   
     
   
@@ -203,7 +231,7 @@ explore but currently, it can handle:</p>
 <p>ArcticViewer is simple to install as long as you have a NodeJS environment working.
 To install it globally on your system, you just need to run the following command
 line.</p>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ </span>npm install -g arctic-viewer
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="gp">$ </span>npm install -g arctic-viewer
 </code></pre></div>
 <h1>Command line tool</h1>
 
@@ -220,19 +248,19 @@ to start your default web browser on the application page.</p>
 
 <p>The following set of command lines illustrate various usage:</p>
 <div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="c">## This will start the server on port 3000 and will open your browser automatically</span>
-<span class="nv">$ </span>ArcticViewer -d ./path/to/your/dataset/directory
+<span class="gp">$ </span>ArcticViewer -d ./path/to/your/dataset/directory
 
 <span class="c">## This will start the server on port 3000 and wait for connections on http://localhost:3000</span>
-<span class="nv">$ </span>ArcticViewer -d ./path/to/your/dataset/directory -s
+<span class="gp">$ </span>ArcticViewer -d ./path/to/your/dataset/directory -s
 
 <span class="c">## This will start the server on port 1234 so you can connect to http://localhost:1234</span>
-<span class="nv">$ </span>ArcticViewer -d ./path/to/your/dataset/directory -s -p 1234
+<span class="gp">$ </span>ArcticViewer -d ./path/to/your/dataset/directory -s -p 1234
 </code></pre></div>
 <h2>Serve a remote dataset</h2>
 
 <p>Serving a remote dataset is similar than serving a local dataset except that
 you need to provide the full http URL like follow.</p>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ </span>ArcticViewer -d http://www.kitware.com/in-situ-data/tonic-sample-data/hydra-image-fluid-velocity
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="gp">$ </span>ArcticViewer -d http://www.kitware.com/in-situ-data/tonic-sample-data/hydra-image-fluid-velocity
 </code></pre></div>
 <h2>Download a set of sample datasets</h2>
 
@@ -241,8 +269,8 @@ For that you will need to run the application in the directory you want to
 download your data into.</p>
 
 <p>Here is an example of command lines:</p>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ </span>mkdir ArcticData <span class="o">&amp;&amp;</span> <span class="nb">cd</span> <span class="nv">$_</span>
-<span class="nv">$ </span>ArcticViewer -D
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="gp">$ </span>mkdir ArcticData <span class="o">&amp;&amp;</span> <span class="nb">cd</span> <span class="nv">$_</span>
+<span class="gp">$ </span>ArcticViewer -D
 </code></pre></div>
 <h2>Download a remote dataset</h2>
 
@@ -250,8 +278,8 @@ download your data into.</p>
 locally.</p>
 
 <p>Here is an example on how to run it:</p>
-<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="nv">$ </span>mkdir velocity <span class="o">&amp;&amp;</span> <span class="nb">cd</span> <span class="nv">$_</span>
-<span class="nv">$ </span>ArcticViewer -R http://www.kitware.com/in-situ-data/tonic-sample-data/hydra-image-fluid-velocity
+<div class="highlight"><pre><code class="language-sh" data-lang="sh"><span class="gp">$ </span>mkdir velocity <span class="o">&amp;&amp;</span> <span class="nb">cd</span> <span class="nv">$_</span>
+<span class="gp">$ </span>ArcticViewer -R http://www.kitware.com/in-situ-data/tonic-sample-data/hydra-image-fluid-velocity
 </code></pre></div>
           <div class="section-nav">
     <div class=""grid">
@@ -286,9 +314,9 @@ locally.</p>
   
 
   
-    
-  
 
+  
+    
   
     
   
@@ -315,9 +343,9 @@ locally.</p>
   
 
   
-    
-  
 
+  
+    
   
     
   
@@ -336,8 +364,6 @@ locally.</p>
   
 
   
-    
-  
 
   
     
@@ -352,14 +378,37 @@ locally.</p>
   
     
   
+    
+  
 
+
+  
 
   
 
   
     
   
+    
+      <li class=""><a href="/arctic-viewer/docs/DepthSortedComposite/">Depth-Sorted Composite</a></li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
 
+
+  
+
+  
+
+  
+    
   
     
   
@@ -378,9 +427,9 @@ locally.</p>
   
 
   
-    
-  
 
+  
+    
   
     
   

@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Composite</title>
-  <meta name="description" content="Command line tool that let you explore interactively your cold data using your web browser.">
+  <meta name="description" content="Introduction">
 
   <link rel="stylesheet" href="/arctic-viewer/css/main.css">
   <link rel="canonical" href="/arctic-viewer/docs/Composite/">
@@ -86,6 +86,8 @@
     
   
     
+  
+    
       <option value="/arctic-viewer/docs/home/">Quick Start</option>
     
   
@@ -99,6 +101,8 @@
 
   
 
+  
+    
   
     
   
@@ -128,9 +132,31 @@
   
     
   
+    
+  
 
   
 
+  
+    
+  
+    
+      <option value="/arctic-viewer/docs/DepthSortedComposite/">Depth-Sorted Composite</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
   
     
   
@@ -147,6 +173,8 @@
 
   
 
+  
+    
   
     
   
@@ -196,61 +224,61 @@ in a way it can be understood by the application. The application expect a file
 named <strong>info.json</strong> at the root of the tree structure (if any) with a content similar
 to the following one.</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
-    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;tonic-query-data-model&quot;</span><span class="p">,</span> <span class="s2">&quot;composite-pipeline&quot;</span> <span class="p">],</span>
-    <span class="s2">&quot;arguments_order&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">],</span>
-    <span class="s2">&quot;arguments&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;time&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;values&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;0&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span> <span class="p">]</span>
+    <span class="s2">"type"</span><span class="err">:</span> <span class="p">[</span> <span class="s2">"tonic-query-data-model"</span><span class="p">,</span> <span class="s2">"composite-pipeline"</span> <span class="p">],</span>
+    <span class="s2">"arguments_order"</span><span class="err">:</span> <span class="p">[</span><span class="s2">"time"</span><span class="p">],</span>
+    <span class="s2">"arguments"</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s2">"time"</span><span class="err">:</span> <span class="p">{</span>
+            <span class="s2">"values"</span><span class="err">:</span> <span class="p">[</span> <span class="s2">"0"</span><span class="p">,</span> <span class="s2">"1"</span><span class="p">,</span> <span class="s2">"2"</span><span class="p">,</span> <span class="s2">"3"</span><span class="p">,</span> <span class="s2">"4"</span><span class="p">,</span> <span class="s2">"5"</span> <span class="p">]</span>
         <span class="p">}</span>
     <span class="p">},</span>
-    <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="s2">"data"</span><span class="err">:</span> <span class="p">[</span>
         <span class="p">{</span>
-            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;sprite&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;blob&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;mimeType&quot;</span><span class="o">:</span> <span class="s2">&quot;image/jpg&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;pattern&quot;</span><span class="o">:</span> <span class="s2">&quot;{time}/rgb.jpg&quot;</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"sprite"</span><span class="p">,</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"blob"</span><span class="p">,</span>
+            <span class="s2">"mimeType"</span><span class="p">:</span> <span class="s2">"image/jpg"</span><span class="p">,</span>
+            <span class="s2">"pattern"</span><span class="p">:</span> <span class="s2">"{time}/rgb.jpg"</span>
         <span class="p">},{</span>
-            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;composite&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;pattern&quot;</span><span class="o">:</span> <span class="s2">&quot;{time}/composite.json&quot;</span>
+            <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"composite"</span><span class="p">,</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"json"</span><span class="p">,</span>
+            <span class="s2">"pattern"</span><span class="p">:</span> <span class="s2">"{time}/composite.json"</span>
         <span class="p">},</span>
     <span class="p">],</span>
-    <span class="s2">&quot;CompositePipeline&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;layers&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;dimensions&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">500</span> <span class="p">],</span>
-        <span class="s2">&quot;fields&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;A&quot;</span><span class="o">:</span> <span class="s2">&quot;salinity&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;B&quot;</span><span class="o">:</span> <span class="s2">&quot;temperature&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;C&quot;</span><span class="o">:</span> <span class="s2">&quot;bottomDepth&quot;</span>
+    <span class="s2">"CompositePipeline"</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s2">"layers"</span><span class="err">:</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">],</span>
+        <span class="s2">"dimensions"</span><span class="err">:</span> <span class="p">[</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">500</span> <span class="p">],</span>
+        <span class="s2">"fields"</span><span class="err">:</span> <span class="p">{</span>
+            <span class="s2">"A"</span><span class="err">:</span> <span class="s2">"salinity"</span><span class="p">,</span>
+            <span class="s2">"B"</span><span class="err">:</span> <span class="s2">"temperature"</span><span class="p">,</span>
+            <span class="s2">"C"</span><span class="err">:</span> <span class="s2">"bottomDepth"</span>
         <span class="p">},</span>
-        <span class="s2">&quot;layer_fields&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;A&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;C&quot;</span> <span class="p">],</span>
-            <span class="s2">&quot;B&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span> <span class="p">],</span>
-            <span class="s2">&quot;C&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span> <span class="p">]</span>
+        <span class="s2">"layer_fields"</span><span class="err">:</span> <span class="p">{</span>
+            <span class="s2">"A"</span><span class="err">:</span> <span class="p">[</span> <span class="s2">"C"</span> <span class="p">],</span>
+            <span class="s2">"B"</span><span class="err">:</span> <span class="p">[</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"A"</span> <span class="p">],</span>
+            <span class="s2">"C"</span><span class="err">:</span> <span class="p">[</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"A"</span> <span class="p">]</span>
         <span class="p">},</span>
-        <span class="s2">&quot;offset&quot;</span><span class="o">:</span> <span class="p">{</span>
-            <span class="s2">&quot;AC&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
-            <span class="s2">&quot;BA&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
-            <span class="s2">&quot;BB&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
-            <span class="s2">&quot;CA&quot;</span><span class="o">:</span> <span class="mi">5</span><span class="p">,</span>
-            <span class="s2">&quot;CB&quot;</span><span class="o">:</span> <span class="mi">4</span>
+        <span class="s2">"offset"</span><span class="err">:</span> <span class="p">{</span>
+            <span class="s2">"AC"</span><span class="err">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">"BA"</span><span class="err">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">"BB"</span><span class="err">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">"CA"</span><span class="err">:</span> <span class="mi">5</span><span class="p">,</span>
+            <span class="s2">"CB"</span><span class="err">:</span> <span class="mi">4</span>
         <span class="p">},</span>
-        <span class="s2">&quot;pipeline&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="s2">"pipeline"</span><span class="err">:</span> <span class="p">[</span>
             <span class="p">{</span>
-                <span class="s2">&quot;ids&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;A&quot;</span> <span class="p">],</span>
-                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Earth core&quot;</span><span class="p">,</span>
+                <span class="s2">"ids"</span><span class="p">:</span> <span class="p">[</span> <span class="s2">"A"</span> <span class="p">],</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Earth core"</span><span class="p">,</span>
             <span class="p">},{</span>
-                <span class="s2">&quot;ids&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span> <span class="p">],</span>
-                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Contour by temperature&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;children&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">"ids"</span><span class="p">:</span> <span class="p">[</span> <span class="s2">"B"</span><span class="p">,</span> <span class="s2">"C"</span> <span class="p">],</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Contour by temperature"</span><span class="p">,</span>
+                <span class="s2">"children"</span><span class="p">:</span> <span class="p">[</span>
                     <span class="p">{</span>
-                        <span class="s2">&quot;ids&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;B&quot;</span> <span class="p">],</span>
-                        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;t=25.0&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;layer&quot;</span>
+                        <span class="s2">"ids"</span><span class="p">:</span> <span class="p">[</span> <span class="s2">"B"</span> <span class="p">],</span>
+                        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"t=25.0"</span><span class="p">,</span>
+                        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"layer"</span>
                     <span class="p">},{</span>
-                        <span class="s2">&quot;ids&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;C&quot;</span> <span class="p">],</span>
-                        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;t=20.0&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="s2">&quot;layer&quot;</span>
+                        <span class="s2">"ids"</span><span class="p">:</span> <span class="p">[</span> <span class="s2">"C"</span> <span class="p">],</span>
+                        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"t=20.0"</span><span class="p">,</span>
+                        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"layer"</span>
                     <span class="p">}</span>
                 <span class="p">],</span>
             <span class="p">}</span>
@@ -272,7 +300,7 @@ settings.</p>
 <p>The <strong>composite.json</strong> on the other end, provide the pixel ordering for each of
 the possible layers with a content similar to the following one:</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
-    <span class="s2">&quot;pixel-order&quot;</span><span class="o">:</span> <span class="s2">&quot;@2258+A+CBA+CA+CB+...&quot;</span>
+    <span class="s2">"pixel-order"</span><span class="err">:</span> <span class="s2">"@2258+A+CBA+CA+CB+..."</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>The <strong>pixel-order</strong> string describe the layer order for each pixel starting from
@@ -301,7 +329,7 @@ the top left corner of the image.</p>
   </div>
     <div class="unit half">
     
-      <a href="/arctic-viewer/docs/Probe/" class="next">
+      <a href="/arctic-viewer/docs/DepthSortedComposite/" class="next">
         Next
       </a>
     
@@ -325,9 +353,9 @@ the top left corner of the image.</p>
   
 
   
-    
-  
 
+  
+    
   
     
   
@@ -354,9 +382,9 @@ the top left corner of the image.</p>
   
 
   
-    
-  
 
+  
+    
   
     
   
@@ -375,8 +403,6 @@ the top left corner of the image.</p>
   
 
   
-    
-  
 
   
     
@@ -391,14 +417,37 @@ the top left corner of the image.</p>
   
     
   
+    
+  
 
+
+  
 
   
 
   
     
   
+    
+      <li class=""><a href="/arctic-viewer/docs/DepthSortedComposite/">Depth-Sorted Composite</a></li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
 
+
+  
+
+  
+
+  
+    
   
     
   
@@ -417,9 +466,9 @@ the top left corner of the image.</p>
   
 
   
-    
-  
 
+  
+    
   
     
   

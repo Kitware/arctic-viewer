@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Ensemble</title>
-  <meta name="description" content="Command line tool that let you explore interactively your cold data using your web browser.">
+  <meta name="description" content="Introduction">
 
   <link rel="stylesheet" href="/arctic-viewer/css/main.css">
   <link rel="canonical" href="/arctic-viewer/docs/Ensemble/">
@@ -86,6 +86,8 @@
     
   
     
+  
+    
       <option value="/arctic-viewer/docs/home/">Quick Start</option>
     
   
@@ -99,6 +101,8 @@
 
   
 
+  
+    
   
     
   
@@ -128,9 +132,31 @@
   
     
   
+    
+  
 
   
 
+  
+    
+  
+    
+      <option value="/arctic-viewer/docs/DepthSortedComposite/">Depth-Sorted Composite</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
   
     
   
@@ -147,6 +173,8 @@
 
   
 
+  
+    
   
     
   
@@ -196,59 +224,59 @@ in a way it can be understood by the application. The application expect a file
 named <strong>info.json</strong> at the root of the tree structure (if any) with a content similar
 to the following one.</p>
 <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
-    <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="s2">&quot;ensemble-dataset&quot;</span>
+    <span class="s2">"type"</span><span class="err">:</span> <span class="p">[</span>
+        <span class="s2">"ensemble-dataset"</span>
     <span class="p">],</span>
-    <span class="s2">&quot;Ensemble&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;datasets&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="s2">"Ensemble"</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s2">"datasets"</span><span class="err">:</span> <span class="p">[</span>
             <span class="p">{</span>
-                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Velocity&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="s2">&quot;hydra-image-fluid-velocity/info.json&quot;</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Velocity"</span><span class="p">,</span>
+                <span class="s2">"data"</span><span class="p">:</span> <span class="s2">"hydra-image-fluid-velocity/info.json"</span>
             <span class="p">},{</span>
-                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Velocity2&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="s2">&quot;hydra-image-fluid-velocity/info.json&quot;</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Velocity2"</span><span class="p">,</span>
+                <span class="s2">"data"</span><span class="p">:</span> <span class="s2">"hydra-image-fluid-velocity/info.json"</span>
             <span class="p">},{</span>
-                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;VelocityFree&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="s2">&quot;hydra-image-fluid-velocity/info.json&quot;</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"VelocityFree"</span><span class="p">,</span>
+                <span class="s2">"data"</span><span class="p">:</span> <span class="s2">"hydra-image-fluid-velocity/info.json"</span>
             <span class="p">},{</span>
-                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Earth&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="s2">&quot;mpas-probe-flat-earth/info.json&quot;</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Earth"</span><span class="p">,</span>
+                <span class="s2">"data"</span><span class="p">:</span> <span class="s2">"mpas-probe-flat-earth/info.json"</span>
             <span class="p">},{</span>
-                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Earth2&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="s2">&quot;mpas-probe-flat-earth/info.json&quot;</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Earth2"</span><span class="p">,</span>
+                <span class="s2">"data"</span><span class="p">:</span> <span class="s2">"mpas-probe-flat-earth/info.json"</span>
             <span class="p">},{</span>
-                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;EarthFree&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;data&quot;</span><span class="o">:</span> <span class="s2">&quot;mpas-probe-flat-earth/info.json&quot;</span>
+                <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"EarthFree"</span><span class="p">,</span>
+                <span class="s2">"data"</span><span class="p">:</span> <span class="s2">"mpas-probe-flat-earth/info.json"</span>
             <span class="p">}</span>
         <span class="p">],</span>
-        <span class="s2">&quot;binding&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="s2">"binding"</span><span class="err">:</span> <span class="p">[</span>
             <span class="p">{</span>
-                <span class="s2">&quot;datasets&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;Velocity&quot;</span><span class="p">,</span> <span class="s2">&quot;Velocity2&quot;</span> <span class="p">],</span>
-                <span class="s2">&quot;arguments&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;phi&quot;</span><span class="p">,</span> <span class="s2">&quot;theta&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span> <span class="p">]</span>
+                <span class="s2">"datasets"</span><span class="p">:</span> <span class="p">[</span> <span class="s2">"Velocity"</span><span class="p">,</span> <span class="s2">"Velocity2"</span> <span class="p">],</span>
+                <span class="s2">"arguments"</span><span class="p">:</span> <span class="p">[</span> <span class="s2">"phi"</span><span class="p">,</span> <span class="s2">"theta"</span><span class="p">,</span> <span class="s2">"time"</span> <span class="p">]</span>
             <span class="p">},{</span>
-                <span class="s2">&quot;datasets&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;Earth&quot;</span><span class="p">,</span> <span class="s2">&quot;Earth2&quot;</span> <span class="p">],</span>
-                <span class="s2">&quot;arguments&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;time&quot;</span> <span class="p">],</span>
-                <span class="s2">&quot;other&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">"datasets"</span><span class="p">:</span> <span class="p">[</span> <span class="s2">"Earth"</span><span class="p">,</span> <span class="s2">"Earth2"</span> <span class="p">],</span>
+                <span class="s2">"arguments"</span><span class="p">:</span> <span class="p">[</span> <span class="s2">"time"</span> <span class="p">],</span>
+                <span class="s2">"other"</span><span class="p">:</span> <span class="p">[</span>
                     <span class="p">{</span>
-                        <span class="s2">&quot;listener&quot;</span><span class="o">:</span> <span class="s2">&quot;onProbeChange&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;setter&quot;</span><span class="o">:</span> <span class="s2">&quot;setProbe&quot;</span>
+                        <span class="s2">"listener"</span><span class="p">:</span> <span class="s2">"onProbeChange"</span><span class="p">,</span>
+                        <span class="s2">"setter"</span><span class="p">:</span> <span class="s2">"setProbe"</span>
                     <span class="p">},{</span>
-                        <span class="s2">&quot;listener&quot;</span><span class="o">:</span> <span class="s2">&quot;onRenderMethodChange&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;setter&quot;</span><span class="o">:</span> <span class="s2">&quot;setRenderMethod&quot;</span>
+                        <span class="s2">"listener"</span><span class="p">:</span> <span class="s2">"onRenderMethodChange"</span><span class="p">,</span>
+                        <span class="s2">"setter"</span><span class="p">:</span> <span class="s2">"setRenderMethod"</span>
                     <span class="p">},{</span>
-                        <span class="s2">&quot;listener&quot;</span><span class="o">:</span> <span class="s2">&quot;onCrosshairVisibilityChange&quot;</span><span class="p">,</span>
-                        <span class="s2">&quot;setter&quot;</span><span class="o">:</span> <span class="s2">&quot;setCrossHairEnable&quot;</span>
+                        <span class="s2">"listener"</span><span class="p">:</span> <span class="s2">"onCrosshairVisibilityChange"</span><span class="p">,</span>
+                        <span class="s2">"setter"</span><span class="p">:</span> <span class="s2">"setCrossHairEnable"</span>
                     <span class="p">}</span>
                 <span class="p">]</span>
             <span class="p">}</span>
         <span class="p">],</span>
-        <span class="s2">&quot;operators&quot;</span><span class="o">:</span> <span class="p">[</span>
-            <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Velocity diff&quot;</span><span class="p">,</span> <span class="s2">&quot;datasets&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;Velocity&quot;</span><span class="p">,</span> <span class="s2">&quot;Velocity2&quot;</span><span class="p">,</span> <span class="s2">&quot;VelocityFree&quot;</span> <span class="p">],</span> <span class="s2">&quot;operation&quot;</span><span class="o">:</span> <span class="s2">&quot;Velocity - VelocityFree&quot;</span> <span class="p">},</span>
-            <span class="p">{</span> <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Earth diff&quot;</span><span class="p">,</span> <span class="s2">&quot;datasets&quot;</span><span class="o">:</span> <span class="p">[</span> <span class="s2">&quot;Earth&quot;</span><span class="p">,</span> <span class="s2">&quot;Earth2&quot;</span><span class="p">,</span> <span class="s2">&quot;EarthFree&quot;</span> <span class="p">],</span> <span class="s2">&quot;operation&quot;</span><span class="o">:</span> <span class="s2">&quot;Earth - EarthFree&quot;</span> <span class="p">}</span>
+        <span class="s2">"operators"</span><span class="err">:</span> <span class="p">[</span>
+            <span class="p">{</span> <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Velocity diff"</span><span class="p">,</span> <span class="s2">"datasets"</span><span class="p">:</span> <span class="p">[</span> <span class="s2">"Velocity"</span><span class="p">,</span> <span class="s2">"Velocity2"</span><span class="p">,</span> <span class="s2">"VelocityFree"</span> <span class="p">],</span> <span class="s2">"operation"</span><span class="p">:</span> <span class="s2">"Velocity - VelocityFree"</span> <span class="p">},</span>
+            <span class="p">{</span> <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"Earth diff"</span><span class="p">,</span> <span class="s2">"datasets"</span><span class="p">:</span> <span class="p">[</span> <span class="s2">"Earth"</span><span class="p">,</span> <span class="s2">"Earth2"</span><span class="p">,</span> <span class="s2">"EarthFree"</span> <span class="p">],</span> <span class="s2">"operation"</span><span class="p">:</span> <span class="s2">"Earth - EarthFree"</span> <span class="p">}</span>
         <span class="p">]</span>
     <span class="p">},</span>
-    <span class="s2">&quot;metadata&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;title&quot;</span><span class="o">:</span> <span class="s2">&quot;Ensemble demo&quot;</span>
+    <span class="s2">"metadata"</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s2">"title"</span><span class="err">:</span> <span class="s2">"Ensemble demo"</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -295,9 +323,9 @@ you to apply pixel operations between the set of datasets you&#39;ve listed in t
   
 
   
-    
-  
 
+  
+    
   
     
   
@@ -324,9 +352,9 @@ you to apply pixel operations between the set of datasets you&#39;ve listed in t
   
 
   
-    
-  
 
+  
+    
   
     
   
@@ -345,8 +373,6 @@ you to apply pixel operations between the set of datasets you&#39;ve listed in t
   
 
   
-    
-  
 
   
     
@@ -361,14 +387,37 @@ you to apply pixel operations between the set of datasets you&#39;ve listed in t
   
     
   
+    
+  
 
+
+  
 
   
 
   
     
   
+    
+      <li class=""><a href="/arctic-viewer/docs/DepthSortedComposite/">Depth-Sorted Composite</a></li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
 
+
+  
+
+  
+
+  
+    
   
     
   
@@ -387,9 +436,9 @@ you to apply pixel operations between the set of datasets you&#39;ve listed in t
   
 
   
-    
-  
 
+  
+    
   
     
   

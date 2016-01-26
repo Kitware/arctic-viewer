@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Depth-Sorted Composite</title>
+  <meta name="description" content="Introduction">
+
+  <link rel="stylesheet" href="/arctic-viewer/css/main.css">
+  <link rel="canonical" href="/arctic-viewer/docs/DepthSortedComposite/">
+  <link rel="alternate" type="application/rss+xml" title="ArcticViewer" href="/arctic-viewer/feed.xml" />
+</head>
+
+
+<body>
+
+<header class="site-header">
+
+    <nav class="mobile-nav show-on-mobiles">
+        <a class="page-link" href="/arctic-viewer/"><i class="fa fa-home fa-fw fa-lg"></i></a>
+<a class="page-link" href="/arctic-viewer/docs/home"><i class="fa fa-book fa-fw fa-lg"></i></a>
+<a class="page-link" href="/arctic-viewer/news"><i class="fa fa-newspaper-o fa-fw fa-lg"></i></a>
+    </nav>
+    <div class="wrapper">
+
+        <a class="site-title center-on-mobiles" href="/arctic-viewer/">
+            <img src="/arctic-viewer/img/logo.png" height="40" alt="Logo">
+            ArcticViewer
+        </a>
+        <nav class="site-nav hide-on-mobiles">
+            <a href="#" class="menu-icon">
+                <svg viewBox="0 0 18 15">
+                    <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                    <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                    <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+                </svg>
+            </a>
+            <div class="trigger">
+                <a class="page-link" href="/arctic-viewer/">Home</a>
+<a class="page-link" href="/arctic-viewer/docs/home">Docs</a>
+<a class="page-link" href="/arctic-viewer/news">News</a>
+
+            </div>
+        </nav>
+    </div>
+
+</header>
+
+<div class="wrapper">
+    <nav class="docs-nav hide-on-mobiles">
+        <a href="#" class="menu-icon">
+            <svg viewBox="0 0 18 15">
+                <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+                <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+                <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+        </a>
+    </nav>
+</div>
+
+<div class="page-content">
+    <div class="wrapper">
+          <section class="docs">
+    <div class="grid">
+
+      <div class="docs-nav-mobile unit whole show-on-mobiles">
+  <select onchange="if (this.value) window.location.href=this.value">
+    <option value="">Navigate the docs…</option>
+    
+    <optgroup label="Quick Start">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/arctic-viewer/docs/home/">Quick Start</option>
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="Supported Dataset">
+      
+
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/arctic-viewer/docs/ImageBased/">Image base</option>
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+      <option value="/arctic-viewer/docs/Composite/">Composite</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+      <option value="/arctic-viewer/docs/DepthSortedComposite/">Depth-Sorted Composite</option>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <option value="/arctic-viewer/docs/Probe/">Probe</option>
+    
+  
+    
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+      <option value="/arctic-viewer/docs/Ensemble/">Ensemble</option>
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+    </optgroup>
+    
+    <optgroup label="Developer guide">
+      <option value="/arctic-viewer/dev/">Development</option>
+      
+      
+      <option value="/arctic-viewer/source/arctic-viewer.html">Source</option>
+      
+    </optgroup>
+  </select>
+</div>
+
+
+      <div class="unit five-sixths">
+        <article>
+            
+            <div class="improve right hide-on-mobiles">
+                <a href="https://github.com/Kitware/arctic-viewer/edit/master/docs/guides/formats/DepthSortedCompositeFormat.md"><i class="fa fa-pencil"></i>&nbsp;Edit</a>
+            </div>
+            
+          <h1>Depth-Sorted Composite</h1>
+          <h1>Introduction</h1>
+
+<p>This guide will focus on the depth-sorted composite datatype and will explain
+the structure and requirements for this datatype so you can create your own
+datasets.</p>
+
+<p>The name depth-sorted composite comes from the fact that these datasets have
+been processed so that the images can be drawn directly and immediately in
+back-to-front order.</p>
+
+<p>Additionally, we need an opacity or alpha for each pixel in each layer.  If we also
+have an intensity for each pixel in each layer, we can make use of that to do
+additionaly interesting things with the images produced by arctic viewer.</p>
+
+<h1>Dataset structure</h1>
+
+<p>Arctic Viewer expects any data to be accompanied by a dataset descriptor that
+formalizes the data convention so it can be understood by the application. The
+application expects to find a file named <strong>info.json</strong> at the root of the tree
+structure (if any), and for the depth-sorted composite type of dataset, the
+file should be similar to the following example.</p>
+<div class="highlight"><pre><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="s2">"SortedComposite"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"layers"</span><span class="err">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="s2">"scalars"</span><span class="err">:</span> <span class="p">[</span>
+      <span class="mf">511.875</span><span class="p">,</span>
+      <span class="mf">1535.625</span><span class="p">,</span>
+      <span class="mf">2559.375</span><span class="p">,</span>
+      <span class="mf">3583.125</span><span class="p">,</span>
+      <span class="mf">4596.875</span>
+    <span class="p">],</span>
+    <span class="s2">"dimensions"</span><span class="err">:</span> <span class="p">[</span>
+      <span class="mi">3</span><span class="p">,</span>
+      <span class="mi">3</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="s2">"type"</span><span class="err">:</span> <span class="p">[</span>
+    <span class="s2">"tonic-query-data-model"</span><span class="p">,</span>
+    <span class="s2">"sorted-composite"</span><span class="p">,</span>
+    <span class="s2">"alpha"</span>
+  <span class="p">],</span>
+  <span class="s2">"arguments"</span><span class="err">:</span> <span class="p">{</span>
+    <span class="s2">"theta"</span><span class="err">:</span> <span class="p">{</span>
+      <span class="s2">"default"</span><span class="err">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s2">"bind"</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s2">"mouse"</span><span class="err">:</span> <span class="p">{</span>
+          <span class="s2">"drag"</span><span class="err">:</span> <span class="p">{</span>
+            <span class="s2">"coordinate"</span><span class="err">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">"step"</span><span class="err">:</span> <span class="mi">30</span><span class="p">,</span>
+            <span class="s2">"modifier"</span><span class="err">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"orientation"</span><span class="err">:</span> <span class="mi">1</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="s2">"ui"</span><span class="err">:</span> <span class="s2">"slider"</span><span class="p">,</span>
+      <span class="s2">"name"</span><span class="err">:</span> <span class="s2">"theta"</span><span class="p">,</span>
+      <span class="s2">"values"</span><span class="err">:</span> <span class="p">[</span>
+        <span class="s2">"30"</span><span class="p">,</span>
+        <span class="s2">"60"</span><span class="p">,</span>
+        <span class="s2">"90"</span><span class="p">,</span>
+        <span class="s2">"120"</span><span class="p">,</span>
+        <span class="s2">"150"</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">"phi"</span><span class="err">:</span> <span class="p">{</span>
+      <span class="s2">"bind"</span><span class="err">:</span> <span class="p">{</span>
+        <span class="s2">"mouse"</span><span class="err">:</span> <span class="p">{</span>
+          <span class="s2">"drag"</span><span class="err">:</span> <span class="p">{</span>
+            <span class="s2">"coordinate"</span><span class="err">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"step"</span><span class="err">:</span> <span class="mi">30</span><span class="p">,</span>
+            <span class="s2">"modifier"</span><span class="err">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">"orientation"</span><span class="err">:</span> <span class="mi">1</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">},</span>
+      <span class="s2">"ui"</span><span class="err">:</span> <span class="s2">"slider"</span><span class="p">,</span>
+      <span class="s2">"values"</span><span class="err">:</span> <span class="p">[</span>
+        <span class="s2">"0"</span><span class="p">,</span>
+        <span class="s2">"30"</span><span class="p">,</span>
+        <span class="s2">"60"</span><span class="p">,</span>
+        <span class="s2">"90"</span><span class="p">,</span>
+        <span class="s2">"120"</span><span class="p">,</span>
+        <span class="s2">"150"</span><span class="p">,</span>
+        <span class="s2">"180"</span><span class="p">,</span>
+        <span class="s2">"210"</span><span class="p">,</span>
+        <span class="s2">"240"</span><span class="p">,</span>
+        <span class="s2">"270"</span><span class="p">,</span>
+        <span class="s2">"300"</span><span class="p">,</span>
+        <span class="s2">"330"</span>
+      <span class="p">],</span>
+      <span class="s2">"name"</span><span class="err">:</span> <span class="s2">"phi"</span><span class="p">,</span>
+      <span class="s2">"loop"</span><span class="err">:</span> <span class="s2">"modulo"</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="s2">"data"</span><span class="err">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">"pattern"</span><span class="p">:</span> <span class="s2">"{theta}_{phi}/intensity.uint8"</span><span class="p">,</span>
+      <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"array"</span><span class="p">,</span>
+      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"intensity"</span><span class="p">,</span>
+      <span class="s2">"categories"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"intensity"</span>
+      <span class="p">],</span>
+      <span class="s2">"metadata"</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"pattern"</span><span class="p">:</span> <span class="s2">"{theta}_{phi}/alpha.uint8"</span><span class="p">,</span>
+      <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"array"</span><span class="p">,</span>
+      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"alpha"</span><span class="p">,</span>
+      <span class="s2">"metadata"</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="s2">"pattern"</span><span class="p">:</span> <span class="s2">"{theta}_{phi}/order.uint8"</span><span class="p">,</span>
+      <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"array"</span><span class="p">,</span>
+      <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"order"</span><span class="p">,</span>
+      <span class="s2">"metadata"</span><span class="p">:</span> <span class="p">{}</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">"arguments_order"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">"phi"</span><span class="p">,</span>
+    <span class="s2">"theta"</span>
+  <span class="p">],</span>
+  <span class="s2">"metadata"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"backgroundColor"</span><span class="p">:</span> <span class="s2">"rgb(0, 0, 0)"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Let us begin by noting some important details from this descriptor file.  First,
+the image dimensions are described by the <code>SortedComposite</code> -&gt; <code>dimensions</code> attribute.
+In this case, the images we will compose are 3px by 3px.  Next, note the the number
+of &quot;layers&quot; we will be compositing is <code>5</code> in this case.  Looking in the <code>data</code> section
+we can see there are three components to the data for building up a final composite
+image: <code>order.uint8</code>, <code>alpha.uint8</code> and <code>intensity.uint8</code>.  These data components are
+described in a bit more detail below.</p>
+
+<p><img src="/arctic-viewer/docs/tonic-volume-data-format.png" alt="Depth-sorted Data Components" title="Example data layout for 3x3 images with 5 layers"></p>
+
+<p>The image above shows an example of the data layout for two of the three components
+(intensity is exactly the same, and thus not shown above) in the case where the layer
+images are 3x3 pixels, and there are 5 layers (features) total.  Each data component
+is simply a 1D array of 8-bit pixels, where the length of the array is found by
+multiplying image width by image height by number of layers.  Refer to this depiction
+when reading about the different data components below.</p>
+
+<h2><code>order</code></h2>
+
+<p>The data in the order file consists of 8 bits per pixel, where the value in a pixel
+is just the original layer index of that pixel.  The letters <code>a</code> through <code>e</code>  in the
+above illustration correspond to depth-sorted layers where the pixels in <code>e</code> are
+furthest from the camera, <code>d</code> are the next-furthest, and so on, until <code>a</code> are the
+closest to the camera.  The actual value in each pixel within the sprite is a single
+byte indicating which feature layer contains the <code>alpha</code> and <code>intensity</code> for the pixel.</p>
+
+<p>By starting with the pixels marked with an <code>e</code> and proceeding backwards through the
+alphabet to pixels marked with an <code>a</code>, we can quickly do back-to-front rendering
+(using the traditional over-operator) which will produce a correctly alpha-blended
+image.</p>
+
+<h2><code>alpha</code></h2>
+
+<p>The data in the <code>alpha</code> file consists of 8 bits per pixel, each pixel giving an opacity
+value of a pixel in an original layer or feature.</p>
+
+<h2><code>intensity</code></h2>
+
+<p>The data in the <code>intensity</code> file is completely analogous to the data found in the <code>alpha</code>
+file.  The difference is that the intensities give a measure of the &quot;brightness&quot; of the
+pixel, rather than the transparency.</p>
+
+          <div class="section-nav">
+    <div class=""grid">
+  <div class="unit half">
+    
+      <a href="/arctic-viewer/docs/Composite/" class="prev">
+        Back
+      </a>
+    
+  </div>
+    <div class="unit half">
+    
+      <a href="/arctic-viewer/docs/Probe/" class="next">
+        Next
+      </a>
+    
+  </div>
+  </div>
+  <div class="clear"></div>
+</div>
+
+
+        </article>
+      </div>
+
+      <div class="unit one-sixth hide-on-mobiles">
+  <aside>
+    
+    <h4>Quick Start</h4>
+    
+
+<ul>
+
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li class=""><a href="/arctic-viewer/docs/home/">Quick Start</a></li>
+    
+  
+
+
+</ul>
+
+    
+    <h4>Supported Dataset</h4>
+    
+
+<ul>
+
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+      <li class=""><a href="/arctic-viewer/docs/ImageBased/">Image base</a></li>
+    
+  
+    
+  
+    
+  
+
+
+  
+
+  
+
+  
+    
+      <li class=""><a href="/arctic-viewer/docs/Composite/">Composite</a></li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+  
+
+  
+
+  
+    
+  
+    
+      <li class="current"><a href="/arctic-viewer/docs/DepthSortedComposite/">Depth-Sorted Composite</a></li>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <li class=""><a href="/arctic-viewer/docs/Probe/">Probe</a></li>
+    
+  
+    
+  
+
+
+  
+
+  
+
+  
+    
+  
+    
+  
+    
+      <li class=""><a href="/arctic-viewer/docs/Ensemble/">Ensemble</a></li>
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+</ul>
+
+    
+    <h4>Developer guide</h4>
+    <ul>
+      <li><a class="page-link" href="/arctic-viewer/dev/">Development</a></li>
+      
+      
+      <li><a class="page-link" href="/arctic-viewer/source/arctic-viewer.html">Source</a></li>
+      
+    </ul>
+  </aside>
+</div>
+
+
+      <div class="clear"></div>
+
+    </div>
+  </section>
+
+    </div>
+</div>
+
+<div class="site-footer">
+    <div class="grid">
+        <div class="unit whole">
+            <div class="wrapper">
+                <p>&copy;&nbsp;2015 <a href="http://www.kitware.com">Kitware, Inc.</a> under the terms of the BSD 3 Clause Open Source
+                    <a href="Kitware/arctic-viewer/blob/master/LICENSE">License</a>.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+
+</html>
