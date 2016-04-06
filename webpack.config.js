@@ -1,34 +1,46 @@
+var path = require('path');
+var webpack = require('webpack');
+var loaders = require('./node_modules/paraviewweb/config/webpack.loaders.js');
+var plugins = [];
+
+if (process.env.NODE_ENV === 'production') {
+  console.log('==> Production build');
+  plugins.push(new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify('production'),
+    },
+  }));
+}
+
 module.exports = {
-  plugins: [],
+  plugins: plugins,
   entry: './lib/arctic-viewer.js',
   output: {
     path: './dist',
     filename: 'viewer.js',
   },
   module: {
-    preLoaders: [
-      {
-            test: /\.js$/,
-            loader: "eslint-loader",
-            exclude: /node_modules/,
-      },
-    ],
+    preLoaders: [{
+      test: /\.js$/,
+      loader: 'eslint-loader',
+      exclude: /node_modules/,
+    }],
     loaders: [
-      { test: require.resolve("./lib/arctic-viewer.js"), loader: "expose?ArcticViewer" },
-      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=60000&mimetype=application/font-woff" },
-      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=60000" },
-      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'},
-      { test: /\.css$/, loader: "style-loader!css-loader!autoprefixer-loader?browsers=last 2 version" },
-      { test: /\.c$/i, loader: "shader" },
-      { test: /\.js$/, include: /node_modules\/tonic-/, loader: "babel?presets[]=react,presets[]=es2015" },
-      { test: /\.js$/, exclude: /node_modules/, loader: "babel?presets[]=react,presets[]=es2015" },
-    ],
+      { test: require.resolve('./lib/arctic-viewer.js'), loader: 'expose?ArcticViewer' },
+    ].concat(loaders),
   },
   externals: {
-    "three": "THREE",
-    // "ArcticViewer": "ArcticViewer",
+    three: 'THREE',
   },
+  resolve: {
+    alias: {
+      PVWStyle: path.resolve('./node_modules/paraviewweb/style'),
+    },
+  },
+  postcss: [
+    require('autoprefixer')({ browsers: ['last 2 versions'] }),
+  ],
   eslint: {
-      configFile: '.eslintrc',
+    configFile: '.eslintrc.js',
   },
 };
