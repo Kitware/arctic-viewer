@@ -21,7 +21,7 @@
     "shelljs": "0.5.3"
   },
   "devDependencies": {
-    "paraviewweb": "1.3.10",
+    "paraviewweb": "1.3.12",
 
     "font-awesome": "4.6.1",
     "mout": "1.0.0",
