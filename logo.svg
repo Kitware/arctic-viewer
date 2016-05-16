@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="196px" height="196px" viewBox="0 0 196 196" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.7.2 (28276) - http://www.bohemiancoding.com/sketch -->
+    <title>ArcticViewerlogo</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#F5F7F8" offset="17.191486%"></stop>
+            <stop stop-color="#2CA0D9" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ArcticViewer">
+            <g id="Group" transform="translate(14.000000, 9.000000)">
+                <polygon id="IceBerg" stroke="#60606F" stroke-width="4" fill="url(#linearGradient-1)" points="77.1856906 0.729334462 101.592233 25.0484491 111.030549 51.5986259 125.299781 39.574944 145.607951 51.5986259 149.746832 73.5886376 167.154496 98.4601494 149.746839 140.380894 127.302577 173.915262 107.60654 167.667332 84.9400637 177.414439 59.7729053 164.949497 41.0473244 168.448675 14.7887549 136.468446 0.569423923 92.9260392 14.7887553 83.4926316 25.948315 55.4524549 49.087162 45.5822209"></polygon>
+                <path d="M43.4037045,118.611153 L61.294821,123.531661 L63.0991392,102.422272 L67.7269078,88.053675 L93.0955641,98.2154434 L99.7250445,136.452378 L120.394285,146.842715 L106.319432,84.5138442 L89.9767547,32.1866927 L79.2341891,25.9527828 L60.9672948,57.1398637 L47.1892636,90.3123873 L43.4037045,118.611153 Z M80.1655916,45.2944123 L72.3663749,73.2191729 L91.0382904,80.8672906 L86.6181494,56.0908956 L80.1655916,45.2944123 Z" id="Combined-Shape" fill="#08445A"></path>
+            </g>
+        </g>
+    </g>
+</svg>
