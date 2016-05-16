@@ -1,10 +1,4 @@
----
-layout: docs
 title: Image base
-permalink: /docs/ImageBased/
-prev_section: home
-next_section: Composite
-repo_path: /docs/guides/formats/ImageBasedFormat.md
 ---
 
 # Introduction

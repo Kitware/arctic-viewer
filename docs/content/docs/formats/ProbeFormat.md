@@ -1,10 +1,4 @@
----
-layout: docs
 title: Probe
-permalink: /docs/Probe/
-prev_section: DepthSortedComposite
-next_section: Ensemble
-repo_path: /docs/guides/formats/ProbeFormat.md
 ---
 
 # Introduction
@@ -17,7 +11,7 @@ it so you could create your own dataset.
 
 Arctic Viewer expect a dataset descriptor that will formalize that convention
 in a way it can be understood by the application. The application expect a file
-named __info.json__ at the root of the tree structure (if any) with a content similar
+named __index.json__ at the root of the tree structure (if any) with a content similar
 to the following one.
 
 ```js
@@ -68,4 +62,4 @@ the data range, the spacing and how much layers are available in a sprite.
 
 # Image Sprite
 
-![Image Sprite]({{site.baseurl}}/docs/probe-sprite.png "Image Sprite with raw scalar field encoded")
+<img src="/arctic-viewer/docs/formats/probe-sprite.png" alt="Image Sprite with raw scalar field encoded"/>

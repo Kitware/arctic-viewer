@@ -1,10 +1,4 @@
----
-layout: docs
 title: Depth-Sorted Composite
-permalink: /docs/DepthSortedComposite/
-prev_section: Composite
-next_section: Probe
-repo_path: /docs/guides/formats/DepthSortedCompositeFormat.md
 ---
 
 # Introduction
@@ -25,7 +19,7 @@ additionaly interesting things with the images produced by arctic viewer.
 
 Arctic Viewer expects any data to be accompanied by a dataset descriptor that
 formalizes the data convention so it can be understood by the application. The
-application expects to find a file named __info.json__ at the root of the tree
+application expects to find a file named __index.json__ at the root of the tree
 structure (if any), and for the depth-sorted composite type of dataset, the
 file should be similar to the following example.
 
@@ -144,7 +138,7 @@ we can see there are three components to the data for building up a final compos
 image: `order.uint8`, `alpha.uint8` and `intensity.uint8`.  These data components are
 described in a bit more detail below.
 
-![Depth-sorted Data Components]({{site.baseurl}}/docs/tonic-volume-data-format.png "Example data layout for 3x3 images with 5 layers")
+<img src="/arctic-viewer/docs/formats/tonic-volume-data-format.png" alt="Example data layout for 3x3 images with 5 layers"/>
 
 The image above shows an example of the data layout for two of the three components
 (intensity is exactly the same, and thus not shown above) in the case where the layer

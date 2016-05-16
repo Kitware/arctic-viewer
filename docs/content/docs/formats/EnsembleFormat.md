@@ -1,9 +1,4 @@
----
-layout: docs
 title: Ensemble
-permalink: /docs/Ensemble/
-prev_section: Probe
-repo_path: /docs/guides/formats/EnsembleFormat.md
 ---
 
 # Introduction
@@ -16,7 +11,7 @@ it so you could create your own dataset.
 
 Arctic Viewer expect a dataset descriptor that will formalize that convention
 in a way it can be understood by the application. The application expect a file
-named __info.json__ at the root of the tree structure (if any) with a content similar
+named __index.json__ at the root of the tree structure (if any) with a content similar
 to the following one.
 
 ```js
@@ -28,22 +23,22 @@ to the following one.
         "datasets": [
             {
                 "name": "Velocity",
-                "data": "hydra-image-fluid-velocity/info.json"
+                "data": "hydra-image-fluid-velocity/index.json"
             },{
                 "name": "Velocity2",
-                "data": "hydra-image-fluid-velocity/info.json"
+                "data": "hydra-image-fluid-velocity/index.json"
             },{
                 "name": "VelocityFree",
-                "data": "hydra-image-fluid-velocity/info.json"
+                "data": "hydra-image-fluid-velocity/index.json"
             },{
                 "name": "Earth",
-                "data": "mpas-probe-flat-earth/info.json"
+                "data": "mpas-probe-flat-earth/index.json"
             },{
                 "name": "Earth2",
-                "data": "mpas-probe-flat-earth/info.json"
+                "data": "mpas-probe-flat-earth/index.json"
             },{
                 "name": "EarthFree",
-                "data": "mpas-probe-flat-earth/info.json"
+                "data": "mpas-probe-flat-earth/index.json"
             }
         ],
         "binding": [
@@ -83,7 +78,7 @@ with the relationship that should exist between them. Like synchronizing
 the __Time__ across several dataset or any particular argument or parameter.
 But also what kind of binding need to happen directly on the ImageBuilder instance.
 
-The path provided for those datasets is relative to the initial info.json file.
+The path provided for those datasets is relative to the initial index.json file.
 
 Then we can add some Operator views of those dataset. Those operators will allow
 you to apply pixel operations between the set of datasets you've listed in them.

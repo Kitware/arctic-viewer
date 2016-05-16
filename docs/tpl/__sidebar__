@@ -1,0 +1,13 @@
+docs:
+  getting_started:
+    overview: /arctic-viewer/docs/index.html
+  miscellaneous:
+    tools: /arctic-viewer/docs/tools.html
+    troubleshooting: /arctic-viewer/docs/troubleshooting.html
+    contributing: /arctic-viewer/docs/contributing.html
+  formats:
+    imageBased: /arctic-viewer/docs/formats/ImageBasedFormat.html
+    composite: /arctic-viewer/docs/formats/CompositeFormat.html
+    depthSorted: /arctic-viewer/docs/formats/DepthSortedCompositeFormat.html
+    probe: /arctic-viewer/docs/formats/ProbeFormat.html
+    ensemble: /arctic-viewer/docs/formats/EnsembleFormat.html

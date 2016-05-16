@@ -1,10 +1,4 @@
----
-layout: docs
 title: Composite
-permalink: /docs/Composite/
-prev_section: ImageBased
-next_section: DepthSortedComposite
-repo_path: /docs/guides/formats/CompositeFormat.md
 ---
 
 # Introduction
@@ -17,7 +11,7 @@ it so you could create your own dataset.
 
 Arctic Viewer expect a dataset descriptor that will formalize that convention
 in a way it can be understood by the application. The application expect a file
-named __info.json__ at the root of the tree structure (if any) with a content similar
+named __index.json__ at the root of the tree structure (if any) with a content similar
 to the following one.
 
 ```js
@@ -116,4 +110,4 @@ The encoding can be described as follow:
 
 # Image Sprite
 
-![Image Sprite]({{site.baseurl}}/docs/composite-sprite.jpg "Image Sprite of each layer")
+<img src="/arctic-viewer/docs/formats/composite-sprite.jpg" alt="Image Sprite of each layer"/>

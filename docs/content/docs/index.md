@@ -1,9 +1,4 @@
----
-layout: docs
-title: Quick Start
-permalink: /docs/home/
-next_section: ImageBased
-repo_path: /docs/guides/quickStart.md
+title: Documentation
 ---
 
 # Introduction

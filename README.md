@@ -45,7 +45,7 @@ In order to try it out, you should download some sample datasets
 Here is an example on how to download some sample data
 
 ```
-$ mkdir tonic-data && cd $_
+$ mkdir sample-data && cd $_
 $ ArcticViewer --download-sample-data
 
  | Available datasets for download (path: /tmp)
@@ -78,7 +78,7 @@ Then you can load them using the provided feedback or by running the following
 command lines:
 
 ```
-$ ArcticViewer -d ./tonic-data/mpas-probe-flat-earth
+$ ArcticViewer -d ./sample-data/mpas-probe-flat-earth
 ```
 
 This will load a MPAS oceanic simulation data that represent a 3D volume of a
@@ -90,39 +90,16 @@ slice back and forth using the scroll of your input device.
 If you want to zoom or pan, you will have to scroll+[any modifier key] or drag+[any modifier key].
 
 ```
-$ ArcticViewer -d ./tonic-data/hydra-image-fluid-velocity
+$ ArcticViewer -d ./sample-data/hydra-image-fluid-velocity
 ```
 
 This will load an Hydra CFD simulation data that represent the fluid velocity
 using some volume rendering technique.
 
-## Development
-
-```sh
-$ git clone https://github.com/Kitware/tonic.git
-$ cd tonic
-$ npm install
-$ cd tonic-applications/arctic-viewer
-```
-
-Loading a dataset with your current code base (ImageBuilder, Widgets...)
-
-```sh
-$ npm t -- /path/to/your/data
-# With Magic Lens
-$ npm t -- /path/to/your/data -M
-```
-
 ## Documentation
 
 See the [documentation](https://kitware.github.io/arctic-viewer) for a
 getting started guide, advanced documentation, and API descriptions.
-
-__Note__: The development dependency listed in the package.json file for less
-("less": "^1.5") is a peerDependencies of less-loader@0.7.8, which is a dependency of
-font-awesome-webpack@0.0.3. peerDependencies were automatically downloaded in
-npm@2, but in npm@3 the behavior varies from warnings to errors. The
-peerDependency must be handled (installed) as a dependency.
 
 #### Licensing
 
