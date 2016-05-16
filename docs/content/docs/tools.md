@@ -3,18 +3,13 @@ title: Tools
 
 ArcticViewer is meant to be an Open Source application for interactive data exploration.
 
-The following guide explain our software process and tools use to
-build and develop this framework.
+The following guide explain our software process and tools use to build and develop this framework.
 
 ## Software process
 
-We rely on Semantic-release to manage our change log, tagging and publishing
-to NPM via Travis.
+We rely on Semantic-release to manage our change log, tagging and publishing to NPM via Travis.
 
-In order to maintain that process each commit message should follow a specific
-formatting. To ensure that formating, we use Commitizen which can be triggered
-via the following command line. Additional information can be found 
-[here](https://gist.github.com/stephenparish/9941e89d80e2bc58a153).
+In order to maintain that process each commit message should follow a specific formatting. To ensure that formating, we use Commitizen which can be triggered via the following command line. Additional information can be found  [here](https://gist.github.com/stephenparish/9941e89d80e2bc58a153).
 
     $ git cz
 
@@ -58,8 +53,7 @@ Will generate the following commit message:
 
 ## Code editing
 
-[Sublime Text 3](http://www.sublimetext.com) with the following set of plugins.
-To install plugins you will have to first install the [Package constrol](https://packagecontrol.io/installation).
+[Sublime Text 3](http://www.sublimetext.com) with the following set of plugins. To install plugins you will have to first install the [Package constrol](https://packagecontrol.io/installation).
 
 Then installing new plugin should start with: ```Ctrl/Cmd + Shift + p``` Install
 

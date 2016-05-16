@@ -3,16 +3,11 @@ title: Ensemble
 
 # Introduction
 
-The ArcticViewer is able to load several type of datasets, but this guide will
-focus on the ensemble one and will explain what are the requirements for
-it so you could create your own dataset.
+The ArcticViewer is able to load several type of datasets, but this guide will focus on the ensemble one and will explain what are the requirements for it so you could create your own dataset.
 
 # Dataset structure
 
-Arctic Viewer expect a dataset descriptor that will formalize that convention
-in a way it can be understood by the application. The application expect a file
-named __index.json__ at the root of the tree structure (if any) with a content similar
-to the following one.
+Arctic Viewer expect a dataset descriptor that will formalize that convention in a way it can be understood by the application. The application expect a file named __index.json__ at the root of the tree structure (if any) with a content similar to the following one.
 
 ```js
 {
@@ -73,13 +68,9 @@ to the following one.
 }
 ```
 
-In that meta description, we find the list of dataset that compose that ensemble
-with the relationship that should exist between them. Like synchronizing
-the __Time__ across several dataset or any particular argument or parameter.
-But also what kind of binding need to happen directly on the ImageBuilder instance.
+In that meta description, we find the list of dataset that compose that ensemble with the relationship that should exist between them. Like synchronizing the __Time__ across several dataset or any particular argument or parameter. But also what kind of binding need to happen directly on the ImageBuilder instance.
 
 The path provided for those datasets is relative to the initial index.json file.
 
-Then we can add some Operator views of those dataset. Those operators will allow
-you to apply pixel operations between the set of datasets you've listed in them.
+Then we can add some Operator views of those dataset. Those operators will allow you to apply pixel operations between the set of datasets you've listed in them.
 
