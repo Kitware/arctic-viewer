@@ -3,28 +3,17 @@ title: Image base
 
 # Introduction
 
-The ArcticViewer is able to load several type of datasets, but this guide will
-focus on the most basic one and will explain what are the requirements for
-the image based one so you could create your own dataset.
+The ParaView ArcticViewer is able to load several type of datasets, but this guide will focus on the most basic one and will explain what are the requirements for the image based one so you could create your own dataset.
 
 # Dataset structure
 
-The data must be a set of images (JPG, PNG...) defined by a N dimensional
-parameter set.
+The data must be a set of images (JPG, PNG...) defined by a N dimensional parameter set.
 
-For example a movie is considered a 1D dataset as the only variable is time.
-But imagine you have a set of pictures/images that are dependent of a point of
-view and the time, then you have a 2D one. By now, you should be able to
-understand the concept.
+For example a movie is considered a 1D dataset as the only variable is time. But imagine you have a set of pictures/images that are dependent of a point of view and the time, then you have a 2D one. By now, you should be able to understand the concept.
 
-So assuming you have a large set of images, they need to have a structure and/or
-a convention on their naming relative to those parameters.
+So assuming you have a large set of images, they need to have a structure and/or a convention on their naming relative to those parameters.
 
-In order to make those images available to ArcticViewer, you will need to
-create a dataset descriptor that will formalize that convention in a way it
-can be understood by the application. The application expect a file named
-__info.json__ at the root of the tree structure (if any) with a content similar
-to the following one.
+In order to make those images available to ParaView ArcticViewer, you will need to create a dataset descriptor that will formalize that convention in a way it can be understood by the application. The application expect a file named __info.json__ at the root of the tree structure (if any) with a content similar to the following one.
 
 ```js
 {
@@ -50,20 +39,15 @@ The data descriptor has 4 main sections explained below.
 
 ## type
 
-This express the type of the dataset and what kind of processing could be needed
-for rendering the data. In our case, we don't need any specific processing,
-just the fact that we will rely on a "tonic-query-data-model" to handle the
-data.
+This express the type of the dataset and what kind of processing could be needed for rendering the data. In our case, we don't need any specific processing, just the fact that we will rely on a "tonic-query-data-model" to handle the data.
 
 ## arguments_order
 
-This list of String is used by the graphical user interface to create a set of
-controls over the specified parameters and in which order they should appear.
+This list of String is used by the graphical user interface to create a set of controls over the specified parameters and in which order they should appear.
 
 ## arguments
 
-This section defines each dimension that you want to specify with a name and a
-set of possible values.
+This section defines each dimension that you want to specify with a name and a set of possible values.
 
 This can be extended by the following set of optional properties:
 
@@ -90,8 +74,4 @@ You can bind a parameter to a mouse action like follow:
 ## data
 
 This section list the set of data that should be retrieved for a given set of
-parameters. For the Image Based Format, we just need a single entry with a name
-__"image"__ and the appropriate pattern that should represent the path of the
-image relative to the __info.json__ file and where each {xxx} will be replaced
-by the currently active dimension value. The patter can include the __"/"__
-character to denote a sub-directory.
+parameters. For the Image Based Format, we just need a single entry with a name __"image"__ and the appropriate pattern that should represent the path of the image relative to the __info.json__ file and where each {xxx} will be replaced by the currently active dimension value. The patter can include the __"/"__ character to denote a sub-directory.

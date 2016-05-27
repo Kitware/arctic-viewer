@@ -1,7 +1,7 @@
 title: Tools
 ---
 
-ArcticViewer is meant to be an Open Source application for interactive data exploration.
+ParaView ArcticViewer is meant to be an Open Source application for interactive data exploration.
 
 The following guide explain our software process and tools use to build and develop this framework.
 
@@ -67,8 +67,7 @@ This plugin adds proper syntax highlighting to your ES6/2015 and React JSX code.
 
 ### JsFormat
 
-Once installed, to use JSFormat, go to your JS file and hit Ctrl + Alt + f on
-Windows/Linux or Ctrl + ⌥ + f on Mac. Alternatively, use the context menu.
+Once installed, to use JSFormat, go to your JS file and hit Ctrl + Alt + f on Windows/Linux or Ctrl + ⌥ + f on Mac. Alternatively, use the context menu.
 
 ### Sublime-Linter + SublimeLinter-eslint
 

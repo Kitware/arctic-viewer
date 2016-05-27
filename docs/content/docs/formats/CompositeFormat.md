@@ -3,16 +3,11 @@ title: Composite
 
 # Introduction
 
-The ArcticViewer is able to load several type of datasets, but this guide will
-focus on the basic composite one and will explain what are the requirements for
-it so you could create your own dataset.
+The ParaView ArcticViewer is able to load several type of datasets, but this guide will focus on the basic composite one and will explain what are the requirements for it so you could create your own dataset.
 
 # Dataset structure
 
-Arctic Viewer expect a dataset descriptor that will formalize that convention
-in a way it can be understood by the application. The application expect a file
-named __index.json__ at the root of the tree structure (if any) with a content similar
-to the following one.
+ParaView ArcticViewer expect a dataset descriptor that will formalize that convention in a way it can be understood by the application. The application expect a file named __index.json__ at the root of the tree structure (if any) with a content similar to the following one.
 
 ```js
 {
@@ -79,19 +74,13 @@ to the following one.
 }
 ```
 
-In that meta description, we find the pipeline tree described but also we have
-the mapping of the image sprite with the layer and its color by. The first
-character is the layer and the second one is the actual field used for the
-color by.
+In that meta description, we find the pipeline tree described but also we have the mapping of the image sprite with the layer and its color by. The first character is the layer and the second one is the actual field used for the color by.
 
-Then for each query (view position, time, configuration, ...), the dataset is
-composed of an __image sprite__ and a __composite.json__ file.
+Then for each query (view position, time, configuration, ...), the dataset is composed of an __image sprite__ and a __composite.json__ file.
 
-The image sprite represent each layer independently with each of its ColorBy
-settings.
+The image sprite represent each layer independently with each of its ColorBy settings.
 
-The __composite.json__ on the other end, provide the pixel ordering for each of
-the possible layers with a content similar to the following one:
+The __composite.json__ on the other end, provide the pixel ordering for each of the possible layers with a content similar to the following one:
 
 ```js
 {
@@ -99,8 +88,7 @@ the possible layers with a content similar to the following one:
 }
 ```
 
-The __pixel-order__ string describe the layer order for each pixel starting from
-the top left corner of the image.
+The __pixel-order__ string describe the layer order for each pixel starting from the top left corner of the image.
 
 The encoding can be described as follow:
 
