@@ -31,6 +31,7 @@ module.exports = {
   },
   externals: {
     three: 'THREE',
+    Plotly: true,
   },
   resolve: {
     alias: {
