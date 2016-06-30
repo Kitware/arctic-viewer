@@ -11,7 +11,7 @@ cache:
   directories:
     - node_modules
 node_js:
-  - "4.1"
+  - "5.1"
 script:
   - npm run build:release
   - git config --global user.name "Travis CI"
