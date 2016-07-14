@@ -50,7 +50,9 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "bin": {
-    "ArcticViewer": "./bin/arctic-viewer-cli.js"
+    "ArcticViewer": "./bin/arctic-viewer-cli.js",
+    "ArcticViewer2Cinema": "./bin/query-data-model-2-cinema-cli.js",
+    "Cinema2ArcticViewer": "./bin/cinema-2-query-data-model-cli.js"
   },
   "preferGlobal": true,
   "config": {
