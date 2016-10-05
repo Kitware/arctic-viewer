@@ -14,10 +14,15 @@ var fs = require('fs'),
     oneDay = 86400000,
     tenSeconds = 10000,
     clientConfiguration = {},
-    ipList = require('./network');
+    ipList = require('./network'),
+    pkg = require('../package.json'),
+    version = /semantically-release/.test(pkg.version) ? 'development version' : pkg.version;
 
 function handlePort(value) {
-    return Number(value);
+    if (!isNaN(parseInt(value, 10))) {
+        return parseInt(value, 10);
+    }
+    throw Error('port option requires a number');
 }
 
 function getExportPath(args) {
@@ -51,7 +56,7 @@ function removeHead(rawString, keyword) {
 }
 
 program
-  .version('0.6.4')
+  .version(version)
   .option('-p, --port [3000]', 'Start web server with given port', handlePort, 3000)
   .option('-d, --data [directory/http]', 'Data directory to serve')
   .option('-s, --server-only', 'Do not open the web browser\n')
