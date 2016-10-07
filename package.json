@@ -38,7 +38,7 @@
 
     "babel-polyfill": "6.16.0",
 
-    "paraviewweb": "2.2.32"
+    "paraviewweb": "2.2.33"
   },
   "scripts": {
     "build": "webpack",
