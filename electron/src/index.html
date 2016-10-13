@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+        <style>
+            body {
+              display: flex;
+              justify-content: center;
+              align-content: center;
+              text-align: center;
+              /* navtive system fonts across various platforms for that more native feel */
+              font-family: -apple-system, Ubuntu, Helvetica, Arial, sans-serif;
+              color: #226;
+              background-color: #eee;
+            }
+        </style>
+        <title>Arctic Viewer</title>
+    </head>
+    <body>
+        <h3>No data open, press <span class="keystroke"></span></h3>
+        <script type="text/javascript">
+          /* eslint-disable */
+          var keystroke = /Mac/.test(window.navigator.platform) ? '⌘O' : 'Ctlr+O';
+          document.querySelector('.keystroke').textContent = keystroke;
+        </script>
+    </body>
+</html>

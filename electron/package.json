@@ -1,0 +1,25 @@
+{
+  "name": "arctic-viewer-desktop",
+  "productName": "Arctic Viewer",
+  "description": "Load and explore InSitu/Batch data products",
+  "homepage": "https://kitware.github.io/arctic-viewer",
+  "license": "BSD-3-Clause",
+  "version": "0.0.1",
+  "main": "src/index.js",
+  "dependencies": {
+    "electron": "1.4.1",
+    "shelljs": "0.7.4",
+    "about-window": "1.4.0"
+  },
+  "devDependencies": {
+    "electron-packager": "8.1.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build:all": "electron-packager . --all --icon ./src/icon.icns --out ./bin/",
+    "build:mac": "electron-packager . --darwin --icon ./src/icon.icns --out ./bin/",
+    "build:win": "electron-packager . --win32 --out ./bin/",
+    "build:lin": "electron-packager . --linux --out ./bin/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
