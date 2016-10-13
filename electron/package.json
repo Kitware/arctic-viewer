@@ -16,10 +16,10 @@
   },
   "scripts": {
     "start": "electron .",
-    "build:all": "electron-packager . --all --icon ./src/icon.icns --out ./bin/",
-    "build:mac": "electron-packager . --darwin --icon ./src/icon.icns --out ./bin/",
-    "build:win": "electron-packager . --win32 --out ./bin/",
-    "build:lin": "electron-packager . --linux --out ./bin/",
+    "build:all": "electron-packager . --all --icon ./src/icon.icns --out ./bin/ --overwrite",
+    "build:mac": "electron-packager . --darwin --icon ./src/icon.icns --out ./bin/ --overwrite",
+    "build:win": "electron-packager . --win32 --out ./bin/ --overwrite",
+    "build:lin": "electron-packager . --linux --out ./bin/ --overwrite",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

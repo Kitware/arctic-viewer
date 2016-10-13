@@ -46,7 +46,11 @@ function openFile(path) {
     serverPID = null;
   }
 
-  serverPID = exec(`node ../bin/arctic-viewer-cli -d ${path} -s`, { async: true }).pid;
+  serverPID = exec(`node ../bin/arctic-viewer-cli -d ${path} -s`, { async: true }, (code, stdout, stderr) => {
+    if (stderr) {
+      dialog.showErrorBox('Error starting arctic viewer server', stderr);
+    }
+  }).pid;
   mainWindow.loadURL('http://localhost:3000');
 }
 
