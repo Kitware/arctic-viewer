@@ -1,9 +1,8 @@
-/* global exec */
+/* global exec which */
 require('shelljs/global');
 
 const electron = require('electron');
 const aboutPage = require('./aboutPage');
-const avServer = require('../../bin/server');
 
 const { app, dialog, Menu, shell } = electron;
 const BrowserWindow = electron.BrowserWindow;
@@ -11,7 +10,7 @@ const BrowserWindow = electron.BrowserWindow;
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
-let server = null;
+let serverPID = null;
 
 function createWindow() {
   // Create the browser window.
@@ -37,26 +36,21 @@ function openFile(path) {
     createWindow();
   }
 
-  console.log(path);
   if (!path) {
     return;
   }
+  // console.log(path);
 
-  if (server) {
-    server.close();
-    server = null;
+  if (serverPID) {
+    exec(`kill ${serverPID}`);
+    serverPID = null;
   }
 
-  server = avServer(path[0]);
-  server.on('close', () => {
-    console.log('server stopped ✓');
-  });
-
-  server.on('listen', () => {
-    console.log('server start');
-  });
-  server.listen(3000);
-
+  serverPID = exec(`node ../bin/arctic-viewer-cli -d ${path} -s`, { async: true }, (code, stdout, stderr) => {
+    if (stderr) {
+      dialog.showErrorBox('Error starting arctic viewer server', stderr);
+    }
+  }).pid;
   mainWindow.loadURL('http://localhost:3000');
 }
 
@@ -144,6 +138,3 @@ app.on('activate', () => {
     createWindow();
   }
 });
-
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
