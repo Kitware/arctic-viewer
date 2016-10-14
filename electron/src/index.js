@@ -2,6 +2,7 @@
 require('shelljs/global');
 
 const electron = require('electron');
+const spawn = require('child_process').spawn;
 const aboutPage = require('./aboutPage');
 
 const { app, dialog, Menu, shell } = electron;
@@ -10,7 +11,7 @@ const BrowserWindow = electron.BrowserWindow;
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
-let serverPID = null;
+let server = null;
 
 function createWindow() {
   // Create the browser window.
@@ -41,16 +42,18 @@ function openFile(path) {
   }
   // console.log(path);
 
-  if (serverPID) {
-    exec(`kill ${serverPID}`);
-    serverPID = null;
+  if (server) {
+    exec(`kill ${server.pid}`, () => {
+      console.log('server restarting');
+    });
   }
 
-  serverPID = exec(`node ../bin/arctic-viewer-cli -d ${path} -s`, { async: true }, (code, stdout, stderr) => {
-    if (stderr) {
-      dialog.showErrorBox('Error starting arctic viewer server', stderr);
-    }
-  }).pid;
+  server = spawn(`${__dirname}/../node_modules/arctic-viewer/bin/arctic-viewer-cli.js`, ['-d', path, '-s']);
+
+  server.on('error', (err) => {
+    dialog.showErrorBox('Error starting arctic viewer server', err);
+  });
+
   mainWindow.loadURL('http://localhost:3000');
 }
 
@@ -119,9 +122,10 @@ app.on('ready', () => {
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
-  if (serverPID) {
-    console.log(`server stopping pid: ${serverPID}`);
-    exec(`kill ${serverPID}`, { async: true }, () => { console.log('server stopped ✓'); });
+  if (server) {
+    exec(`kill ${server.pid}`, () => {
+      console.log('server stopping ✓');
+    });
   }
 
   // On OS X it is common for applications and their menu bar
