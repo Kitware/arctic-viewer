@@ -3,6 +3,7 @@ require('shelljs/global');
 
 const electron = require('electron');
 const aboutPage = require('./aboutPage');
+const avServer = require('../../bin/server');
 
 const { app, dialog, Menu, shell } = electron;
 const BrowserWindow = electron.BrowserWindow;
@@ -10,7 +11,7 @@ const BrowserWindow = electron.BrowserWindow;
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
-let serverPID = null;
+let server = null;
 
 function createWindow() {
   // Create the browser window.
@@ -41,16 +42,21 @@ function openFile(path) {
     return;
   }
 
-  if (serverPID) {
-    exec(`kill ${serverPID}`);
-    serverPID = null;
+  if (server) {
+    server.close();
+    server = null;
   }
 
-  serverPID = exec(`node ../bin/arctic-viewer-cli -d ${path} -s`, { async: true }, (code, stdout, stderr) => {
-    if (stderr) {
-      dialog.showErrorBox('Error starting arctic viewer server', stderr);
-    }
-  }).pid;
+  server = avServer(path[0]);
+  server.on('close', () => {
+    console.log('server stopped ✓');
+  });
+
+  server.on('listen', () => {
+    console.log('server start');
+  });
+  server.listen(3000);
+
   mainWindow.loadURL('http://localhost:3000');
 }
 
