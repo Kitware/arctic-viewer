@@ -1,6 +1,6 @@
 {
   "name": "arctic-viewer",
-  "description": "Standalone application useful to load and explore InSitu/Batch data products.",
+  "description": "Standalone application useful to load and explore in-situ/batch data products.",
   "license": "BSD-3-Clause",
   "version": "0.0.0-semantically-release",
   "main": "./lib/arctic-viewer.js",

@@ -1,7 +1,7 @@
 {
   "name": "arctic-viewer-desktop",
   "productName": "Arctic Viewer",
-  "description": "Load and explore InSitu/Batch data products",
+  "description": "Load and explore in-situ/batch data products",
   "homepage": "https://kitware.github.io/arctic-viewer",
   "license": "BSD-3-Clause",
   "version": "0.0.1",
