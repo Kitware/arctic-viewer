@@ -1,4 +1,6 @@
-// Handle data path
+/* global mkdir */
+require('shelljs/global');
+
 var path = require('path'),
   fs = require('fs'),
   express = require('express'),
@@ -8,20 +10,57 @@ var path = require('path'),
   preCheckDataDir = require('./arctic-dataset-list-builder'),
   tenSeconds = 10000;
 
-module.exports = function(dataPath, clientConfiguration) {
+function getExportPath(result, args) {
+  var keyPattern = ['{', '}'];
+
+  for (var opt in args) {
+    result = result.replace(keyPattern.join(opt), args[opt]);
+  }
+
+  // Create directory if need be
+  mkdir('-p', path.dirname(result));
+
+  return result;
+}
+
+function removeHead(rawString, keyword) {
+  var cutIdx = rawString.indexOf(keyword);
+
+  if (cutIdx === -1) {
+    return null;
+  }
+
+  // Need to shift idx and cut string
+  cutIdx += keyword.length;
+  return rawString.slice(cutIdx);
+}
+
+function extractImageBase64(rawString) {
+  return removeHead(rawString, 'base64,');
+}
+
+module.exports = function(dataPath, config) {
   // for electron
-  if (!clientConfiguration) {
-    clientConfiguration = {
+  var clientConfiguration = {
       MagicLens: false,
       SingleView: false,
       Recording: false,
-      Development: false
-    };
+      Development: false,
+    },
+    programOutput = './export/{__}.jpg';
+
+  if (config.clientConfiguration) {
+    clientConfiguration = Object.assign(clientConfiguration, config.clientConfiguration);
   }
+
+  if (config.output) {
+    programOutput = config.output;
+  }
+
   var needProxy = (dataPath.indexOf('http') === 0);
 
   // Handle relative path
-  if(dataPath[0] === '.') {
+  if (dataPath[0] === '.') {
       dataPath = path.normalize(path.join(process.env.PWD, dataPath));
   }
 
@@ -49,7 +88,7 @@ module.exports = function(dataPath, clientConfiguration) {
     }
 
     app._router.stack.splice(layerIndex, 1);
-  }
+  };
 
   app.updateDataPath = function (newDataPath) {
     app.removeLayer('/data');
@@ -78,6 +117,14 @@ module.exports = function(dataPath, clientConfiguration) {
     }
   };
 
+  app.getClientConfiguration = function() {
+    return clientConfiguration;
+  };
+
+  app.updateClientConfiguration = function(newConfig) {
+    clientConfiguration = Object.assign(clientConfiguration, newConfig);
+  };
+
   app.updateDataPath(dataPath);
 
   // Add image export handler
@@ -88,7 +135,7 @@ module.exports = function(dataPath, clientConfiguration) {
           base64Data = extractImageBase64(data.image);
 
       if (base64Data) {
-          fs.writeFile(getExportPath(args), base64Data, 'base64', function(err) {
+          fs.writeFile(getExportPath(programOutput, args), base64Data, 'base64', function(err) {
           });
       } else {
           // We should get the URL of image and copy it with a different name

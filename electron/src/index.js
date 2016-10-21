@@ -43,7 +43,7 @@ function openFile(dataPath) {
   console.log(dataPath);
 
   if (!server) {
-    server = avServer(dataPath[0]);
+    server = avServer(dataPath[0], { clientConfiguration: { MagicLens: false } });
     server.listen(3000);
     server.on('error', (err) => {
       dialog.showErrorBox('Error starting arctic viewer server', err);
@@ -54,12 +54,18 @@ function openFile(dataPath) {
     server.updateDataPath(dataPath[0]);
     mainWindow.reload();
   }
+  createMenu();
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
-app.on('ready', () => {
+function toggleMagicLens() {
+  server.updateClientConfiguration({ MagicLens: !server.getClientConfiguration().MagicLens });
+  mainWindow.reload();
+  createMenu();
+}
+
+// create the application menu,
+// this is called initially on 'ready' and when there is a change in the server or window
+function createMenu() {
   const menuTemplate = [
     {
       label: 'File',
@@ -77,13 +83,19 @@ app.on('ready', () => {
         {
           label: 'Refresh',
           accelerator: 'CmdOrCtrl+R',
-          click() { if (mainWindow !== null && server !== null) { mainWindow.reload(); } },
+          enabled: mainWindow !== null && server !== null,
+          click() { mainWindow.reload(); },
+        },
+        {
+          label: `${server && server.getClientConfiguration().MagicLens ? 'Disable' : 'Enable'} MagicLens`,
+          enabled: mainWindow !== null && server !== null,
+          click() { toggleMagicLens(); },
         },
         {
           label: 'Open in Browser',
-          click() { if (mainWindow !== null && server !== null) { shell.openExternal('http://localhost:3000'); } },
+          enabled: mainWindow !== null && server !== null,
+          click() { shell.openExternal('http://localhost:3000'); },
         },
-        // magicLens;
         // singleView;
         // recording;
         // development;
@@ -122,7 +134,13 @@ app.on('ready', () => {
 
   const menu = Menu.buildFromTemplate(menuTemplate);
   Menu.setApplicationMenu(menu);
+}
 
+// This method will be called when Electron has finished
+// initialization and is ready to create browser windows.
+// Some APIs can only be used after this event occurs.
+app.on('ready', () => {
+  createMenu();
   createWindow();
 });
 
@@ -131,6 +149,8 @@ app.on('window-all-closed', () => {
   if (server) {
     exec(`kill ${server.pid}`, () => {
       console.log('server stopping ✓');
+      server = null;
+      createMenu();
     });
   }
 

@@ -18,36 +18,6 @@ function handlePort(value) {
     throw Error('port option requires a number');
 }
 
-function getExportPath(args) {
-    var result = program.outputPattern,
-        keyPattern = ['{', '}'];
-
-    for(var opt in args) {
-        result = result.replace(keyPattern.join(opt), args[opt]);
-    }
-
-    // Create directory if need be
-    mkdir('-p', path.dirname(result));
-
-    return result;
-}
-
-function extractImageBase64(rawString) {
-    return removeHead(rawString, 'base64,');
-}
-
-function removeHead(rawString, keyword) {
-    var cutIdx = rawString.indexOf(keyword);
-
-    if(cutIdx === -1) {
-        return null;
-    }
-
-    // Need to shift idx and cut string
-    cutIdx += keyword.length;
-    return rawString.slice(cutIdx);
-}
-
 program
   .version(version)
   .option('-p, --port [3000]', 'Start web server with given port', handlePort, 3000)
@@ -82,7 +52,7 @@ if(program.downloadSampleData) {
     downloader.downloadData(program.download);
 } else {
   var dataPath = program.data ? program.data : process.env.PWD,
-    app = require('./server')(dataPath, clientConfiguration);
+    app = require('./server')(dataPath, { clientConfiguration: clientConfiguration, output: program.output);
 
   // Start server and listening
   app.listen(program.port);
