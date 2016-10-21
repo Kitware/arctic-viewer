@@ -83,14 +83,14 @@ module.exports = function(dataPath, config) {
     }
 
     if (layerIndex === -1) {
-      console.log(`Router layer for '${urlPath}' not found`);
+      // console.log(`Router layer for '${urlPath}' not found`);
       return;
     }
 
     app._router.stack.splice(layerIndex, 1);
   };
 
-  app.updateDataPath = function (newDataPath) {
+  app.updateDataPath = function (newDataPath, callback) {
     app.removeLayer('/data');
     app.dataPath = newDataPath;
     // - Handle data
@@ -114,6 +114,9 @@ module.exports = function(dataPath, config) {
 
       // Serve data from static content
       app.use('/data', gzipStatic(app.dataPath, { maxAge: tenSeconds }));
+    }
+    if (callback && typeof callback === 'function') {
+      callback();
     }
   };
 

@@ -51,8 +51,9 @@ function openFile(dataPath) {
 
     mainWindow.loadURL('http://localhost:3000');
   } else {
-    server.updateDataPath(dataPath[0]);
-    mainWindow.reload();
+    server.updateDataPath(dataPath[0], () => {
+      mainWindow.webContents.reloadIgnoringCache();
+    });
   }
   createMenu();
 }
@@ -84,7 +85,7 @@ function createMenu() {
           label: 'Refresh',
           accelerator: 'CmdOrCtrl+R',
           enabled: mainWindow !== null && server !== null,
-          click() { mainWindow.reload(); },
+          click() { mainWindow.webContents.reloadIgnoringCache(); },
         },
         {
           label: `${server && server.getClientConfiguration().MagicLens ? 'Disable' : 'Enable'} MagicLens`,
@@ -147,11 +148,8 @@ app.on('ready', () => {
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
   if (server) {
-    exec(`kill ${server.pid}`, () => {
-      console.log('server stopping ✓');
-      server = null;
-      createMenu();
-    });
+    server = null;
+    createMenu();
   }
 
   // On OS X it is common for applications and their menu bar

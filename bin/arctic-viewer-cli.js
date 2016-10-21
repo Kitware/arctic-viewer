@@ -52,7 +52,7 @@ if(program.downloadSampleData) {
     downloader.downloadData(program.download);
 } else {
   var dataPath = program.data ? program.data : process.env.PWD,
-    app = require('./server')(dataPath, { clientConfiguration: clientConfiguration, output: program.output);
+    app = require('./server')(dataPath, { clientConfiguration: clientConfiguration, output: program.output });
 
   // Start server and listening
   app.listen(program.port);
