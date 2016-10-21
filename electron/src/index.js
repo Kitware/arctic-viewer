@@ -1,8 +1,8 @@
-/* global exec which */
+/* global exec */
 require('shelljs/global');
 
 const electron = require('electron');
-const spawn = require('child_process').spawn;
+const avServer = require('arctic-viewer/bin/server');
 const aboutPage = require('./aboutPage');
 
 const { app, dialog, Menu, shell } = electron;
@@ -32,29 +32,28 @@ function createWindow() {
   });
 }
 
-function openFile(path) {
+function openFile(dataPath) {
   if (mainWindow === null) {
     createWindow();
   }
 
-  if (!path) {
+  if (!dataPath) {
     return;
   }
-  // console.log(path);
+  console.log(dataPath);
 
-  if (server) {
-    exec(`kill ${server.pid}`, () => {
-      console.log('server restarting');
+  if (!server) {
+    server = avServer(dataPath[0]);
+    server.listen(3000);
+    server.on('error', (err) => {
+      dialog.showErrorBox('Error starting arctic viewer server', err);
     });
+
+    mainWindow.loadURL('http://localhost:3000');
+  } else {
+    server.updateDataPath(dataPath[0]);
+    mainWindow.reload();
   }
-
-  server = spawn(`${__dirname}/../node_modules/arctic-viewer/bin/arctic-viewer-cli.js`, ['-d', path, '-s']);
-
-  server.on('error', (err) => {
-    dialog.showErrorBox('Error starting arctic viewer server', err);
-  });
-
-  mainWindow.loadURL('http://localhost:3000');
 }
 
 // This method will be called when Electron has finished
@@ -72,17 +71,24 @@ app.on('ready', () => {
         },
       ],
     },
-    // {
-    //   label: 'View'
-    //   submenu: [
-    //     {}
-    // magicLens;
-    // singleView;
-    // recording;
-    // development;
-    // open in browser
-    //   ]
-    // },
+    {
+      label: 'View',
+      submenu: [
+        {
+          label: 'Refresh',
+          accelerator: 'CmdOrCtrl+R',
+          click() { if (mainWindow !== null && server !== null) { mainWindow.reload(); } },
+        },
+        {
+          label: 'Open in Browser',
+          click() { if (mainWindow !== null && server !== null) { shell.openExternal('http://localhost:3000'); } },
+        },
+        // magicLens;
+        // singleView;
+        // recording;
+        // development;
+      ],
+    },
     {
       role: 'help',
       submenu: [
