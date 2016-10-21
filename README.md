@@ -49,9 +49,9 @@ $ ArcticViewer
 In order to try it out, you should download some sample datasets
 (unless you already have some ;-) and run the data viewer on them.
 
-Here is an example on how to download some sample data
+Here is an example on how to download some sample data:
 
-```
+```sh
 $ mkdir sample-data && cd $_
 $ ArcticViewer --download-sample-data
 
@@ -71,7 +71,7 @@ $ ArcticViewer --download-sample-data
  | Press Enter to quit or the dataset number to download: 8
  | Press Enter to quit or the dataset number to download:
  |
- | => You will be able to try ArcticViewer with those commands:
+ | => You will be able to try ArcticViewer with these commands:
  |
  |  $ ArcticViewer -d /tmp/head_ct_4_features
  |  $ ArcticViewer -d /tmp/diskout-composite
@@ -81,27 +81,27 @@ $ ArcticViewer --download-sample-data
 
 ```
 
-Then you can load them using the provided feedback or by running the following
+Then you can view them using the provided feedback or by running the following
 command lines:
 
-```
+```sh
 $ ArcticViewer -d ./sample-data/mpas-probe-flat-earth
 ```
 
 This will load a MPAS oceanic simulation data that represent a 3D volume of a
-flatten version of the earth with Temperature and Salinity information on the water.
+flattened version of the Earth with temperature and salinity information on the oceans.
 
 From that data you can look at a slice of the data along any axis and move the
 slice back and forth using the scroll of your input device.
 
 If you want to zoom or pan, you will have to scroll+[any modifier key] or drag+[any modifier key].
 
-```
+```sh
 $ ArcticViewer -d ./sample-data/hydra-image-fluid-velocity
 ```
 
 This will load an Hydra CFD simulation data that represent the fluid velocity
-using some volume rendering technique.
+using some volume rendering techniques.
 
 ## Documentation
 
