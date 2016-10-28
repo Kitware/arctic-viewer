@@ -10,6 +10,11 @@ The ParaView ArcticViewer is meant to evolve and support more and more data type
 - Image based dataset
 - 3D probed dataset with scalar field encoded which allow the usage of user defined LookupTable.
 - Image based composite dataset with the JSON structure providing the pixel ordering for each layer.
+- Floating point sorted composite dataset to enable dynamic scene recomposition while enabling transparency accross layers as well as editable color mapping.
+- Dynamic 3D mesh where animation can be replayed.
+- CSV table based dataset which will then use Plotly for rendering various chart type.
+- Time based Floating point images which enable to do time analysis and comparison over various regions.
+- ...
 
 # Installation
 
@@ -45,7 +50,7 @@ $ ArcticViewer -d ./path/to/your/dataset/directory -s -p 1234
 Serving a remote dataset is similar than serving a local dataset except that you need to provide the full http URL like follow.
 
 ```sh
-$ ArcticViewer -d http://www.kitware.com/in-situ-data/tonic-sample-data/hydra-image-fluid-velocity
+$ ArcticViewer -d http://tonic.kitware.com/data/head-ct
 ```
 
 ## Download a set of sample datasets
@@ -56,7 +61,7 @@ Here is an example of command lines:
 
 ```sh
 $ mkdir ArcticData && cd $_
-$ ArcticViewer -D
+$ ArcticViewer --download-sample-data 
 ```
 
 ## Download a remote dataset
@@ -67,5 +72,5 @@ Here is an example on how to run it:
 
 ```sh
 $ mkdir velocity && cd $_
-$ ArcticViewer -R http://www.kitware.com/in-situ-data/tonic-sample-data/hydra-image-fluid-velocity
+$ ArcticViewer --download http://tonic.kitware.com/data/head-ct
 ```
