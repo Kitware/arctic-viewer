@@ -44,15 +44,6 @@ Please follow the coding style:
 
 6. Create a pull request and describe the change.
 
-## Notice
-
-- Don't modify version number in `package.json`.
-- Your pull request will only get merged when tests passed. Don't forget to run tests before submission.
-
-    {% code %}
-    $ npm test
-    {% endcode %}
-
 ## Updating Documentation
 
 The ParaView ArcticViewer documentation is part of the code repository.
