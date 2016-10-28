@@ -11,3 +11,6 @@ docs:
     depthSorted: /arctic-viewer/docs/formats/DepthSortedCompositeFormat.html
     probe: /arctic-viewer/docs/formats/ProbeFormat.html
     ensemble: /arctic-viewer/docs/formats/EnsembleFormat.html
+  available:
+    ios: http://kitware.github.io/arctic-viewer-ios
+    desktop: /arctic-viewer/docs/electron.html

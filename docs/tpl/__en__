@@ -30,3 +30,6 @@ sidebar:
     depthSorted: Sorted Composite
     probe: Probe
     ensemble: Ensemble
+    available: Available
+    ios: iOS
+    desktop: Desktop
