@@ -130,7 +130,7 @@ function createMenu() {
       ],
     });
   } else {
-    menuTemplate[menuTemplate.length].submenu.push(aboutPage);
+    menuTemplate[menuTemplate.length - 1].submenu.push(aboutPage);
   }
 
   const menu = Menu.buildFromTemplate(menuTemplate);
