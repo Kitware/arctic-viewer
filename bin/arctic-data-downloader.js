@@ -1,9 +1,10 @@
-var fs = require('fs'),
-    path = require('path'),
-    program = require('commander'),
-    http = require('http'),
-    ProgressBar = require('progress'),
-    tarball = require('tarball-extract');
+var fs = require('fs');
+var path = require('path');
+var program = require('commander');
+var http = require('http');
+var ProgressBar = require('progress');
+var tarball = require('tarball-extract');
+var shell = require('shelljs');
 
 var outputDirectory = path.normalize(process.env.PWD),
     downloadQueries = [],
@@ -25,10 +26,10 @@ var availableData = {
         url: 'http://tonic.kitware.com/arctic-viewer/ensemble.tgz',
         size: ' 94.2 MB'
     },
-    'garfield': {
-        url: 'http://tonic.kitware.com/arctic-viewer/garfield.tgz',
-        size: '  292 KB'
-    },
+    // 'garfield': {
+    //     url: 'http://tonic.kitware.com/arctic-viewer/garfield.tgz',
+    //     size: '  292 KB'
+    // },
     'head_ct_3_features': {
         url: 'http://tonic.kitware.com/arctic-viewer/head_ct_3_features.tgz',
         size: ' 13.7 MB'
@@ -163,17 +164,8 @@ function downloadNextFile() {
 }
 
 function mkdirp(dirPath, done) {
-    var parent = path.dirname(dirPath);
-    fs.exists(dirPath, function(exists) {
-        if(exists) {
-            done();
-        } else {
-            mkdirp(parent, function(){
-                fs.mkdirSync(dirPath);
-                done();
-            });
-        }
-    });
+  shell.mkdir('-p', dirPath);
+  done();
 }
 
 function downloadFile(url) {
