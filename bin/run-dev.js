@@ -1,5 +1,7 @@
 #! /usr/bin/env node
 
+/* eslint-disable */
+
 require('shelljs/global');
 
 var path = require('path'),

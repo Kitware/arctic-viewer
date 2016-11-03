@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 var os = require('os'),
     ifaces = os.networkInterfaces(),
     networkInterfaces = [];

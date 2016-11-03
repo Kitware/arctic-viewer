@@ -1,5 +1,7 @@
 #! /usr/bin/env node
 
+/* eslint-disable */
+
 var fs = require('fs'),
     path = require('path'),
     usage = 'Usage: ArcticViewer2Cinema /path/to/Arctic/DataSet/directory';

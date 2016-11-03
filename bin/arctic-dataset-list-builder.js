@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 var fs = require('fs'),
     path = require('path'),
     du = require('du');
