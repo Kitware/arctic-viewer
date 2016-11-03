@@ -65,7 +65,7 @@ module.exports = function(dataPath, config) {
 
   // Handle relative path
   if (dataPath[0] === '.') {
-      dataPath = path.normalize(path.join(process.env.PWD, dataPath));
+      dataPath = path.normalize(path.join(process.cwd(), dataPath));
   }
 
   // Build request handling

@@ -8,7 +8,7 @@ var ProgressBar = require('progress');
 var tarball = require('tarball-extract');
 var shell = require('shelljs');
 
-var outputDirectory = path.normalize(process.env.PWD),
+var outputDirectory = path.normalize(process.cwd()),
     downloadQueries = [],
     downloadPatterns = [],
     argsIndex = [],

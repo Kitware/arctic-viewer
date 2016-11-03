@@ -44,8 +44,9 @@ clientConfiguration.SingleView  = !!program.singleView;
 clientConfiguration.Recording   = !!program.recording;
 clientConfiguration.Development = !!program.development;
 
-if (!process.argv.slice(2).length) {
-    return program.outputHelp();
+if (!process.argv.slice(2).length || !program.help) {
+    program.outputHelp();
+    process.exit();
 }
 
 if(program.downloadSampleData) {
@@ -53,7 +54,7 @@ if(program.downloadSampleData) {
 } else if(program.download) {
     downloader.downloadData(program.download);
 } else {
-  var dataPath = program.data ? program.data : process.env.PWD,
+  var dataPath = program.data ? program.data : process.cwd(),
     app = require('./server')(dataPath, { clientConfiguration: clientConfiguration, output: program.output });
 
   // Start server and listening
