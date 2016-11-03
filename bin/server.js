@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /* global mkdir */
 require('shelljs/global');
 
@@ -50,7 +52,9 @@ module.exports = function(dataPath, config) {
     programOutput = './export/{__}.jpg';
 
   if (config.clientConfiguration) {
-    clientConfiguration = Object.assign(clientConfiguration, config.clientConfiguration);
+    for (var key in config.clientConfiguration) {
+      clientConfiguration[key] = config.clientConfiguration[key];
+    }
   }
 
   if (config.output) {
