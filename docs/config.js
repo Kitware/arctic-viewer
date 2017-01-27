@@ -12,6 +12,7 @@ module.exports = {
     url: 'https://kitware.github.io/arctic-viewer',
     root: '/arctic-viewer/',
     github: 'kitware/arctic-viewer',
+    google_analytics: 'UA-90338862-4',
   },
   copy: [],
 };
