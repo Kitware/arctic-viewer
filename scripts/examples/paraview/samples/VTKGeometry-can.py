@@ -53,5 +53,6 @@ dsb.getDataHandler().registerArgument(priority=1, name='time', values=timeValues
 dsb.start()
 for time in dsb.getDataHandler().time:
     anim.TimeKeeper.Time = time
+    sceneDescription['scene'][0]['colors']['time']['constant'] = time;
     dsb.writeData(time)
 dsb.stop()

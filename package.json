@@ -38,8 +38,8 @@
 
     "babel-polyfill": "6.16.0",
 
-    "paraviewweb": "2.2.72",
-    "vtk.js": "2.11.3"
+    "paraviewweb": "2.2.74",
+    "vtk.js": "2.11.8"
   },
   "scripts": {
     "build": "webpack",
