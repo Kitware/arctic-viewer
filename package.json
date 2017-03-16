@@ -38,7 +38,7 @@
 
     "babel-polyfill": "6.16.0",
 
-    "paraviewweb": "2.2.89",
+    "paraviewweb": "2.2.91",
     "vtk.js": "2.13.4"
   },
   "scripts": {
