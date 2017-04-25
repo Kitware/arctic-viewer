@@ -1,17 +1,17 @@
 var fs = require('fs');
 var path = require('path');
 var reservedNames = {
-        'phi':   'Camera_X',
-        'theta': 'Camera_Y',
-    },
+  phi: 'Camera_X',
+  theta: 'Camera_Y',
+};
 var queryDataModelBinds = {
-        theta: {
-            mouse: { drag: { modifier: 0, coordinate: 1, step: 30, orientation: +1 } }
-        },
-        phi: {
-            mouse: { drag: { modifier: 0, coordinate: 0, step: 10, orientation: +1 } }
-        },
-    };
+  theta: {
+    mouse: { drag: { modifier: 0, coordinate: 1, step: 30, orientation: +1 } },
+  },
+  phi: {
+    mouse: { drag: { modifier: 0, coordinate: 0, step: 10, orientation: +1 } },
+  },
+};
 
 function convertQueryDataModelToCinemaSpecA(queryDataModelMetaData, destinationDirectory) {
     var cinemaFormat = {
