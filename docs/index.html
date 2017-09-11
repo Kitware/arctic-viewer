@@ -45,7 +45,8 @@
 <meta property="og:url" content="https://kitware.github.io/arctic-viewer/docs/index.html">
 <meta property="og:site_name" content="ArcticViewer">
 <meta property="og:description" content="IntroductionThe ParaView ArcticViewer application let you create a local web server which will then serve a dedicated web application and your data to any browser that can connect to it. The ParaView">
-<meta property="og:updated_time" content="2017-04-27T16:29:26.168Z">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-09-11T19:56:10.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Documentation">
 <meta name="twitter:description" content="IntroductionThe ParaView ArcticViewer application let you create a local web server which will then serve a dedicated web application and your data to any browser that can connect to it. The ParaView">
@@ -116,9 +117,9 @@
 <h1 id="Command-line-tool" class="article-heading"><a href="#Command-line-tool" class="headerlink" title="Command line tool"></a>Command line tool<a class="article-anchor" href="#Command-line-tool" aria-hidden="true"></a></h1><p>ParaView ArcticViewer can be used as a Web server to serve the application and your data. Or ParaView ArcticViewer can also be used to download remote dataset. The following sections explain how to use it and what are the different options.</p>
 <h2 id="Serve-a-local-dataset" class="article-heading"><a href="#Serve-a-local-dataset" class="headerlink" title="Serve a local dataset"></a>Serve a local dataset<a class="article-anchor" href="#Serve-a-local-dataset" aria-hidden="true"></a></h2><p>For that configuration, ParaView ArcticViewer will act as a local web server and will need to know which directory you would like to serve. Then optional configuration can be provided such as which network port should be used and if you want the application to start your default web browser on the application page.</p>
 <p>The following set of command lines illustrate various usage:</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><div class="line"><span class="comment">## This will start the server on port 3000 and will open your browser automatically</span></div><div class="line">$ ArcticViewer <span class="_">-d</span> ./path/to/your/dataset/directory</div><div class="line"></div><div class="line"><span class="comment">## This will start the server on port 3000 and wait for connections on http://localhost:3000</span></div><div class="line">$ ArcticViewer <span class="_">-d</span> ./path/to/your/dataset/directory <span class="_">-s</span></div><div class="line"></div><div class="line"><span class="comment">## This will start the server on port 1234 so you can connect to http://localhost:1234</span></div><div class="line">$ ArcticViewer <span class="_">-d</span> ./path/to/your/dataset/directory <span class="_">-s</span> -p 1234</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><div class="line"><span class="comment">## This will start the server on port 3000 and will open your browser automatically</span></div><div class="line">$ ArcticViewer -d ./path/to/your/dataset/directory</div><div class="line"></div><div class="line"><span class="comment">## This will start the server on port 3000 and wait for connections on http://localhost:3000</span></div><div class="line">$ ArcticViewer -d ./path/to/your/dataset/directory -s</div><div class="line"></div><div class="line"><span class="comment">## This will start the server on port 1234 so you can connect to http://localhost:1234</span></div><div class="line">$ ArcticViewer -d ./path/to/your/dataset/directory -s -p 1234</div></pre></td></tr></table></figure>
 <h2 id="Serve-a-remote-dataset" class="article-heading"><a href="#Serve-a-remote-dataset" class="headerlink" title="Serve a remote dataset"></a>Serve a remote dataset<a class="article-anchor" href="#Serve-a-remote-dataset" aria-hidden="true"></a></h2><p>Serving a remote dataset is similar than serving a local dataset except that you need to provide the full http URL like follow.</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><div class="line">$ ArcticViewer <span class="_">-d</span> http://tonic.kitware.com/data/head-ct</div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="code"><pre><div class="line">$ ArcticViewer -d http://tonic.kitware.com/data/head-ct</div></pre></td></tr></table></figure>
 <h2 id="Download-a-set-of-sample-datasets" class="article-heading"><a href="#Download-a-set-of-sample-datasets" class="headerlink" title="Download a set of sample datasets"></a>Download a set of sample datasets<a class="article-anchor" href="#Download-a-set-of-sample-datasets" aria-hidden="true"></a></h2><p>ArcticViewer let you also download some data so you can actually play with it. For that you will need to run the application in the directory you want to download your data into.</p>
 <p>Here is an example of command lines:</p>
 <figure class="highlight sh"><table><tr><td class="code"><pre><div class="line">$ mkdir ArcticData &amp;&amp; <span class="built_in">cd</span> <span class="variable">$_</span></div><div class="line">$ ArcticViewer --download-sample-data</div></pre></td></tr></table></figure>
@@ -128,7 +129,7 @@
 
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2017-04-27T16:29:26.168Z" itemprop="dateModified">Last updated: 2017-04-27</time>
+                <time class="article-footer-updated" datetime="2017-09-11T19:56:10.724Z" itemprop="dateModified">Last updated: 2017-09-11</time>
                 <a href="/arctic-viewer/docs/index.html" class="article-footer-next" title="Overview"><span>Next</span><i class="fa fa-chevron-right"></i></a>
               </footer>
               

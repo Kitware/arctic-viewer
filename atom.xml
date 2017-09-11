@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>ArcticViewer</title>
+  
   <subtitle>Enable scientific visualization to the Web.</subtitle>
   <link href="/arctic-viewer/atom.xml" rel="self"/>
   
   <link href="https://kitware.github.io/arctic-viewer/"/>
-  <updated>2017-04-27T16:29:26.156Z</updated>
+  <updated>2017-09-11T19:56:10.704Z</updated>
   <id>https://kitware.github.io/arctic-viewer/</id>
   
   <author>
@@ -20,15 +21,17 @@
     <link href="https://kitware.github.io/arctic-viewer/2016/04/29/kw-doc/"/>
     <id>https://kitware.github.io/arctic-viewer/2016/04/29/kw-doc/</id>
     <published>2016-04-29T00:00:00.000Z</published>
-    <updated>2017-04-27T16:29:26.156Z</updated>
+    <updated>2017-09-11T19:56:10.704Z</updated>
     
-    <content type="html"><![CDATA[<p>Thanks for using kw-doc which is based on Hexo and its template from its own documentation.</p>
-]]></content>
+    <content type="html"><![CDATA[<p>Thanks for using kw-doc which is based on Hexo and its template from its own documentation.</p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Thanks for using kw-doc which is based on Hexo and its template from its own documentation.&lt;/p&gt;
+      
+      
+        &lt;p&gt;Thanks for using kw-doc which is based on Hexo and its template from its own documentation.&lt;/p&gt;
 
+      
     
     </summary>
     
