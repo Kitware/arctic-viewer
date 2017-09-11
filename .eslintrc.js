@@ -12,5 +12,8 @@ module.exports = {
     'react/prefer-es6-class': 0,
     'react/forbid-prop-types': 0,
     'jsx-a11y/no-static-element-interactions': 0,
+
+    'import/no-named-as-default': 0,
+    'import/no-named-as-default-member': 0,
   }
 };
