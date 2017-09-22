@@ -2,93 +2,93 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://kitware.github.io/arctic-viewer/index.html</loc>
-    
-    <lastmod>2017-09-11T23:04:46.794Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://kitware.github.io/arctic-viewer/docs/tools.html</loc>
     
-    <lastmod>2017-09-11T23:04:46.786Z</lastmod>
+    <lastmod>2017-09-22T18:13:30.383Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://kitware.github.io/arctic-viewer/docs/index.html</loc>
     
-    <lastmod>2017-09-11T23:04:46.786Z</lastmod>
+    <lastmod>2017-09-22T18:13:30.383Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://kitware.github.io/arctic-viewer/index.html</loc>
+    
+    <lastmod>2017-09-22T18:13:30.383Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://kitware.github.io/arctic-viewer/docs/troubleshooting.html</loc>
     
-    <lastmod>2017-09-11T23:04:46.786Z</lastmod>
+    <lastmod>2017-09-22T18:13:30.383Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://kitware.github.io/arctic-viewer/docs/electron.html</loc>
     
-    <lastmod>2017-09-11T23:04:46.782Z</lastmod>
+    <lastmod>2017-09-22T18:13:30.379Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://kitware.github.io/arctic-viewer/docs/formats/ProbeFormat.html</loc>
     
-    <lastmod>2017-09-11T23:04:46.782Z</lastmod>
+    <lastmod>2017-09-22T18:13:30.379Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://kitware.github.io/arctic-viewer/api/index.html</loc>
     
-    <lastmod>2017-09-11T23:04:46.782Z</lastmod>
+    <lastmod>2017-09-22T18:13:30.379Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://kitware.github.io/arctic-viewer/docs/contributing.html</loc>
     
-    <lastmod>2017-09-11T23:04:46.782Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://kitware.github.io/arctic-viewer/docs/formats/CompositeFormat.html</loc>
-    
-    <lastmod>2017-09-11T23:04:46.782Z</lastmod>
+    <lastmod>2017-09-22T18:13:30.379Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://kitware.github.io/arctic-viewer/docs/formats/DepthSortedCompositeFormat.html</loc>
     
-    <lastmod>2017-09-11T23:04:46.782Z</lastmod>
+    <lastmod>2017-09-22T18:13:30.379Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://kitware.github.io/arctic-viewer/docs/formats/EnsembleFormat.html</loc>
     
-    <lastmod>2017-09-11T23:04:46.782Z</lastmod>
+    <lastmod>2017-09-22T18:13:30.379Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://kitware.github.io/arctic-viewer/docs/formats/CompositeFormat.html</loc>
+    
+    <lastmod>2017-09-22T18:13:30.379Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://kitware.github.io/arctic-viewer/docs/formats/ImageBasedFormat.html</loc>
     
-    <lastmod>2017-09-11T23:04:46.782Z</lastmod>
+    <lastmod>2017-09-22T18:13:30.379Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://kitware.github.io/arctic-viewer/2016/04/29/kw-doc/</loc>
     
-    <lastmod>2017-09-11T23:04:46.762Z</lastmod>
+    <lastmod>2017-09-22T18:13:30.363Z</lastmod>
     
   </url>
   
