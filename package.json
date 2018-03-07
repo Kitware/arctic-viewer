@@ -39,7 +39,7 @@
     "validate": "prettier --config ./prettier.config.js --list-different \"lib/**/*.js\"",
     "reformat": "prettier --config ./prettier.config.js --write \"lib/**/*.js\"",
     "reformat-only": "prettier --single-quote --trailing-comma es5 --print-width 80 --arrow-parens always --write",
-    "postinstall": "cp ./node_modules/plotly.js/dist/plotly.min.js ./dist",
+    "update:plotly": "cp ./node_modules/plotly.js/dist/plotly.min.js ./dist",
     "build": "webpack",
     "build:debug": "webpack --display-modules",
     "build:release": "webpack -p",
