@@ -18,7 +18,7 @@
     "open": "0.0.5",
     "progress": "1.1.8",
     "shelljs": "0.7.8",
-    "tarball-extract": "0.0.3"
+    "tarball-extract": "0.0.6"
   },
   "devDependencies": {
     "normalize.css": "7.0.0",
@@ -26,23 +26,23 @@
     "hammerjs": "2.0.8",
     "ify-loader": "^1.1.0",
     "kw-doc": "1.1.1",
-    "kw-web-suite": "5.0.1",
+    "kw-web-suite": "6.1.0",
     "monologue.js": "0.3.5",
     "mout": "1.1.0",
-    "paraviewweb": "3.0.13",
+    "paraviewweb": "3.1.7",
     "plotly.js": "1.33.1",
     "react": "16.2.0",
     "react-dom": "16.2.0",
-    "vtk.js": "6.3.4"
+    "vtk.js": "6.4.24"
   },
   "scripts": {
     "validate": "prettier --config ./prettier.config.js --list-different \"lib/**/*.js\"",
     "reformat": "prettier --config ./prettier.config.js --write \"lib/**/*.js\"",
     "reformat-only": "prettier --single-quote --trailing-comma es5 --print-width 80 --arrow-parens always --write",
     "update:plotly": "cp ./node_modules/plotly.js/dist/plotly.min.js ./dist",
-    "build": "webpack",
-    "build:debug": "webpack --display-modules",
-    "build:release": "webpack -p",
+    "build": "webpack --progress --colors --mode development",
+    "build:debug": "webpack --display-modules --mode development",
+    "build:release": "webpack --progress --colors --mode production",
     "build:bundle": "./bin/bundle.js",
     "doc": "kw-doc -c ./docs/config.js",
     "doc:www": "kw-doc -c ./docs/config.js -s",
