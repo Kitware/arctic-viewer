@@ -3,11 +3,11 @@ title: Ensemble
 
 # Introduction
 
-The ParaView ArcticViewer is able to load several type of datasets, but this guide will focus on the ensemble one and will explain what are the requirements for it so you could create your own dataset.
+The ParaView ArcticViewer is able to load several type of datasets, but this guide will focus on the ensemble one and will explain the requirements for it so you can create your own datasets.
 
 # Dataset structure
 
-ParaView ArcticViewer expect a dataset descriptor that will formalize that convention in a way it can be understood by the application. The application expect a file named __index.json__ at the root of the tree structure (if any) with a content similar to the following one.
+ParaView ArcticViewer expects a dataset descriptor that formalizes the data convention so it can be understood by the application.  The application expects a file named __index.json__ at the root of the tree structure (if any) with a content similar to the following one:
 
 ```js
 {
@@ -68,9 +68,8 @@ ParaView ArcticViewer expect a dataset descriptor that will formalize that conve
 }
 ```
 
-In that meta description, we find the list of dataset that compose that ensemble with the relationship that should exist between them. Like synchronizing the __Time__ across several dataset or any particular argument or parameter. But also what kind of binding need to happen directly on the ImageBuilder instance.
+In the above meta description, we find the list of datasets that compose the ensemble, along with the relationship that should exist between them.  Like synchronizing the __time__ across several dataset or any particular argument or parameter.  We can also see above and example of the kind of binding which needs to happen directly on the ImageBuilder instance.
 
-The path provided for those datasets is relative to the initial index.json file.
+The path provided for the datasets is relative to the initial index.json file.
 
-Then we can add some Operator views of those dataset. Those operators will allow you to apply pixel operations between the set of datasets you've listed in them.
-
+Then we can add some Operator views of those dataset. These operators will allow you to apply pixel operations between the set of datasets you've listed in them.

@@ -3,11 +3,11 @@ title: Probe
 
 # Introduction
 
-The ParaView ArcticViewer is able to load several type of datasets, but this guide will focus on the probe one and will explain what are the requirements for it so you could create your own dataset.
+The ParaView ArcticViewer is able to load several type of datasets, but this guide will focus on the probe one and will explain the requirements for it so you can create your own datasets.
 
 # Dataset structure
 
-ParaView ArcticViewer expect a dataset descriptor that will formalize that convention in a way it can be understood by the application. The application expect a file named __index.json__ at the root of the tree structure (if any) with a content similar to the following one.
+ParaView ArcticViewer expects the data to be accompanied by a dataset descriptor that formalizes the data convention so it can be understood by the application.  The application expects a file named __index.json__ at the root of the tree structure (if any) with a content similar to the following one:
 
 ```js
 {
@@ -52,8 +52,8 @@ ParaView ArcticViewer expect a dataset descriptor that will formalize that conve
 }
 ```
 
-In that meta description, we find the volume size, the set of fields, the data range, the spacing and how much layers are available in a sprite.
+In the above meta description, we find the volume size, the set of fields, the data range, the spacing, and how many layers are available in a sprite.
 
 # Image Sprite
 
-<img src="/arctic-viewer/docs/formats/probe-sprite.png" alt="Image Sprite with raw scalar field encoded"/>
+<img src="/arctic-viewer/docs/probe-sprite.png" alt="Image Sprite with raw scalar field encoded"/>

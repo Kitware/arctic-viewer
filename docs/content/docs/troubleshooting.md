@@ -1,3 +1,4 @@
 title: Troubleshooting
 ---
-In case you're experiencing problems with using ParaView ArcticViewer, here is a list of solutions to some frequently encountered issues. If this page doesn't help you solve your problem, try doing a search on [GitHub](https://github.com/kitware/arctic-viewer/issues) or our [Mailing list](http://www.paraview.org/mailman/listinfo/paraview).
+
+If you experience problems using ParaView ArcticViewer, try doing a search on our [issues list](https://github.com/kitware/arctic-viewer/issues) or our [mailing list](http://www.paraview.org/mailman/listinfo/paraview).

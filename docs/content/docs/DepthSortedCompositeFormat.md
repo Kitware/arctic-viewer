@@ -7,11 +7,11 @@ This guide will focus on the depth-sorted composite datatype and will explain th
 
 The name depth-sorted composite comes from the fact that these datasets have been processed so that the images can be drawn directly and immediately in back-to-front order.
 
-Additionally, we need an opacity or alpha for each pixel in each layer.  If we also have an intensity for each pixel in each layer, we can make use of that to do additionaly interesting things with the images produced by ParaView ArcticViewer.
+Additionally, we need an opacity or alpha for each pixel in each layer.  If we also have an intensity for each pixel in each layer, we can make use of that to do additional interesting things with the images produced by ParaView ArcticViewer.
 
 # Dataset structure
 
-ParaView ArcticViewer expects any data to be accompanied by a dataset descriptor that formalizes the data convention so it can be understood by the application. The application expects to find a file named __index.json__ at the root of the tree structure (if any), and for the depth-sorted composite type of dataset, the file should be similar to the following example.
+ParaView ArcticViewer expects any data to be accompanied by a dataset descriptor that formalizes the data convention so it can be understood by the application.  The application expects to find a file named __index.json__ at the root of the tree structure (if any), and for the depth-sorted composite type of dataset, the file should be similar to the following example:
 
 ```js
 {
@@ -120,15 +120,15 @@ ParaView ArcticViewer expects any data to be accompanied by a dataset descriptor
 }
 ```
 
-Let us begin by noting some important details from this descriptor file.  First, the image dimensions are described by the `SortedComposite` -> `dimensions` attribute. In this case, the images we will compose are 3px by 3px. Next, note the the number of "layers" we will be compositing is `5` in this case. Looking in the `data` section we can see there are three components to the data for building up a final composite image: `order.uint8`, `alpha.uint8` and `intensity.uint8`. These data components are described in a bit more detail below.
+Let us begin by noting some important details from this descriptor file.  First, the image dimensions are described by the `SortedComposite` -> `dimensions` attribute. In this case, the images we will compose are 3px by 3px. Next, note  the the number of "layers" we will be compositing is `5` in this case. Looking in the `data` section we can see there are three components to the data for building up a final composite image: `order.uint8`, `alpha.uint8` and `intensity.uint8`. These data components are described in a bit more detail below.
 
-<img src="/arctic-viewer/docs/formats/tonic-volume-data-format.png" alt="Example data layout for 3x3 images with 5 layers"/>
+<img src="/arctic-viewer/docs/tonic-volume-data-format.png" alt="Example data layout for 3x3 images with 5 layers"/>
 
-The image above shows an example of the data layout for two of the three components (intensity is exactly the same, and thus not shown above) in the case where the layer images are 3x3 pixels, and there are 5 layers (features) total. Each data component is simply a 1D array of 8-bit pixels, where the length of the array is found by multiplying image width by image height by number of layers. Refer to this depiction when reading about the different data components below.
+The image above shows an example of the data layout for two of the three components (intensity is exactly the same, and thus not shown above) in the case where the layer images are 3x3 pixels, and there are 5 layers (features) total. Each data component is simply a 1D array of 8-bit pixels, where the length of the array is found by multiplying image width by image height by the number of layers.  Refer to this depiction when reading about the different data components below.
 
 ## `order`
 
-The data in the order file consists of 8 bits per pixel, where the value in a pixel is just the original layer index of that pixel.  The letters `a` through `e`  in the above illustration correspond to depth-sorted layers where the pixels in `e` are furthest from the camera, `d` are the next-furthest, and so on, until `a` are the closest to the camera.  The actual value in each pixel within the sprite is a single byte indicating which feature layer contains the `alpha` and `intensity` for the pixel.
+The data in the order file consists of 8 bits per pixel, where the value in a pixel is just the original layer index of that pixel.  The letters `a` through `e` in the above illustration correspond to depth-sorted layers where the pixels in `e` are furthest from the camera, `d` are the next-furthest, and so on, until `a` are the closest to the camera.  The actual value in each pixel within the sprite is a single byte indicating which feature layer contains the `alpha` and `intensity` for the pixel.
 
 By starting with the pixels marked with an `e` and proceeding backwards through the alphabet to pixels marked with an `a`, we can quickly do back-to-front rendering (using the traditional over-operator) which will produce a correctly alpha-blended image.
 

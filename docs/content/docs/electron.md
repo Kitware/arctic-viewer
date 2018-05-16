@@ -1,15 +1,15 @@
 title: Desktop application
 ---
 
-ArcticViewer can be build and distributed as a desktop application relying on the [Electron](http://electron.atom.io/) infrastructrue.
+ArcticViewer can be built and distributed as a desktop application by relying on the [Electron](http://electron.atom.io/) infrastructrue.
 
-We currently don't provide links to download pre-build packaged version, but you should be able to build them yourself.
+We currently don't provide links to download pre-built packaged versions, but you should be able to build them yourself.
 
 ## Create an application bundle yourself
 
-ArcticViewer provide you with the infrastructure to create a redistributed application of ArcticViewer itself.
+ArcticViewer provides you with the infrastructure to create a redistributable application of ArcticViewer itself.
 
-For that you will just need to follow the instruction below based on your operating system.
+For that you will just need to follow the appropriate instructions below based on your operating system.
 
 ### Windows
 
@@ -21,7 +21,7 @@ $ npm run build:win
 
 Your bundle should be available in `./bin` directory.
 
-### macOS
+### MacOS
 
 ```sh
 $ git clone https://github.com/Kitware/arctic-viewer.git

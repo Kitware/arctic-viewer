@@ -3,7 +3,7 @@ title: Tools
 
 ParaView ArcticViewer is meant to be an Open Source application for interactive data exploration.
 
-The following guide explain our software process and tools use to build and develop this framework.
+The following guide explains our software process and the tools use to build and develop this framework.
 
 ## Software process
 
