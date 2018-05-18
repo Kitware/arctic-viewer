@@ -13,8 +13,8 @@ Please follow the coding style:
 
 ## Workflow
 
-1. Fork [kitware/visualizer].
-2. Clone the repository to your computer and install dependencies.
+1. Fork [kitware/arctic-viewer](https://github.com/kitware/arctic-viewer) into your own Github account.
+2. Clone the forked repository to your computer and install dependencies.
 
     {% code %}
     $ git clone https://github.com/<username>/arctic-viewer.git
@@ -33,6 +33,7 @@ Please follow the coding style:
 5. Use Commitizen for commit message
 
     {% code %}
+    $ git add <newfiles>
     $ git cz
     {% endcode %}
 
@@ -50,4 +51,4 @@ The ParaView ArcticViewer documentation is part of the code repository.
 
 ## Reporting Issues
 
-When you encounter some problems when using ParaView ArcticViewer, you can find the solutions in [Troubleshooting](troubleshooting.html) or ask me on [GitHub](https://github.com/kitware/arctic-viewer/issues) or [Mailing list](http://www.paraview.org/mailman/listinfo/paraview). If you can't find the answer, please report it on GitHub.
+When you encounter some problems when using ParaView ArcticViewer, you may be able to find a solution in [Troubleshooting](troubleshooting.html) or ask a question on our [issues list](https://github.com/kitware/arctic-viewer/issues) or [mailing list](http://www.paraview.org/mailman/listinfo/paraview). If you can't find the answer, please report the issue on GitHub.

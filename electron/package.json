@@ -8,7 +8,7 @@
   "main": "src/index.js",
   "dependencies": {
     "arctic-viewer": "latest",
-    "electron": "1.4.1",
+    "electron": "2.0.0",
     "shelljs": "0.7.4",
     "about-window": "1.4.0"
   },
