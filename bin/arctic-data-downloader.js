@@ -249,11 +249,11 @@ module.exports = {
         process.stdout.write(message);
         process.stdin.on('data', function (text) {
             var n = Number(text);
-            listToDownload.push(n);
-            if(text === '\n') {
+            if(n === 0) {
                 process.stdin.pause();
                 downloadAvailableDatasets(listToDownload);
             } else {
+                listToDownload.push(n);
                 process.stdout.write(message);
             }
         });
